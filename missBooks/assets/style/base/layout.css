@@ -1,18 +1,11 @@
 .main-layout {
-  margin: 0 auto;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
+  width: 100%;
 }
+
+
 
 .container {
   max-width: 800px;
   padding: 1em;
   margin: auto;
-}
-
-.main-root-layout{
-  display:  grid;
-    margin: 2em;
-    gap: 1em;
-    justify-items: center;
 }

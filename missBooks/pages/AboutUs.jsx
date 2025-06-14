@@ -1,8 +1,7 @@
-import { appService } from '../../services/missBooks.service.js'
 
 const { useState, useEffect, useRef } = React;
 
-export function AboutUsCmp() {
+export function AboutUs() {
 
     const [watchers, setWatchersArray] = useState([]);
 
@@ -11,8 +10,8 @@ export function AboutUsCmp() {
 
 
     return (
-        <React.Fragment>
-            
-        </React.Fragment>
+        <div className="about container">
+            hi there world!
+        </div>
     )
 }

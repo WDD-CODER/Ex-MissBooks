@@ -1,4 +1,3 @@
-import { appService } from '../../services/missBooks.service.js'
 
 const { useState, useEffect, useRef } = React;
 
@@ -11,8 +10,7 @@ export function HomePage() {
 
 
     return (
-        <React.Fragment>
-            
-        </React.Fragment>
+        <div className='home container'>
+        </div>
     )
 }

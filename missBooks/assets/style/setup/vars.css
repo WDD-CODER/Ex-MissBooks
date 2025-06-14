@@ -1,14 +1,22 @@
 :root {
-  --clr1: rgb(96, 107, 91);
-  --clr2: rgb(120, 99, 110);
+  /* 📚 Olive Green – calm, focused */
+  --clr-primary--1: #5C7C5F;       /* darker */
+  --clr-primary-base: #7A9E7E;     /* main */
+  --clr-primary-1: #B8CDB9;        /* lighter */
 
-  --clr1bg: rgb(153, 166, 149);
-  --clr1bg-light: rgb(205, 221, 200);
-  --clr2bg: rgb(233, 206, 221);
-  --clr2bg-light: rgb(247, 185, 219);
+  /* 📘 Soft Indigo – thoughtful, elegant */
+  --clr-secondary--1: #3E4D6E;     /* darker */
+  --clr-secondary-base: #586994;   /* main */
+  --clr-secondary-1: #9CA6BF;      /* lighter */
 
-  --gray1: rgb(240, 240, 240);
-  --gray2: rgb(155, 155, 155);
-  --gray3: rgb(44, 44, 44);
+  /* 📖 Warm Sand – soft, readable background */
+  --clr-accent--1: #B5A689;        /* darker */
+  --clr-accent-base: #D9CBB6;      /* main */
+  --clr-accent-1: #EFE8DF;         /* lighter */
 
-} 
+
+  /* Basic colors */
+--clr-black: #2A2A2A; /* dark, but gentler */
+--clr-white: #FAF7F2; /* even warmer, like a vintage book page */
+
+}

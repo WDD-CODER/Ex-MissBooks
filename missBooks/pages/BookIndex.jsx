@@ -1,4 +1,3 @@
-import { appService } from '../../services/missBooks.service.js'
 
 const { useState, useEffect, useRef } = React;
 
@@ -11,8 +10,8 @@ export function BookIndex() {
 
 
     return (
-        <React.Fragment>
+        <section className="BookIndex container">
 
-        </React.Fragment>
+        </section>
     )
 }
