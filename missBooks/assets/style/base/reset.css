@@ -5,14 +5,14 @@
 }
 
 html {
-    color-scheme: light dark;
+    /* color-scheme: light dark; */
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
     h1 {
         color: yellow;
     }
-}
+} */
 
 
 

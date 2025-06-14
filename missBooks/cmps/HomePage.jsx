@@ -1,8 +1,7 @@
-import { appService } from '../../services/missBooks.service.js'
 
 const { useState, useEffect, useRef } = React;
 
-export function BookIndex() {
+export function HomePage() {
 
     // const [watchers, setWatchersArray] = useState([]);
 
@@ -11,8 +10,8 @@ export function BookIndex() {
 
 
     return (
-        <React.Fragment>
-
-        </React.Fragment>
+        <div className='home container'>
+            HOME!!!
+        </div>
     )
 }

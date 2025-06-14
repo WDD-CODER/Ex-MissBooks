@@ -1,22 +1,22 @@
 /* flex helpers */
 
-.flex {
-  display: flex;
+.grid {
+  display: grid;
 }
 
-.flex.flex-column{
-    flex-direction: column;
+.grid .grid-flow-cul{
+   grid-auto-flow: column;
 }
 
-.flex.justify-center{
-    justify-content: center;
+.grid.place-center{
+    place-content: center;
 }
 
-.flex.justify-between{
+.grid.space-between{
     justify-content: space-between;
 }
 
-.flex.align-center{
+.grid.align-center{
     align-items: center;
 }
 

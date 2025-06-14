@@ -10,4 +10,5 @@
 @import './base/reset.css';
 
 /* Components */
-/* @import '/assets/style/cmps/app-header.css'; */
+@import './cmps/AppHeader.css';
+@import './cmps/HomePage.css';
