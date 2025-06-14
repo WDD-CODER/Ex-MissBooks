@@ -1,9 +1,8 @@
 
-
 export function AppHeader({ onSetPage }) {
 
     return (
-        <header className='app-header container'>  
+        <header className='app-header'>  
         <section>
             <h1>MissBooks App </h1>
             <nav className='app-nav'>

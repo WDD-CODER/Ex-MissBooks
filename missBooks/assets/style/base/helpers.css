@@ -16,6 +16,11 @@
     justify-content: space-between;
 }
 
+.grid.space-around{
+    justify-content: space-around;
+}
+
+
 .grid.align-center{
     align-items: center;
 }

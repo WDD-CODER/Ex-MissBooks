@@ -1,13 +1,18 @@
 .app-header {
-    background-color: var(--clr1);
-    color: var(--clr1bg-light);
+    grid-area: header;
     padding-block: .75em;
+
+    border-bottom-right-radius: .5vh;
+    border-bottom-left-radius: .5vh;
+    border: 2px var(--clr-black) solid;
+    color: var(--clr1bg-light);
+    background-color: var(--clr1);
 }
 
 .app-header section:first-child {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
@@ -16,7 +21,6 @@
     gap: 15px;
 
     >a {
-        background-color: aquamarine;
         cursor: pointer;
     }
 }

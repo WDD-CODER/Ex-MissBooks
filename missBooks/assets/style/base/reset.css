@@ -5,6 +5,7 @@
 }
 
 html {
+    /* height: 100%; */
     /* color-scheme: light dark; */
 }
 /* 
@@ -35,12 +36,12 @@ h4,
 h5,
 h6 {
     text-align: center;
-    margin: 0 0 1em;
+    margin: 0 0 0;
     text-wrap: balance;
 }
 
 p {
-    margin: 0 0 1em;
+    margin: 0 0 0;
     text-wrap: pretty;
 }
 

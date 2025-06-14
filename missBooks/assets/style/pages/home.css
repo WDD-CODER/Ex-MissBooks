@@ -1,16 +1,11 @@
-section.home-container {
-  display: flex;
-  flex-direction: column;
+section.home {
+  grid-area: main-content;
+  display: grid;
+
+  padding: 1em;
+  height: 60vh;
+  
   gap: 1rem;
+  
 }
 
-section.home-container div.links-container {
-  display: flex;
-  gap: 1rem;
-
-  background-color: #aaaaaa;
-}
-
-section.home-container .link {
-  cursor: pointer;
-}

@@ -1,12 +1,17 @@
 
-import {HomePage} from '../cmps/HomePage.jsx'
+import { HomePage } from '../cmps/HomePage.jsx'
 
 export function Home() {
 
     return (
+
         <section className="home container">
-            <h1>HOME PAGE</h1>
-            <HomePage/>
+            <h1>WELCOME</h1>
+            <p> Welcome to missed books.
+                The application is going to be your best friend to help you manage your
+                books and find them easy You're welcome to enjoy Go to the books page to
+                find some books`</p>
+            <img src="./assets/utilImages/homePage.png" alt="Random Unsplash image" />
         </section>
     )
 }

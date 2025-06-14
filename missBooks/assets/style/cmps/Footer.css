@@ -1,0 +1,10 @@
+footer{
+    grid-area: footer;
+    display: grid;
+    
+    padding: 1em;
+
+
+    background-color: var(--clr-primary-base);
+}
+

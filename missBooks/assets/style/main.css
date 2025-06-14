@@ -3,12 +3,17 @@
 @import './setup/typography.css';
 
 /* Base */
+@import './base/reset.css';
 @import './base/base.css';
 @import './base/forms.css';
 @import './base/helpers.css';
 @import './base/layout.css';
-@import './base/reset.css';
 
 /* Components */
 @import './cmps/AppHeader.css';
 @import './cmps/HomePage.css';
+@import './cmps/Footer.css';
+
+/* Pages */
+@import './pages/home.css';
+
