@@ -2,7 +2,7 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const APP_KEY = 'MissBooksDB'
-_createBooks()
+_createDemoBooks()
 
 export const appService = {
     query,
@@ -18,9 +18,13 @@ export const appService = {
 function query() {
     return storageService.query(APP_KEY)
         .then(books => {
-            if (books.length) return books
+            if (books.length) {
+                console.log('from storage')
+                return books
+            }
             else
-                _createBooks()
+                console.log('from scratch!')
+            _createDemoBooks()
             return utilService.loadFromStorage(APP_KEY)
         })
         .catch(err => console.log('Failed loading book', err))
@@ -63,10 +67,10 @@ function getNextBookId(bookId) {
         })
 }
 
-function _createBooks() {
-    let books = utilService.loadFromStorage(APP_KEY)
-    if (!books || !books.length) _createDemoBooks()
-}
+// function _createBooks() {
+//     let books = utilService.loadFromStorage(APP_KEY)
+//     if (!books || !books.length) _createDemoBooks()
+//     }
 
 function _createDemoBooks() {
     const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
@@ -93,5 +97,6 @@ function _createDemoBooks() {
         }
         books.push(book)
     }
-    console.log('books', books)
+    utilService.saveToStorage(APP_KEY ,books)
+    // console.log('books', books)
 }

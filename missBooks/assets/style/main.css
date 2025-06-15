@@ -13,6 +13,7 @@
 @import './cmps/AppHeader.css';
 @import './cmps/HomePage.css';
 @import './cmps/Footer.css';
+@import './cmps/BookCard.css';
 
 /* Pages */
 @import './pages/home.css';

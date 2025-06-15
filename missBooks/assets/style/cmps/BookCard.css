@@ -1,0 +1,5 @@
+.book-card{
+    width: 100px;
+    border: 2px black solid;
+    background-color: var(--clr-accent-1);
+}
