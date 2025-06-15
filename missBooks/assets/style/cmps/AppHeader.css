@@ -1,5 +1,5 @@
 .app-header {
-    grid-area: header;
+    grid-area: main-header;
     padding-block: .75em;
 
     border-bottom-right-radius: .5vh;

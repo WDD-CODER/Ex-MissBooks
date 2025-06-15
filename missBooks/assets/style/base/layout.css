@@ -1,11 +1,11 @@
 .main-layout {
-  display: grid;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "header"
+    "main-header"
     "main-content"
     "footer"
   ;
-
+  
   background-color: var(--clr-accent-base);
 }
 
@@ -13,8 +13,6 @@
   display: grid;
   place-items: center;
 
-  padding: 2em;
-  
   padding: 1em;
 
   margin: auto;

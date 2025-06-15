@@ -8,8 +8,6 @@ const { useState, useEffect } = React
 export function BookIndex() {
 
     const [books, setBooks] = useState([])
-    console.log("🚀 ~ BookIndex ~ books:", books)
-
     useEffect(() => {
         loadBooks()
     }, [])
@@ -21,12 +19,10 @@ export function BookIndex() {
     }
 
     return (
-        <section className="BookIndex container">
-            <div className='books container'>
+        <section className="books-index grid">
                 {books.map(book => {
-                  return  <BookCard book={book} />
+                  return  <BookCard key={book.title} book={book} />
                 })}
-            </div>
         </section>
     )
 }

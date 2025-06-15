@@ -8,9 +8,9 @@ import { Footer } from './cmps/Footer.jsx'
 
 export function RootCmp() {
 
-    const [page, setPage] = useState('home')
+    const [page, setPage] = useState('books')
     return (
-        <section className='main-layout'>
+        <section className='main-layout grid'>
             <AppHeader onSetPage={(page) => setPage(page)} />
             <main>
                 {page === 'home' && <Home />}
