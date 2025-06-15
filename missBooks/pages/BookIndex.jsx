@@ -1,5 +1,6 @@
 
 import { appService } from '../services/missBooks.service.js'
+import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookList } from '../cmps/BookList.jsx'
 
 const { useState, useEffect } = React
@@ -26,11 +27,15 @@ export function BookIndex() {
             .catch(err => console.log('Problems removing the book', err))
     }
 
+    function setFilterBy(res) {
+        console.log(res)
+    }
 
     return (
         <section className="books-index grid">
             <h1>Books Gallery </h1>
-            <BookList books={books} onRemoveBook={removeBook}/>
+            <BookFilter setFilterBy={setFilterBy} />
+            <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} />
         </section>
     )
 }
