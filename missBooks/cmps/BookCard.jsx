@@ -1,7 +1,6 @@
 
 
-export function BookCard({ book }) {
-    console.log("🚀 ~ BookCard ~ book:", book)
+export function BookCard({ book , onRemoveBook}) {
     return (
         <article className="book-card grid place-center container">
             <header>
@@ -28,6 +27,8 @@ export function BookCard({ book }) {
                 <li className="categories">categories: {book.categories}</li>
             </ul>
             <p className="book-description">{book.description}</p>
+          
+          <button className="remove" onClick={()=>onRemoveBook(book.id)}>X</button>
         </article>
     )
 
