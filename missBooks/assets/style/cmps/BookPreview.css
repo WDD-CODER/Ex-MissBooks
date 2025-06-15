@@ -1,0 +1,41 @@
+.book-preview {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "   header"
+        "    img  "
+        "   price "
+        " description "
+
+    ;
+
+    height: 650px;
+
+    border: 2px black solid;
+    background-color: var(--clr-accent-1);
+}
+
+header {
+    grid-area: header;
+}
+
+.info {
+    grid-area: info;
+}
+
+.price {
+    grid-area: price;
+
+}
+
+.meta {
+    grid-area: meta;
+}
+
+.img {
+    grid-area: img;
+}
+
+.description {
+    grid-area: description;
+
+}

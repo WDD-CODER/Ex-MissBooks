@@ -2,8 +2,8 @@ const { useState } = React
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { Home } from './pages/Home.jsx'
-import { About } from './pages/About.jsx'
-import { Books } from './pages/Books.jsx'
+import { AboutUs } from './pages/AboutUs.jsx'
+import { BookIndex } from './pages/BookIndex.jsx'
 import { Footer } from './cmps/Footer.jsx'
 
 export function RootCmp() {
@@ -14,8 +14,8 @@ export function RootCmp() {
             <AppHeader onSetPage={(page) => setPage(page)} />
             <main>
                 {page === 'home' && <Home />}
-                {page === 'about' && <About />}
-                {page === 'books' && <Books />}
+                {page === 'about' && <AboutUs />}
+                {page === 'books' && <BookIndex />}
             </main >
             <Footer fullName='Dan Weibren'/>
         </section>

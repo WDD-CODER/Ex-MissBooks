@@ -13,9 +13,11 @@
 @import './cmps/AppHeader.css';
 @import './cmps/HomePage.css';
 @import './cmps/Footer.css';
-@import './cmps/BookCard.css';
+@import './cmps/BookList.css';
+@import './cmps/BookPreview.css';
+
 
 /* Pages */
 @import './pages/home.css';
-@import './pages/books.css';
+@import './pages/books-index.css';
 

@@ -1,0 +1,10 @@
+.book-index {
+  grid-area: main-content;
+  /* grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
+
+  padding: 1em;
+  height: 60vh;
+
+  gap: 1rem;
+
+}

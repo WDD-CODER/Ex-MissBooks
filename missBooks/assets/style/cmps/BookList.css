@@ -1,0 +1,10 @@
+.books-list {
+    grid-template-columns: repeat(auto-fit , minmax(450px, 1fr));
+
+    width: 90%;
+    gap: 1em;
+
+    border: 2px black solid;
+    background-color: var(--clr-accent-1);
+}
+

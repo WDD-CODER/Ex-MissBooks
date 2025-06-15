@@ -1,7 +1,6 @@
 
 import { appService } from '../services/missBooks.service.js'
-// import { utilService } from '../services/util.service.js'
-import { BookCard } from './BookCard.jsx'
+import { BookList } from '../cmps/BookList.jsx'
 
 const { useState, useEffect } = React
 
@@ -30,9 +29,8 @@ export function BookIndex() {
 
     return (
         <section className="books-index grid">
-            {books.map(book => {
-                return <BookCard onRemoveBook={removeBook} key={book.title} book={book} />
-            })}
+            <h1>Books Gallery </h1>
+            <BookList books={books} onRemoveBook={removeBook}/>
         </section>
     )
 }
