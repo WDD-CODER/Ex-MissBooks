@@ -1,7 +1,7 @@
 
 export function BookDetails({ book, onRemoveBook, onSelectBook }) {
 
-  return (
+return (
     <article className="book-details grid container">
       <figure className="cover-img">
         <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
@@ -11,7 +11,7 @@ export function BookDetails({ book, onRemoveBook, onSelectBook }) {
         <header>
           <h1 className="title">{book.title}</h1>
           <h2 className="subtitle">{book.subtitle}</h2>
-          <p className="authors">By: {book.authors}</p>
+          <p className="authors">Written By: {book.authors}</p>
         </header>
 
         <ul className="meta">
@@ -21,13 +21,18 @@ export function BookDetails({ book, onRemoveBook, onSelectBook }) {
           <li><strong>Categories:</strong> {book.categories}</li>
         </ul>
 
-
         <p className="description">{book.description}</p>
+
+            <p className="price">
+                <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>
+                {book.listPrice.isOnSale && <span className="sale"> On Sale!</span>}
+            </p>
 
         <div className="actions">
           <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
           <button className="select" onClick={() => onSelectBook(book)}>Back To Gallery</button>
         </div>
+
       </section>
     </article>
 

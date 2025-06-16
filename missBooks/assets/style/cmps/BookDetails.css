@@ -1,24 +1,26 @@
 
 .book-details {
   display: grid;
+
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     "cover main";
+
   gap: 2rem;
   padding: 2rem;
-  background-color: var(--clr-accent-1);
+  
+  border: 2px var(--clr-black) solid;
+  border-radius: 1vh;
+  
+  background-color: var(--clr-accent--1);
 }
 
 .cover-img {
   grid-area: cover;
-  align-self: start;
 }
 
 .cover-img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
+  border-radius: .5vh;
 }
 
 .main-info {
@@ -29,8 +31,6 @@
 }
 
 .meta {
-  list-style: none;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 0.5rem;

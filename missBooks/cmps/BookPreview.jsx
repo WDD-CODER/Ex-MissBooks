@@ -10,7 +10,7 @@ export function BookPreview({ book, onRemoveBook , onSelectBook }) {
             </header>
             <p className="price">
                 <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>
-                {book.listPrice.isOnSale && <span> On Sale!</span>}
+                {book.listPrice.isOnSale && <span className="sale"> On Sale!</span>}
             </p>
             <figure className="img">
                 <img src={book.thumbnail} alt={`Cover of ${book.title}`} />

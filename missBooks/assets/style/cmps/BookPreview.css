@@ -10,7 +10,9 @@
 
     height: 650px;
 
-    border: 2px black solid;
+    border: 2px var(--clr-black) solid;
+    border-radius: 1vh;
+
     background-color: var(--clr-accent--1);
 }
 
