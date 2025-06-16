@@ -1,0 +1,22 @@
+:root {
+ /* 📘 Primary – Brand Identity: used for headers, buttons, links */
+--clr-primary--1: #274472;      /* darker: button hover, strong headers */
+--clr-primary-base: #41729F;    /* main: buttons, titles, accents */
+--clr-primary-1: #8AB6D6;       /* lighter: borders, highlights */
+
+/* 📚 Secondary – Textual Content: used for body text and UI elements */
+--clr-secondary--1: #3C3C3C;    /* darker: strong text, small titles */
+--clr-secondary-base: #5C5C5C;  /* main: regular paragraph text */
+--clr-secondary-1: #B0B0B0;     /* lighter: muted text, helper text */
+
+/* 🧾 Accent – Backgrounds and Cards: used for layout zones and contrast */
+--clr-accent--1: #D9CAB3;       /* darker: card headers, separation */
+--clr-accent-base: #F0EDE5;     /* main: section backgrounds */
+--clr-accent-1: #FBFAF8;        /* lighter: page background */
+
+
+  /* Basic colors */
+--clr-black: #2A2A2A; /* dark, but gentler */
+--clr-white: #FAF7F2; /* even warmer, like a vintage book page */
+
+}

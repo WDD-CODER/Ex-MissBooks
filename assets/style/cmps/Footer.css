@@ -1,0 +1,11 @@
+footer{
+    grid-area: footer;
+    display: grid;
+    
+    padding: 1em;
+    border-top-right-radius: .5vh;
+    border-top-left-radius: .5vh;
+
+    background-color: var(--clr-primary-base);
+}
+

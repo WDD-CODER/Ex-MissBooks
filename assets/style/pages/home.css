@@ -1,0 +1,11 @@
+section.home {
+  grid-area: main-content;
+  display: grid;
+
+  padding: 1em;
+  height: 60vh;
+  
+  gap: 1rem;
+  
+}
+

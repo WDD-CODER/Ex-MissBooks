@@ -1,0 +1,8 @@
+.books-index {
+  grid-area: main-content;
+
+  padding: 1em;
+
+  gap: 1rem;
+  background-color: var(--clr-accent-1);
+}
