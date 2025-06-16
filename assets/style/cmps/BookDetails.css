@@ -1,4 +1,3 @@
-
 .book-details {
   display: grid;
 
@@ -6,12 +5,14 @@
   grid-template-areas:
     "cover main";
 
+  max-width: 800px;
+  
   gap: 2rem;
   padding: 2rem;
-  
+
   border: 2px var(--clr-black) solid;
   border-radius: 1vh;
-  
+
   background-color: var(--clr-accent--1);
 }
 

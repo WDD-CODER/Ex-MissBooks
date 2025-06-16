@@ -1,9 +1,9 @@
 
 
-export function BookPreview({ book, onRemoveBook , onSelectBook }) {
+export function BookPreview({ book }) {
 
     return (
-        <article className="book-preview grid place-center container">
+        <article className="book-preview grid container">
             <header>
                 <h1>BookTitle <br /> {book.title}</h1>
                 <h2>{book.subtitle}</h2>
@@ -15,12 +15,7 @@ export function BookPreview({ book, onRemoveBook , onSelectBook }) {
             <figure className="img">
                 <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
             </figure>
-            <p className="description">{book.description}</p>
-            
-            <div className="actions">
-                <button className="remove" onClick={() => onRemoveBook(book.id)}>X</button>
-                <button className="select" onClick={() => onSelectBook(book)}>Select</button>
-            </div>
+            <p className="description">{book.description}</p>            
         </article>
     )
 

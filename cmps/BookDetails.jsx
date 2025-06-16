@@ -1,37 +1,32 @@
+import { BookPreview } from './BookPreview.jsx'
+export function BookDetails({ book, onBack }) {
 
-export function BookDetails({ book, onRemoveBook, onBack }) {
-
-return (
+  return (
     <article className="book-details grid container">
-      <figure className="cover-img">
-        <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
-      </figure>
-
+      <BookPreview book={book} />
       <section className="main-info">
         <header>
           <h1 className="title">{book.title}</h1>
           <h2 className="subtitle">{book.subtitle}</h2>
-          <p className="authors">Written By: {book.authors}</p>
         </header>
 
         <ul className="meta">
           <li><strong>Language:</strong> {book.language}</li>
           <li><strong>Pages:</strong> {book.pageCount}</li>
           <li><strong>Published:</strong> {book.publishedDate}</li>
-          <li><strong>Categories:</strong> {book.categories}</li>
         </ul>
+
+        <section className=''>
+          <ul>Categories: {book.categories.map(category => <li key={category}>{category}</li>)}</ul>
+          <ul>authors: {book.authors.map(author => <li key={author}>{author}</li>)}</ul>
+        </section>
 
         <p className="description">{book.description}</p>
 
-            <p className="price">
-                <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>
-                {book.listPrice.isOnSale && <span className="sale"> On Sale!</span>}
-            </p>
-
-        <div className="actions">
-          <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
-          <button className="select" onClick={() => onBack()}>Back To Gallery</button>
-        </div>
+        <section className="actions">
+          <button className="remove" onClick={() => onRemoveBook(book.id)}>Delate</button>
+          <button className="onBack" onClick={() => onBack()}>Back To Gallery</button>
+        </section>
 
       </section>
     </article>

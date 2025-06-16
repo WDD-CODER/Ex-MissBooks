@@ -8,12 +8,6 @@
 
     ;
 
-    height: 650px;
-
-    border: 2px var(--clr-black) solid;
-    border-radius: 1vh;
-
-    background-color: var(--clr-accent--1);
 }
 
 header {
@@ -31,5 +25,21 @@ header {
 
 .description {
     grid-area: description;
+
+}
+
+.actions {
+    justify-content: space-evenly;
+}
+
+.book-Preview-container {
+    display: grid;
+
+    height: 665px;
+
+    border: 2px var(--clr-black) solid;
+    border-radius: 1vh;
+
+    background-color: var(--clr-accent--1);
 
 }

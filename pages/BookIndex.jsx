@@ -30,8 +30,8 @@ export function BookIndex() {
             .catch(err => console.log('Problems removing the book', err))
     }
 
-    function onSelectBook(bookId){
-        setSelectedBook(books => books.filter(book => book.id === bookId ))
+    function onSelectBook(book){
+        setSelectedBook(book)
     }
 
     function setFilterBy(res) {
@@ -39,13 +39,13 @@ export function BookIndex() {
     }
 
 
-    function showDetails(book) {
-        if (!selectedBook) setSelectedBook(book)
-        else {
-            if (selectedBook.id === book.id) setSelectedBook(false)
-            else setSelectedBook(book)
-        }
-    }
+    // function showDetails(book) {
+    //     if (!selectedBook) setSelectedBook(book)
+    //     else {
+    //         if (selectedBook.id === book.id) setSelectedBook(false)
+    //         else setSelectedBook(book)
+    //     }
+    // }
 
     if (!books) return <div className='loading'>Loading...</div>
 
@@ -60,7 +60,7 @@ export function BookIndex() {
             <BookList
              books={books} 
              onRemoveBook={onRemoveBook} 
-             onSelectBook={showDetails} 
+             onSelectBook={onSelectBook} 
              />}
 
             {selectedBook && 
