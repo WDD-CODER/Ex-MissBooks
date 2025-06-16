@@ -5,6 +5,7 @@
     gap: 1em;
 
     border: 2px black solid;
-    background-color: var(--clr-accent-1);
+    border-radius: 1vh;
+    background-color: var(--clr-accent-base);
 }
 

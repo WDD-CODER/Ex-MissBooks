@@ -1,6 +1,7 @@
 
 import { appService } from '../services/missBooks.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
+import { BookDetails } from '../cmps/BookDetails.jsx'
 import { BookList } from '../cmps/BookList.jsx'
 
 const { useState, useEffect } = React
@@ -8,8 +9,7 @@ const { useState, useEffect } = React
 export function BookIndex() {
 
     const [books, setBooks] = useState([])
-    console.log("🚀 ~ BookIndex ~ books:", books)
-
+    const [selectedBook, setSelectedBook] = useState()
     useEffect(() => {
         loadBooks()
     }, [])
@@ -30,12 +30,22 @@ export function BookIndex() {
     function setFilterBy(res) {
         console.log(res)
     }
+    function showDetails(book) {
+        if (!selectedBook) setSelectedBook(book)
+        else {
+            if (selectedBook.id === book.id) setSelectedBook(false)
+            else setSelectedBook(book)
+        }
+    }
 
     return (
         <section className="books-index grid">
-            <h1>Books Gallery </h1>
-            <BookFilter setFilterBy={setFilterBy} />
-            <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} />
+            {/* <div className="books-container"> */}
+                <h1>Books Gallery </h1>
+                <BookFilter setFilterBy={setFilterBy} />
+                {!selectedBook && <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} onSelectBook={showDetails} />}
+                {selectedBook && <BookDetails book={selectedBook} onRemoveBook={removeBook} onSelectBook={showDetails} />}
+            {/* </div> */}
         </section>
     )
 }

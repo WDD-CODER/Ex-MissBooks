@@ -1,0 +1,54 @@
+
+.book-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "cover main";
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--clr-accent-1);
+}
+
+.cover-img {
+  grid-area: cover;
+  align-self: start;
+}
+
+.cover-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.main-info {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--clr-primary--1);
+}
+
+.sale {
+  margin-left: 1ch;
+  color: red;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}

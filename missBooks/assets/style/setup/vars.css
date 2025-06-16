@@ -1,18 +1,18 @@
 :root {
-  /* 📚 Olive Green – calm, focused */
-  --clr-primary--1: #5C7C5F;       /* darker */
-  --clr-primary-base: #7A9E7E;     /* main */
-  --clr-primary-1: #B8CDB9;        /* lighter */
+ /* 📘 Primary – Brand Identity: used for headers, buttons, links */
+--clr-primary--1: #274472;      /* darker: button hover, strong headers */
+--clr-primary-base: #41729F;    /* main: buttons, titles, accents */
+--clr-primary-1: #8AB6D6;       /* lighter: borders, highlights */
 
-  /* 📘 Soft Indigo – thoughtful, elegant */
-  --clr-secondary--1: #3E4D6E;     /* darker */
-  --clr-secondary-base: #586994;   /* main */
-  --clr-secondary-1: #9CA6BF;      /* lighter */
+/* 📚 Secondary – Textual Content: used for body text and UI elements */
+--clr-secondary--1: #3C3C3C;    /* darker: strong text, small titles */
+--clr-secondary-base: #5C5C5C;  /* main: regular paragraph text */
+--clr-secondary-1: #B0B0B0;     /* lighter: muted text, helper text */
 
-  /* 📖 Warm Sand – soft, readable background */
-  --clr-accent--1: #B5A689;        /* darker */
-  --clr-accent-base: #D9CBB6;      /* main */
-  --clr-accent-1: #EFE8DF;         /* lighter */
+/* 🧾 Accent – Backgrounds and Cards: used for layout zones and contrast */
+--clr-accent--1: #D9CAB3;       /* darker: card headers, separation */
+--clr-accent-base: #F0EDE5;     /* main: section backgrounds */
+--clr-accent-1: #FBFAF8;        /* lighter: page background */
 
 
   /* Basic colors */
