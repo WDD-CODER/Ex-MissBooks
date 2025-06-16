@@ -23,7 +23,10 @@ export function BookIndex() {
 
     function removeBook(bookId) {
         appService.remove(bookId)
-            .then(() => setBooks(books.filter(books => books.id !== bookId)))
+            .then(() => {
+                setSelectedBook(false)
+                setBooks(books.filter(books => books.id !== bookId))
+            })
             .catch(err => console.log('Problems removing the book', err))
     }
 
@@ -40,12 +43,10 @@ export function BookIndex() {
 
     return (
         <section className="books-index grid">
-            {/* <div className="books-container"> */}
-                <h1>Books Gallery </h1>
-                <BookFilter setFilterBy={setFilterBy} />
-                {!selectedBook && <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} onSelectBook={showDetails} />}
-                {selectedBook && <BookDetails book={selectedBook} onRemoveBook={removeBook} onSelectBook={showDetails} />}
-            {/* </div> */}
+            <h1>Books Gallery </h1>
+            <BookFilter setFilterBy={setFilterBy} />
+            {!selectedBook && <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} onSelectBook={showDetails} />}
+            {selectedBook && <BookDetails book={selectedBook} onRemoveBook={removeBook} onSelectBook={showDetails} />}
         </section>
     )
 }
