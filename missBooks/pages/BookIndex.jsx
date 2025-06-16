@@ -1,5 +1,5 @@
 
-import { appService } from '../services/missBooks.service.js'
+import { appService } from '../services/books.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookDetails } from '../cmps/BookDetails.jsx'
 import { BookList } from '../cmps/BookList.jsx'
@@ -8,7 +8,7 @@ const { useState, useEffect } = React
 
 export function BookIndex() {
 
-    const [books, setBooks] = useState([])
+    const [books, setBooks] = useState()
     const [selectedBook, setSelectedBook] = useState()
     useEffect(() => {
         loadBooks()
@@ -21,7 +21,7 @@ export function BookIndex() {
 
     }
 
-    function removeBook(bookId) {
+    function onRemoveBook(bookId) {
         appService.remove(bookId)
             .then(() => {
                 setSelectedBook(false)
@@ -30,9 +30,15 @@ export function BookIndex() {
             .catch(err => console.log('Problems removing the book', err))
     }
 
+    function onSelectBook(bookId){
+        setSelectedBook(books => books.filter(book => book.id === bookId ))
+    }
+
     function setFilterBy(res) {
         console.log(res)
     }
+
+
     function showDetails(book) {
         if (!selectedBook) setSelectedBook(book)
         else {
@@ -41,12 +47,30 @@ export function BookIndex() {
         }
     }
 
+    if (!books) return <div className='loading'>Loading...</div>
+
     return (
         <section className="books-index grid">
             <h1>Books Gallery </h1>
-            <BookFilter setFilterBy={setFilterBy} />
-            {!selectedBook && <BookList books={books} onRemoveBook={removeBook} setFilterBy={setFilterBy} onSelectBook={showDetails} />}
-            {selectedBook && <BookDetails book={selectedBook} onRemoveBook={removeBook} onSelectBook={showDetails} />}
+            <BookFilter
+             setFilterBy={setFilterBy} 
+             />
+
+            {!selectedBook && 
+            <BookList
+             books={books} 
+             onRemoveBook={onRemoveBook} 
+             onSelectBook={showDetails} 
+             />}
+
+            {selectedBook && 
+            <BookDetails
+             book={selectedBook} 
+             onRemoveBook={onRemoveBook} 
+             onBack={() => setSelectedBook(null)} 
+             />}
+
+
         </section>
     )
 }

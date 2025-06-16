@@ -1,5 +1,5 @@
 
-export function BookDetails({ book, onRemoveBook, onSelectBook }) {
+export function BookDetails({ book, onRemoveBook, onBack }) {
 
 return (
     <article className="book-details grid container">
@@ -30,7 +30,7 @@ return (
 
         <div className="actions">
           <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
-          <button className="select" onClick={() => onSelectBook(book)}>Back To Gallery</button>
+          <button className="select" onClick={() => onBack()}>Back To Gallery</button>
         </div>
 
       </section>

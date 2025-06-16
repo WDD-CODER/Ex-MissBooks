@@ -16,7 +16,8 @@ export function BookPreview({ book, onRemoveBook , onSelectBook }) {
                 <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
             </figure>
             <p className="description">{book.description}</p>
-            <div className="btns">
+            
+            <div className="actions">
                 <button className="remove" onClick={() => onRemoveBook(book.id)}>X</button>
                 <button className="select" onClick={() => onSelectBook(book)}>Select</button>
             </div>
