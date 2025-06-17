@@ -6,7 +6,7 @@
     "cover main";
 
   max-width: 800px;
-  
+
   gap: 2rem;
   padding: 2rem;
 
@@ -41,6 +41,16 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--clr-primary--1);
+  align-self: center;
+
+  &.red {
+    color: red;
+  }
+
+  &.green {
+    color: green;
+  }
+
 }
 
 .sale {
@@ -48,6 +58,8 @@
   color: red;
   font-weight: bold;
 }
+
+
 
 .actions {
   display: flex;

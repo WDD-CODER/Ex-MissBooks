@@ -1,6 +1,9 @@
 
+
 export function BookDetails({ book, onRemoveBook, onBack }) {
   const { thumbnail, title, subtitle, pageCount, publishedDate, language, categories, listPrice } = book
+
+
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading ' + pageCount + ' pages'
@@ -9,8 +12,13 @@ export function BookDetails({ book, onRemoveBook, onBack }) {
   }
 
   function isNewPublish() {
-    return  (new Date().getFullYear() - publishedDateN   < 10 ) ? 'New' : 'Vintage' 
+    return (new Date().getFullYear() - publishedDate < 10) ? 'New' : 'Vintage'
   }
+
+  // function setPriceColor() {
+  //   const priceColor =
+  // }
+
 
   return (
     <article className="book-details grid container">
@@ -34,7 +42,7 @@ export function BookDetails({ book, onRemoveBook, onBack }) {
 
         <p className="description">{book.description}</p>
 
-        <p className="price">
+        <p className={(listPrice.amount > 150) ? 'price red' : 'price green'}>
           <strong>{listPrice.amount} {listPrice.currencyCode}</strong>
           {listPrice.isOnSale && <span className="sale"> On Sale!</span>}
         </p>
