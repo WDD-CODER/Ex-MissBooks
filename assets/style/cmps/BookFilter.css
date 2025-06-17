@@ -1,0 +1,23 @@
+.book-filter {
+    display: grid;
+
+    place-content: center;
+
+    padding: 2em;
+    gap: 1em;
+
+    border-radius: 1vh;
+    border: 2px var(--clr-black) solid;
+}
+
+.book-filter label {
+    /* margin-inline-start: 1em; */
+    justify-self: flex-end;
+}
+
+.book-filter input {
+    margin-inline-start: 1em;
+
+    padding: .5em;
+    border-radius: .5vh;
+}

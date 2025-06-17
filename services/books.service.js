@@ -11,20 +11,26 @@ export const appService = {
     save,
     getEmptyBook,
     getNextBookId,
-    getFilterBy
+    getDefaultFilter
 
 }
 
-function query() {
+function query(filterBy = {}) {
     return storageService.query(APP_KEY)
         .then(books => {
-            if (books.length) {
-                console.log('from storage')
-                return books
-            }
-            else
-                _createDemoBooks()
-            return utilService.loadFromStorage(APP_KEY)
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+
+             books.filter(book =>
+                  regExp.test(book.title)
+                  ||  regExp.test(book.title)
+                  ||  book.categories.includes(filterBy.txt)
+                  ||  book.authors.includes(filterBy.txt)
+                  ||  regExp.test(book.description)
+
+        )}
+            console.log('from storage')
+            return books
         })
         .catch(err => console.log('Failed loading book', err))
 }
@@ -53,8 +59,8 @@ function getEmptyBook(bookName = '', category = []) {
     }
 }
 
-function getFilterBy() {
-    return { txt: '', category: [] }
+function getDefaultFilter() {
+    return { txt: '', minPrice: '' }
 }
 
 function getNextBookId(bookId) {
