@@ -1,5 +1,5 @@
 .books-list {
-    grid-template-columns: repeat(auto-fit , minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 
     width: 90%;
     gap: 1em;
@@ -10,5 +10,8 @@
 }
 
 .actions {
+    height: 50px;
+    
+    align-self: flex-end;
     justify-content: space-evenly;
 }

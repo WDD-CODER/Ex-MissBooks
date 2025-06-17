@@ -7,6 +7,11 @@
         " description "
 
     ;
+        text-align: justify;
+}
+
+.book-preview img{
+    max-width: 270px;
 }
 
 header {
