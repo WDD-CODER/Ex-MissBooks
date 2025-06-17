@@ -11,15 +11,16 @@ export function BookIndex() {
     const [books, setBooks] = useState()
     const [selectedBook, setSelectedBook] = useState()
     const [filterBy, setFilterBy] = useState(appService.getDefaultFilter())
-    console.log("🚀 ~ BookIndex ~ filterBy:", filterBy)
-
+    
     useEffect(() => {
-        loadBooks(filterBy)
-    }, [])
-
-    function loadBooks(filterBy) {
+        loadBooks()
+    }, [filterBy])
+    
+    function loadBooks() {
         appService.query(filterBy)
-            .then(setBooks)
+            .then(res =>{
+                
+                setBooks(res)} )
             .catch(err => console.log('Failed loading books', err))
 
     }
@@ -37,12 +38,12 @@ export function BookIndex() {
         setSelectedBook(book)
     }
 
-    function SetFilterBy(res) {
-        console.log(res)
-        appService.getFilterBy()
-        .then(res => console.log(res))
-        .catch(err => console.log('problem seting filterBy', err))
-    }
+    // function SetFilterBy(res) {
+    //     console.log(res)
+    //     appService.getFilterBy()
+    //     .then(res => console.log(res))
+    //     .catch(err => console.log('problem seting filterBy', err))
+    // }
 
     if (!books) return <div className='loading'>Loading...</div>
 
@@ -50,7 +51,8 @@ export function BookIndex() {
         <section className="books-index grid">
             <h1>Books Gallery </h1>
             <BookFilter
-             onSetFilterBy={SetFilterBy} 
+             setFilterBy={setFilterBy} 
+             defaultFilter={filterBy} 
              />
 
             {!selectedBook && 
