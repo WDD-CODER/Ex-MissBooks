@@ -7,10 +7,10 @@
         " description "
 
     ;
-        text-align: justify;
+    text-align: justify;
 }
 
-.book-preview img{
+.book-preview img {
     max-width: 270px;
 }
 
@@ -34,7 +34,7 @@ header {
 
 .book-Preview-container {
     display: grid;
-
+    width: 475px;
     height: 665px;
 
     border: 2px var(--clr-black) solid;
