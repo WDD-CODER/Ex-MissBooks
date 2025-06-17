@@ -1,6 +1,6 @@
 
 import { BookPreview } from "./BookPreview.jsx"
-export function BookDetails({ book, }) {
+export function BookDetails({ book,onRemoveBook, onBack }) {
   const { thumbnail, title, subtitle, pageCount, publishedDate, language, categories, listPrice } = book
 
 

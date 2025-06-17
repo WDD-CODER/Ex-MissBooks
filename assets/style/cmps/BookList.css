@@ -9,3 +9,6 @@
     background-color: var(--clr-accent-base);
 }
 
+.actions {
+    justify-content: space-evenly;
+}

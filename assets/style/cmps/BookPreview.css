@@ -7,19 +7,17 @@
         " description "
 
     ;
-
 }
 
 header {
     grid-area: header;
 }
 
-.price {
+.book-preview .price {
     grid-area: price;
-
 }
 
-.img {
+.book-preview .img {
     grid-area: img;
 }
 
@@ -28,9 +26,6 @@ header {
 
 }
 
-.actions {
-    justify-content: space-evenly;
-}
 
 .book-Preview-container {
     display: grid;

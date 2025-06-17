@@ -1,4 +1,4 @@
-
+import { LongTxt } from "../cmps/LongTxt.jsx";
 
 export function BookPreview({ book }) {
 
@@ -15,7 +15,7 @@ export function BookPreview({ book }) {
             <figure className="img">
                 <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
             </figure>
-            <p className="description">{book.description}</p>
+            <LongTxt  className="description" txt={book.description}/>
         </article>
     )
 
