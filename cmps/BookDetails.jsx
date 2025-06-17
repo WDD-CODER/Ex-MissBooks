@@ -1,15 +1,16 @@
 
 export function BookDetails({ book, onRemoveBook, onBack }) {
-  const { thumbnail, title, subtitle, authors, pageCount } = book
+  const { thumbnail, title, subtitle, pageCount, publishedDate, language, categories, listPrice } = book
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading ' + pageCount + ' pages'
-    if (pageCount > 200) return 'Descent Reading ' + pageCount +' pages'
-    if (pageCount < 100) return 'Light Reading ' + pageCount +' pages'
+    if (pageCount > 200) return 'Descent Reading ' + pageCount + ' pages'
+    if (pageCount < 100) return 'Light Reading ' + pageCount + ' pages'
   }
 
-    function isOldPublish() {
-    }
+  function isNewPublish() {
+    return  (new Date().getFullYear() - publishedDateN   < 10 ) ? 'New' : 'Vintage' 
+  }
 
   return (
     <article className="book-details grid container">
@@ -24,17 +25,18 @@ export function BookDetails({ book, onRemoveBook, onBack }) {
         </header>
 
         <ul className="meta">
-          <li><strong>Language:</strong> {book.language}</li>
+          <li><strong>Language:</strong> {language}</li>
           <li><strong>Pages: {ReadingRate()}</strong></li>
-          <li><strong>Published:</strong> {book.publishedDate}</li>
-          <li><strong>Categories:</strong> {book.categories}</li>
+          <li><strong>Published At:</strong> {publishedDate}</li>
+          <li><strong>Old Or New?:</strong> {isNewPublish()}</li>
+          <li><strong>Categories:</strong> {categories}</li>
         </ul>
 
         <p className="description">{book.description}</p>
 
         <p className="price">
-          <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>
-          {book.listPrice.isOnSale && <span className="sale"> On Sale!</span>}
+          <strong>{listPrice.amount} {listPrice.currencyCode}</strong>
+          {listPrice.isOnSale && <span className="sale"> On Sale!</span>}
         </p>
 
         <div className="actions">
