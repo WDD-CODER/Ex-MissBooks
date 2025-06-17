@@ -16,10 +16,6 @@
   background-color: var(--clr-accent--1);
 }
 
-.cover-img {
-  grid-area: cover;
-}
-
 .cover-img img {
   border-radius: .5vh;
 }

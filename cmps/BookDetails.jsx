@@ -1,6 +1,6 @@
 
-
-export function BookDetails({ book, onRemoveBook, onBack }) {
+import { BookPreview } from "./BookPreview.jsx"
+export function BookDetails({ book, }) {
   const { thumbnail, title, subtitle, pageCount, publishedDate, language, categories, listPrice } = book
 
 
@@ -15,23 +15,11 @@ export function BookDetails({ book, onRemoveBook, onBack }) {
     return (new Date().getFullYear() - publishedDate < 10) ? 'New' : 'Vintage'
   }
 
-  // function setPriceColor() {
-  //   const priceColor =
-  // }
-
 
   return (
     <article className="book-details grid container">
-      <figure className="cover-img">
-        <img src={thumbnail} alt={`Cover of ${book.title}`} />
-      </figure>
-
+      <BookPreview className="book-preview" book={book} />
       <section className="main-info">
-        <header>
-          <h1 className="title">{title}</h1>
-          <h2 className="subtitle">{subtitle}</h2>
-        </header>
-
         <ul className="meta">
           <li><strong>Language:</strong> {language}</li>
           <li><strong>Pages: {ReadingRate()}</strong></li>
@@ -39,19 +27,10 @@ export function BookDetails({ book, onRemoveBook, onBack }) {
           <li><strong>Old Or New?:</strong> {isNewPublish()}</li>
           <li><strong>Categories:</strong> {categories}</li>
         </ul>
-
-        <p className="description">{book.description}</p>
-
-        <p className={(listPrice.amount > 150) ? 'price red' : 'price green'}>
-          <strong>{listPrice.amount} {listPrice.currencyCode}</strong>
-          {listPrice.isOnSale && <span className="sale"> On Sale!</span>}
-        </p>
-
         <div className="actions">
           <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
           <button className="select" onClick={() => onBack()}>Back To Gallery</button>
         </div>
-
       </section>
     </article>
 

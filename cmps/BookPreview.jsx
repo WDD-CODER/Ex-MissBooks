@@ -8,14 +8,14 @@ export function BookPreview({ book }) {
                 <h1>BookTitle <br /> {book.title}</h1>
                 <h2>{book.subtitle}</h2>
             </header>
-            <p className="price">
+            <p className={(book.listPrice.amount > 150) ? 'price red' : 'price green'}>
                 <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>
-                {book.listPrice.isOnSale && <span className="sale"> On Sale!</span>}
+                {book.listPrice.isOnSale && <img className="sale img" src="./assets/BooksImages/onSale.png" alt="on-sale-img" />}
             </p>
             <figure className="img">
                 <img src={book.thumbnail} alt={`Cover of ${book.title}`} />
             </figure>
-            <p className="description">{book.description}</p>            
+            <p className="description">{book.description}</p>
         </article>
     )
 
