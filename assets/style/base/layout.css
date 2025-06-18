@@ -1,12 +1,12 @@
 .main-layout {
-  grid-template-columns: 1fr;
+  grid-template-rows: minmax(50px, auto) 1fr minmax(50px, auto);
   grid-template-areas:
     "main-header"
     "main-content"
     "footer"
   ;
-  
-  background-color: var(--clr-accent-base);
+  height: 100vh;
+   background-color: var(--clr-accent-base);
 }
 
 .container {

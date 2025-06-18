@@ -3,6 +3,9 @@ footer{
     display: grid;
     
     padding: 1em;
+
+    align-content: center;
+
     border-top-right-radius: .5vh;
     border-top-left-radius: .5vh;
 

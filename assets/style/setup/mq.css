@@ -1,0 +1,10 @@
+@media (min-width: 620px) {
+  /* Styles for screens up to 768px wide */
+  /* .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+  } */
+}

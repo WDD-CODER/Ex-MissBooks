@@ -9,3 +9,7 @@ section.home {
   
 }
 
+.home img{
+  max-width:500px;
+}
+

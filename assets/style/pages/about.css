@@ -1,0 +1,7 @@
+.about{
+  display: grid;
+
+  padding: 2em;
+  gap: 5em;
+  /* align-content: center; */
+}

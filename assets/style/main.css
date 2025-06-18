@@ -1,6 +1,7 @@
 /* Setup */
 @import './setup/vars.css';
 @import './setup/typography.css';
+@import './setup/mq.css';
 
 /* Base */
 @import './base/reset.css';
@@ -23,4 +24,5 @@
 /* Pages */
 @import './pages/home.css';
 @import './pages/books-index.css';
+@import './pages/about.css';
 

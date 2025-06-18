@@ -10,9 +10,6 @@
     text-align: justify;
 }
 
-.book-preview img {
-    max-width: 270px;
-}
 
 header {
     grid-area: header;
@@ -31,6 +28,9 @@ header {
 
 }
 
+.sale.img{
+    width: 50px;
+}
 
 .book-Preview-container {
     display: grid;

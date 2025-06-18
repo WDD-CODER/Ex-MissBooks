@@ -12,7 +12,6 @@ export function Home() {
                 books and find them easy You're welcome to enjoy Go to the books page to
                 find some books`</p>
             <img src="./assets/utilImages/homePage.png" alt="Random Unsplash image" />
-            <HomePage/>
         </section>
     )
 }
