@@ -1,7 +1,9 @@
 .books-list {
-    grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
+    /* grid-template-columns: 1fr; */
 
-    width: 90%;
+    /* width: 90%; */
+
+
     gap: .5em;
 
     border: 2px black solid;
@@ -10,8 +12,10 @@
 }
 
 .actions {
-    height: 50px;
-    
+    display: flex;
+    gap: 1rem;
+
     align-self: flex-end;
     justify-content: space-evenly;
 }
+

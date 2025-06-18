@@ -1,10 +1,29 @@
 @media (min-width: 620px) {
-  /* Styles for screens up to 768px wide */
-  /* .main-layout {
-    grid-template-columns: 1fr;
+
+  .book-Preview-container {
+    width: 475px;
+    height: 680px;
+
   }
 
-  .nav-bar {
-    flex-direction: column;
-  } */
+  .books-list {
+    grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
+    width: 90%;
+
+  }
+
+  .book-filter {
+    padding: 2em;
+  }
+
+  .book-details {
+    display: grid;
+    grid-auto-flow: row;
+
+    grid-template-areas:
+      "cover main";
+
+    max-width: 800px;
+
+  }
 }

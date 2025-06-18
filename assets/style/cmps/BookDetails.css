@@ -1,11 +1,6 @@
 .book-details {
-  display: grid;
-
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "cover main";
-
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
 
   gap: 2rem;
   padding: 2rem;
@@ -57,7 +52,3 @@
 
 
 
-.actions {
-  display: flex;
-  gap: 1rem;
-}

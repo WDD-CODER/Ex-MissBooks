@@ -1,5 +1,5 @@
 .book-preview {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
     grid-template-areas:
         "   header"
         "    img  "
@@ -28,14 +28,13 @@ header {
 
 }
 
-.sale.img{
+.sale.img {
     width: 50px;
 }
 
+
 .book-Preview-container {
     display: grid;
-    width: 475px;
-    height: 665px;
 
     border: 2px var(--clr-black) solid;
     border-radius: 1vh;
