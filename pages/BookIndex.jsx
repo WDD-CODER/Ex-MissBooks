@@ -18,9 +18,7 @@ export function BookIndex() {
     
     function loadBooks() {
         appService.query(filterBy)
-            .then(res =>{
-                
-                setBooks(res)} )
+            .then(setBooks)
             .catch(err => console.log('Failed loading books', err))
 
     }

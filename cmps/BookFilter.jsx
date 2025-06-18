@@ -1,46 +1,41 @@
 const { useState, useEffect } = React
-import { appService } from '../services/books.service.js'
 
 export function BookFilter({ defaultFilter, setFilterBy }) {
 
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...defaultFilter })
-    console.log("🚀 ~ BookFilter ~ filterByToEdit:", filterByToEdit)
 
-    useEffect(()=>{
+    useEffect(() => {
         setFilterBy(filterByToEdit)
-    },[filterByToEdit])
+        console.log("🚀 ~ useEffect ~ filterByToEdit:", filterByToEdit)
+    }, [filterByToEdit])
 
 
 
-    function handelChange({ target }) {
-        console.log("🚀 ~ handelChange ~ target:", target)
-        var newFilter = ''
+    function handleChange({ target }) {
+        const field = target.name
+        let value = target.value
         switch (target.type) {
-            case 'text':
-                newFilter = { txt: target.value }
+            case 'number':
+            case 'range':
+                value = +value
                 break;
-                
-                case 'number':
-                    newFilter = { maxPrice: target.value }
-                    break;
-                    
-                    default: newFilter = null
-                    break;
-                }
-        
-                setFilterByToEdit(newFilter)
-        return newFilter
+
+            case 'checkbox':
+                value = target.checked
+                break
+        }
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
 
     return (
         <section className="book-filter container">
             <label htmlFor="text">Search By Text
-                <input name="text" onChange={handelChange} type="text" placeholder="search for book by name" />
+                <input name="text" onChange={handleChange} type="text" placeholder="search for Whatever !" />
             </label>
-            <label htmlFor="number">Search By Price
-                <input name="number" onChange={handelChange} type="number" placeholder="search for book by price" />
+            <label htmlFor="maxPrice">Max Price
+                <input name="maxPrice" onChange={handleChange} type="number" placeholder=" You have a budget?" />
             </label>
         </section>
     )

@@ -18,20 +18,18 @@ export const appService = {
 function query(filterBy = {}) {
     return storageService.query(APP_KEY)
         .then(books => {
-            console.log("🚀 ~ query ~ filterBy.txt:", filterBy.txt)
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-              books =  books.filter(book => 
-                     regExp.test(book.title)
-                    || book.categories.includes(filterBy.txt)
-                    || book.authors.includes(filterBy.txt)
+            if (filterBy.text) {
+                const regExp = new RegExp(filterBy.text, 'i')
+                books = books.filter(book =>
+                    regExp.test(book.title)
+                    || book.categories.includes(filterBy.text)
+                    || book.authors.includes(filterBy.text)
                     || regExp.test(book.description)
                 )
-                console.log("🚀 ~ query ~ books:", books)
             }
 
             if (filterBy.maxPrice) {
-              books =   books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
+                books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
             }
 
             console.log('from storage')
@@ -65,7 +63,7 @@ function getEmptyBook(bookName = '', category = []) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '' }
+    return { text: '', maxPrice: '' }
 }
 
 function getNextBookId(bookId) {

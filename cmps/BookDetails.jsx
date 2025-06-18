@@ -1,7 +1,8 @@
 
 import { BookPreview } from "./BookPreview.jsx"
 export function BookDetails({ book,onRemoveBook, onBack }) {
-  const { thumbnail, title, subtitle, pageCount, publishedDate, language, categories, listPrice } = book
+  const {pageCount, publishedDate, language, categories,authors  } = book
+  console.log("🚀 ~ BookDetails ~ authors:", authors)
 
 
 
@@ -26,6 +27,7 @@ export function BookDetails({ book,onRemoveBook, onBack }) {
           <li><strong>Published At:</strong> {publishedDate}</li>
           <li><strong>Old Or New?:</strong> {isNewPublish()}</li>
           <li><strong>Categories:</strong> {categories}</li>
+          <li><strong>Written By :</strong> {authors}</li>
         </ul>
         <div className="actions">
           <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
