@@ -3,7 +3,7 @@ import { utilService } from "../services/util.service.js"
 export function AboutUs() {
 
     return (
-        <section className="about container">
+        <section className="about grid place-center container">
             <h1>AboutUS</h1>
             <LongTxt txt={utilService.makeLorem(200)}/>
         </section>

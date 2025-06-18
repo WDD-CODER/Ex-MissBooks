@@ -2,13 +2,14 @@ section.home {
   grid-area: main-content;
   display: grid;
 
+  margin-block-start: 5em;
+
   padding: 1em;
-  
-  gap: 1rem;
-  
+
+  gap: 2rem;
+
 }
 
-.home img{
-  max-width:500px;
+.home img {
+  max-width: 500px;
 }
-

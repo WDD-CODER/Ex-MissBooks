@@ -1,7 +1,8 @@
-.about{
+.about {
   display: grid;
+
+  margin-block-start: 5em;
 
   padding: 2em;
   gap: 5em;
-  /* align-content: center; */
 }

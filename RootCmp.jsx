@@ -12,7 +12,7 @@ export function RootCmp() {
     return (
         <section className='main-layout grid'>
             <AppHeader onSetPage={(page) => setPage(page)} />
-            <main>
+            <main >
                 {page === 'home' && <Home />}
                 {page === 'about' && <AboutUs />}
                 {page === 'books' && <BookIndex />}

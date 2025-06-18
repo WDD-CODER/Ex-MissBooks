@@ -5,7 +5,7 @@ export function Home() {
 
     return (
 
-        <section className="home container">
+        <section className="home grid place-center container">
             <h1>WELCOME</h1>
             <p> Welcome to missed books.
                 The application is going to be your best friend to help you manage your
