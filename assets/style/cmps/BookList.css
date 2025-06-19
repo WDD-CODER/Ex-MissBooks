@@ -1,9 +1,4 @@
 .books-list {
-    /* grid-template-columns: 1fr; */
-
-    /* width: 90%; */
-
-
     gap: .5em;
 
     border: 2px black solid;
@@ -12,6 +7,7 @@
 }
 
 .actions {
+    grid-area: actions;
     display: flex;
     gap: 1rem;
 

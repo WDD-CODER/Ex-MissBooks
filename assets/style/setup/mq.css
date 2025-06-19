@@ -1,8 +1,16 @@
+@media (max-width: 620px) {
+  .book-details{
+    margin: 1em;
+  }
+
+
+}
+
 @media (min-width: 620px) {
 
-  .book-Preview-container {
+  .book-preview-container {
     width: 475px;
-    height: 680px;
+    min-height: 700px;
 
   }
 
@@ -18,7 +26,7 @@
 
   .book-details {
     display: grid;
-    grid-auto-flow: row;
+    /* grid-auto-flow: row; */
 
     grid-template-areas:
       "cover main";
