@@ -54,10 +54,9 @@ function save(book) {
     }
 }
 
-function getEmptyBook(bookName = '', category = []) {
+function getEmptyBook(title = '', category = []) {
     return {
-        id: '',
-        bookName,
+        title,
         category
     }
 }

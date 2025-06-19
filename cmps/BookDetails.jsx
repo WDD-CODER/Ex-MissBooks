@@ -1,10 +1,28 @@
 
 import { BookPreview } from "./BookPreview.jsx"
-export function BookDetails({ book,onRemoveBook, onBack }) {
-  const {pageCount, publishedDate, language, categories,authors  } = book
-  console.log("🚀 ~ BookDetails ~ authors:", authors)
+import { appService } from "../services/books.service.js"
 
 
+const { useParams, useNavigate } = ReactRouterDOM
+const { useState, useEffect } = React
+export function BookDetails() {
+
+  const [book, setBook] = useState(appService.getEmptyBook())
+  const params = useParams()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    appService.get(params.bookId)
+      .then(setBook)
+  }, []
+  )
+
+  function onBack() {
+    navigate('/books')
+  }
+
+    if (!book.title) return <div className='loading'>Loading...</div>
+  const { language, publishedDate, categories, authors, pageCount } = book
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading ' + pageCount + ' pages'
@@ -15,7 +33,6 @@ export function BookDetails({ book,onRemoveBook, onBack }) {
   function isNewPublish() {
     return (new Date().getFullYear() - publishedDate < 10) ? 'New' : 'Vintage'
   }
-
 
   return (
     <article className="book-details grid container">
@@ -30,8 +47,7 @@ export function BookDetails({ book,onRemoveBook, onBack }) {
           <li><strong>Written By :</strong> {authors}</li>
         </ul>
         <div className="actions">
-          <button className="remove" onClick={() => onRemoveBook(book.id)}>Remove</button>
-          <button className="select" onClick={() => onBack()}>Back To Gallery</button>
+          <button onClick={() => onBack()} className="back">Back To Gallery</button>
         </div>
       </section>
     </article>

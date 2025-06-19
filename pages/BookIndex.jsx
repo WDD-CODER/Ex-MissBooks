@@ -9,13 +9,12 @@ const { useState, useEffect } = React
 export function BookIndex() {
 
     const [books, setBooks] = useState()
-    const [selectedBook, setSelectedBook] = useState()
     const [filterBy, setFilterBy] = useState(appService.getDefaultFilter())
-    
+
     useEffect(() => {
         loadBooks()
     }, [filterBy])
-    
+
     function loadBooks() {
         appService.query(filterBy)
             .then(setBooks)
@@ -26,48 +25,18 @@ export function BookIndex() {
     function onRemoveBook(bookId) {
         appService.remove(bookId)
             .then(() => {
-                setSelectedBook(false)
                 setBooks(books.filter(books => books.id !== bookId))
             })
             .catch(err => console.log('Problems removing the book', err))
     }
-
-    function onSelectBook(book){
-        setSelectedBook(book)
-    }
-
-    // function SetFilterBy(res) {
-    //     console.log(res)
-    //     appService.getFilterBy()
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log('problem seting filterBy', err))
-    // }
 
     if (!books) return <div className='loading'>Loading...</div>
 
     return (
         <section className="books-index grid">
             <h1>Books Gallery </h1>
-            <BookFilter
-             setFilterBy={setFilterBy} 
-             defaultFilter={filterBy} 
-             />
-
-            {!selectedBook && 
-            <BookList
-             books={books} 
-             onRemoveBook={onRemoveBook} 
-             onSelectBook={onSelectBook} 
-             />}
-
-            {selectedBook && 
-            <BookDetails
-             book={selectedBook} 
-             onRemoveBook={onRemoveBook} 
-             onBack={() => setSelectedBook(null)} 
-             />}
-
-
+            <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
+            <BookList books={books} onRemoveBook={onRemoveBook}/>
         </section>
     )
 }
