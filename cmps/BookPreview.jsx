@@ -7,7 +7,6 @@ console.log("🚀 ~ BookPreview ~ book:", book)
         <article className="book-preview grid container">
             <header>
                 <h1>BookTitle <br /> {book.title}</h1>
-                <h2>{book.subtitle}</h2>
             </header>
             <p className={(book.listPrice.amount > 150) ? 'price red' : 'price green'}>
                 <strong>{book.listPrice.amount} {book.listPrice.currencyCode}</strong>

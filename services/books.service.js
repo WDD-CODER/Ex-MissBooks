@@ -15,6 +15,8 @@ export const appService = {
 
 }
 
+
+
 function query(filterBy = {}) {
     return storageService.query(APP_KEY)
         .then(books => {
