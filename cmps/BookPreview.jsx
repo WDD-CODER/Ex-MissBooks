@@ -1,8 +1,8 @@
 import { LongTxt } from "../cmps/LongTxt.jsx";
 
 export function BookPreview({ book }) {
-console.log("🚀 ~ BookPreview ~ book:", book)
-
+    console.log("🚀 ~ BookPreview ~ book:", book)
+                console.log("🚀 ~ BookPreview ~ book.listPrice.isOnSale:", book.listPrice.isOnSale)
     return (
         <article className="book-preview grid container">
             <header>

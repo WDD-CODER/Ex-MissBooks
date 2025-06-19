@@ -25,8 +25,9 @@ export function BookIndex() {
     }
 
     function onRemoveBook(bookId) {
+        
         appService.remove(bookId)
-            .then(() => {
+        .then(() => {
                 setBooks(books.filter(books => books.id !== bookId))
             })
             .catch(err => console.log('Problems removing the book', err))
