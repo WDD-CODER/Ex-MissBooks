@@ -7,7 +7,6 @@ export function BookFilter({ defaultFilter, setFilterBy }) {
 
     useEffect(() => {
         setFilterBy(filterByToEdit)
-        console.log("🚀 ~ useEffect ~ filterByToEdit:", filterByToEdit)
     }, [filterByToEdit])
 
 
