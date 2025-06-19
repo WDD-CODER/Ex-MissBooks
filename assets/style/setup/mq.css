@@ -1,8 +1,4 @@
 @media (max-width: 620px) {
-  .book-details{
-    margin: 1em;
-  }
-
 
 }
 
@@ -26,10 +22,9 @@
 
   .book-details {
     display: grid;
-    /* grid-auto-flow: row; */
-
+    grid-template-columns: minmax(150px ,400px) minmax(50px ,auto);
     grid-template-areas:
-      "cover main";
+      "book-preview main";
 
     max-width: 800px;
 

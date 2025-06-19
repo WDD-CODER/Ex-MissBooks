@@ -1,11 +1,9 @@
-
-
 .loading {
-    justify-self: center;
-    padding: 1em;
-    margin: 1em;
-    border-radius: 1vh;
-    border: 2px var(--clr-black) solid;
+  justify-self: center;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1vh;
+  border: 2px var(--clr-black) solid;
 }
 
 .container {
@@ -17,6 +15,7 @@
   margin: auto;
 }
 
-main{
-    place-content: center;
+main {
+  padding: 1em;
+  place-content: center;
 }
