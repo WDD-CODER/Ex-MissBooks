@@ -19,7 +19,9 @@
   grid-area: main;
   display: flex;
   flex-direction: column;
+
   gap: 1rem;
+  
 }
 
 .meta {
@@ -50,5 +52,6 @@
   font-weight: bold;
 }
 
-
+.book-details .actions{
+    align-self: flex-start;}
 

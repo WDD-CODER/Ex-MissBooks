@@ -18,8 +18,9 @@ header {
     grid-area: price;
 }
 
-.book-preview .img {
+.book-preview img {
     grid-area: img;
+    border-radius: 1vh;
 }
 
 .description {
