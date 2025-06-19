@@ -1,3 +1,4 @@
+// import Swal from 'sweetalert2'
 
 import { appService } from '../services/books.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
@@ -16,6 +17,7 @@ export function BookIndex() {
     }, [filterBy])
 
     function loadBooks() {
+
         appService.query(filterBy)
             .then(setBooks)
             .catch(err => console.log('Failed loading books', err))
@@ -36,7 +38,7 @@ export function BookIndex() {
         <section className="books-index grid">
             <h1>Books Gallery </h1>
             <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
-            <BookList books={books} onRemoveBook={onRemoveBook}/>
+            <BookList books={books} onRemoveBook={onRemoveBook} />
         </section>
     )
 }

@@ -12,7 +12,15 @@ button:hover {
     color: white;
     transition: .3s;
 }
+
 input:focus {
     background-color: var(--clr-accent-base);
     transition: background-color 1s;
+}
+
+form{
+    display: grid;
+    width: max-content;
+    
+    background-color: var(--clr-secondary-1);
 }
