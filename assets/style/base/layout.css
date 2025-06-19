@@ -10,11 +10,3 @@
   background-color: var(--clr-accent-base);
 }
 
-.container {
-  display: grid;
-  place-items: center;
-
-  padding: 1em;
-
-  margin: auto;
-}

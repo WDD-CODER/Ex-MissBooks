@@ -8,21 +8,15 @@
     border: 2px var(--clr-black) solid;
 }
 
-button {
-    cursor: pointer;
-    background-color: var(--clr-accent-base);
-    margin: 0.5em;
-    border: 0;
-    padding: 0.5em 0.8em;
-    border-radius: 4px;   
+.container {
+  display: grid;
+  place-items: center;
+
+  padding: 1em;
+
+  margin: auto;
 }
 
-button:hover {
-    background-color: var(--clr-accent-1);
-    color: white;
-    transition: .3s;
-}
-input:focus {
-    background-color: var(--clr-accent-base);
-    transition: background-color 1s;
+main{
+    place-content: center;
 }
