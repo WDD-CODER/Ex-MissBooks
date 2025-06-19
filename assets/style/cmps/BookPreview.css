@@ -1,11 +1,10 @@
 .book-preview {
-    /* grid-template-columns: 1fr; */
+    grid-area: book-preview;
     grid-template-areas:
         "   header"
         "    img  "
         "   price "
         " description "
-
     ;
     text-align: justify;
 }
@@ -33,9 +32,15 @@ header {
 }
 
 
-.book-Preview-container {
+.book-preview-container {
     display: grid;
+    grid:
+        "book-preview" 1fr "actions" auto;
+        
+    width: 100%;
 
+    /* grid-template-rows: 1fr auto; */
+    /* min-height: 650px; */
     border: 2px var(--clr-black) solid;
     border-radius: 1vh;
 
