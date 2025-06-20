@@ -6,7 +6,7 @@ import { BookDetails } from '../cmps/BookDetails.jsx'
 import { BookList } from '../cmps/BookList.jsx'
 
 const { useState, useEffect } = React
-
+const {Link} = ReactRouterDOM
 export function BookIndex() {
 
     const [books, setBooks] = useState()
@@ -25,9 +25,9 @@ export function BookIndex() {
     }
 
     function onRemoveBook(bookId) {
-        
+
         appService.remove(bookId)
-        .then(() => {
+            .then(() => {
                 setBooks(books.filter(books => books.id !== bookId))
             })
             .catch(err => console.log('Problems removing the book', err))
@@ -36,9 +36,10 @@ export function BookIndex() {
     if (!books) return <div className='loading'>Loading...</div>
 
     return (
-        <section className="books-index grid">
+        <section className="books-index grid container">
             <h1>Books Gallery </h1>
             <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
+            <Link to={'/books/edit'}><button className="add">Add Book</button></Link>
             <BookList books={books} onRemoveBook={onRemoveBook} />
         </section>
     )

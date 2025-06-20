@@ -4,7 +4,6 @@ const {Link} = ReactRouterDOM
 export function BookList({ books, onRemoveBook }) {
     return (
         <ul className="books-list grid container">
-            <Link to={'/books/edit'}><button className="add">Add Book</button></Link>
             {books.map(book =>
                 <li className='book-preview-container' key={book.id}>
                     <BookPreview book={book} />
