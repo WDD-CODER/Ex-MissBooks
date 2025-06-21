@@ -22,7 +22,7 @@
 
   .book-details {
     display: grid;
-    grid-template-columns: minmax(150px ,400px) minmax(50px ,auto);
+    grid-template-columns: minmax(150px ,300px) minmax(50px ,auto);
     grid-template-areas:
       "book-preview main";
 

@@ -37,11 +37,9 @@ header {
     display: grid;
     grid:
         "book-preview" 1fr "actions" auto;
-        
+
     width: 100%;
 
-    /* grid-template-rows: 1fr auto; */
-    /* min-height: 650px; */
     border: 2px var(--clr-black) solid;
     border-radius: 1vh;
 

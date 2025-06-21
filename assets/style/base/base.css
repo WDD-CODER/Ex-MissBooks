@@ -1,3 +1,4 @@
+
 .loading {
   justify-self: center;
   padding: 1em;
@@ -17,6 +18,7 @@
 }
 
 main {
+  grid-area: main-content;
   padding: 1em;
   place-content: center;
 }

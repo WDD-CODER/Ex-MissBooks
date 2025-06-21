@@ -3,7 +3,7 @@ import { BookPreview } from "./BookPreview.jsx"
 import { appService } from "../services/books.service.js"
 
 
-const { useParams, useNavigate, Link } = ReactRouterDOM
+const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 export function BookDetails() {
 
@@ -46,10 +46,11 @@ export function BookDetails() {
           <li><strong>Categories:</strong> {categories}</li>
           <li><strong>Written By :</strong> {authors}</li>
         </ul>
-        <div className="actions">
+        <Outlet/>
+        <section className="actions">
           <Link to={`/books/edit/${book.id}`}><button className="edit">Edit Book</button></Link>
           <button onClick={() => onBack()} className="back">Back To Gallery</button>
-        </div>
+        </section>
       </section>
     </article>
 

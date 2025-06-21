@@ -24,8 +24,9 @@ input:focus {
 }
 
 form.container {
-    display: grid;
-
+    display: flex;
+    flex-direction: column;
+    
     width: max-content;
 
     padding: 3em;
@@ -35,7 +36,3 @@ form.container {
     background-color: var(--clr-accent--1);
 }
 
-form label {
-    text-underline-offset: 5px;
-    text-decoration: underline;
-}
