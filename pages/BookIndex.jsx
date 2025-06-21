@@ -3,9 +3,10 @@
 import { appService } from '../services/books.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookList } from '../cmps/BookList.jsx'
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 const { useState, useEffect } = React
-const {Link} = ReactRouterDOM
+const { Link } = ReactRouterDOM
 export function BookIndex() {
 
     const [books, setBooks] = useState()
@@ -18,7 +19,10 @@ export function BookIndex() {
     function loadBooks() {
         appService.query(filterBy)
             .then(setBooks)
-            .catch(err => console.log('Failed loading books', err))
+            .catch(err => {
+                showErrorMsg('Failed loading books')
+                console.log(err)
+            })
 
     }
 
@@ -26,9 +30,13 @@ export function BookIndex() {
 
         appService.remove(bookId)
             .then(() => {
+                showSuccessMsg('Book removed with success')
                 setBooks(books.filter(books => books.id !== bookId))
             })
-            .catch(err => console.log('Problems removing the book', err))
+            .catch(err => {
+                showErrorMsg('Failed removing book')
+                console.log(err)
+            })
     }
 
     if (!books) return <div className='loading'>Loading...</div>

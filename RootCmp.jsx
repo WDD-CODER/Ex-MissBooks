@@ -6,6 +6,7 @@ import { BookIndex } from './pages/BookIndex.jsx'
 import { BookDetails } from './cmps/BookDetails.jsx'
 import { BookEdit } from './cmps/BookEdit.jsx'
 import { Footer } from './cmps/Footer.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx' 
 
 const Router = ReactRouterDOM.HashRouter
 const { Routes, Route , Navigate } = ReactRouterDOM
@@ -27,6 +28,7 @@ export function RootCmp() {
                     </Routes>
                 </main >
                 <Footer fullName='Dan Weibren' />
+                <UserMsg/>
             </section>
         </Router>
     )
