@@ -3,7 +3,7 @@ import { BookPreview } from "./BookPreview.jsx"
 import { appService } from "../services/books.service.js"
 
 
-const { useParams, useNavigate } = ReactRouterDOM
+const { useParams, useNavigate, Link } = ReactRouterDOM
 const { useState, useEffect } = React
 export function BookDetails() {
 
@@ -21,7 +21,7 @@ export function BookDetails() {
     navigate('/books')
   }
 
-    if (!book.title) return <div className='loading'>Loading...</div>
+  if (!book.title) return <div className='loading'>Loading...</div>
   const { language, publishedDate, categories, authors, pageCount } = book
 
   function ReadingRate() {
@@ -47,6 +47,7 @@ export function BookDetails() {
           <li><strong>Written By :</strong> {authors}</li>
         </ul>
         <div className="actions">
+          <Link to={`/books/edit/${book.id}`}><button className="edit">Edit Book</button></Link>
           <button onClick={() => onBack()} className="back">Back To Gallery</button>
         </div>
       </section>

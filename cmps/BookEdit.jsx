@@ -1,72 +1,105 @@
 import { appService } from "../services/books.service.js"
 import { utilService } from "../services/util.service.js"
 
-const { useNavigate } = ReactRouterDOM
-const { useState} = React
+const { useNavigate, useParams } = ReactRouterDOM
+const { useState, useEffect } = React
 
 export function BookEdit() {
-    const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
 
-    const emptyBook = {
-        title: '',
-        subtitle: utilService.makeLorem(4),
-        authors: [
-            utilService.makeLorem(1)
-        ],
-        publishedDate: utilService.getRandomIntInclusive(1950, 2024),
-        description: utilService.makeLorem(20),
-        pageCount: utilService.getRandomIntInclusive(20, 600),
-        categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
-        thumbnail: `./assets/BooksImages/noImg.png`,
-        language: "en",
-        listPrice: {
-            amount: 0,
-            currencyCode: "EUR",
-            isOnSale: Math.random() > 0.7
-        }
-    }
+    const { bookId } = useParams()
+    const [book, setBook] = useState(appService.getEmptyBook())
     const navigate = useNavigate()
 
-    const [book, setBook] = useState(emptyBook)
-    function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
-        switch (target.type) {
-            case 'number':
-                value = +value
-                setBook(prevBook => ({ ...prevBook, [field]: { ...prevBook[field] , amount: value }}))
-                return
-                
-                case 'checkbox':
-                    value = target.checked
-                    setBook(prevBook => ({ ...prevBook, [field]: { ...prevBook[field] , isOnSale: value }}))
-                    return
-                
-        }
-        setBook(prevBook => ({ ...prevBook, [field]: value }))
+    useEffect(() => {
+        if (bookId) return loadBook()
+        else createEmptyBook()
+    }, [])
+
+    function loadBook() {
+        appService.get(bookId)
+            .then(book => {
+                setBook(book)
+            })
+            .catch(err => console.log('err', err)
+            )
     }
 
-    function onSaveBook(ev) {
-        ev.preventDefault()
+
+    if (book.listPrice) onFireModal()
+    function onFireModal() {
+        var title = (!book.title) ? '' : book.title
+        var price = (!book.listPrice.amount) ? "What's the price?" : book.listPrice.amount
+        var onSale = (book.listPrice.isOnSale) ? (book.listPrice.isOnSale ? 'checked' : '') : ''
+        Swal.fire({
+            title: ` ${(!book.title) ? 'Create' : 'Add'} Book`,
+            html: `
+        <input id="title" name="title" type="text" value="${title}" class="swal2-input" placeholder="what's the title?" />
+        <input id="price" name="listPrice" type="number" value="${price}" min={0} class="swal2-input" placeholder="what's the price?" />
+            <input id="sale" name="on-sale" type="checkbox" ${onSale} class="swal2-input"  />
+            `,
+            focusConfirm: true,
+            confirmButtonText: 'Save Book',
+            cancelButtonText: 'Discard',
+            showCancelButton: true,
+            preConfirm: () => {
+                const title = document.getElementById('title').value
+                const price = document.getElementById('price').value
+                const isOnSale = document.getElementById('sale').checked
+
+                if (!title || !price) {
+                    swal.showValidationMessage('Please fill out all fields')
+                    return
+                }
+                return { title, price, isOnSale }
+            }
+
+        }).then(result => {
+            if (result.isConfirmed) {
+                const { title, price, isOnSale } = result.value
+                var newBook = { ...book, title, listPrice: { ...book.listPrice, amount: price, isOnSale: isOnSale } }
+                onSaveBook(newBook)
+            }
+            else {
+                navigate('/books')
+                console.log('User canceled request',)
+            }
+        }).catch(err => {
+            navigate('/books')
+            console.log('Problem saving in swal modal ', err)
+        })
+    }
+
+    function createEmptyBook() {
+        const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+        const emptyBook = {
+            title: '',
+            subtitle: utilService.makeLorem(4),
+            authors: [
+                utilService.makeLorem(1)
+            ],
+            publishedDate: utilService.getRandomIntInclusive(1950, 2024),
+            description: utilService.makeLorem(20),
+            pageCount: utilService.getRandomIntInclusive(20, 600),
+            categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+            thumbnail: `./assets/BooksImages/noImg.png`,
+            language: "en",
+            listPrice: {
+                amount: 0,
+                currencyCode: "EUR",
+                isOnSale: false
+            }
+        }
+        return setBook(emptyBook)
+    }
+
+    function onSaveBook(book) {
         appService.save(book)
             .then(navigate('/books'))
-            .catch(err => console.log(' Problem Saving books', err))
+            .catch(err => console.log('Problem Saving books', err))
     }
 
-    return (
-        <form className="container" onSubmit={onSaveBook}>
-            <label htmlFor="text"> What's the books title ?</label>
-            <input onChange={handleChange} id="text" name="title" type="text" />
+    if (!book.title) return <div className='loading'>Loading...</div>
 
-            <label htmlFor="number"> What's the books price ?</label>
-            <input onChange={handleChange} id="number" name="listPrice" type="number"   min={0} />
-
-            <label htmlFor="isOnSale"> Its On Sale?</label>
-            <input onChange={handleChange} id="isOnSale" name="listPrice" type="checkbox"  min={0}  />
-
-            <button>Save Book</button>
-        </form>
-
-    )
+    return (<div className="swal-modal"></div>)
 
 }

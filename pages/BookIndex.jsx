@@ -2,7 +2,6 @@
 
 import { appService } from '../services/books.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
-import { BookDetails } from '../cmps/BookDetails.jsx'
 import { BookList } from '../cmps/BookList.jsx'
 
 const { useState, useEffect } = React
@@ -17,7 +16,6 @@ export function BookIndex() {
     }, [filterBy])
 
     function loadBooks() {
-
         appService.query(filterBy)
             .then(setBooks)
             .catch(err => console.log('Failed loading books', err))
