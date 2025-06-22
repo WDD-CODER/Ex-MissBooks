@@ -1,16 +1,15 @@
 .books-list {
     gap: .5em;
 
-    border: 2px black solid;
-    border-radius: 1vh;
-    background-color: var(--clr-accent-base);
+    background-color: var(--clr-accent--1);
 }
 
-.actions {
+.books-list .actions {
     grid-area: actions;
     display: flex;
-    gap: 1rem;
 
+    justify-self: center;
     justify-content: space-evenly;
-}
 
+    gap: 1rem;
+}

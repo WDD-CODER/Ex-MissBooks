@@ -6,8 +6,9 @@ import { BookIndex } from './pages/BookIndex.jsx'
 import { BookDetails } from './cmps/BookDetails.jsx'
 import { BookEdit } from './cmps/BookEdit.jsx'
 import { Footer } from './cmps/Footer.jsx'
-import { UserMsg } from './cmps/UserMsg.jsx' 
+import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddReview } from './cmps/AddReview.jsx'
+import { ReviewList } from './cmps/ReviewList.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Routes, Route, Navigate } = ReactRouterDOM
@@ -17,7 +18,7 @@ export function RootCmp() {
         <Router>
             <section className='main-layout grid'>
                 <AppHeader />
-                <main >
+                <main>
                     <Routes>
                         <Route path="/" element={<Navigate to="/home" />} />
                         <Route path="/home" element={<Home />} />
@@ -27,11 +28,12 @@ export function RootCmp() {
                         <Route path="/books/edit/:bookId" element={<BookEdit />} />
                         <Route path="/books/:bookId" element={<BookDetails />}>
                             <Route path="/books/:bookId" element={<AddReview />} />
+                            <Route path="/books/:bookId" element={<ReviewList />} />
                         </Route>
                     </Routes>
                 </main >
                 <Footer fullName='Dan Weibren' />
-                <UserMsg/>
+                <UserMsg />
             </section>
         </Router>
     )

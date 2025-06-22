@@ -1,8 +1,9 @@
 
 export function Footer({ fullName }) {
+    const str = 'This App Was Made With Love & Respect For People How Still Read Books 🧐 By'
     return (
         <footer className='Footer'>
-            <p>This App Was Made With Love & Respect For People How Still Read Books 🧐 By {fullName} </p>
+            <p>{str} {fullName} </p>
         </footer>
     )
 }

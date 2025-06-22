@@ -6,7 +6,9 @@ export const utilService = {
     saveToStorage,
     padNum,
     getDayName,
-    getMonthName
+    getMonthName,
+    getStars,
+
 }
 
 function makeId(length = 6) {
@@ -33,7 +35,7 @@ function makeLorem(size = 100) {
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function saveToStorage(key, value) {
@@ -59,4 +61,8 @@ function getMonthName(date) {
         'July', 'August', 'September', 'October', 'November', 'December'
     ]
     return monthNames[date.getMonth()]
+}
+
+function getStars(num) {
+    return '⭐'.repeat(num);
 }

@@ -1,22 +1,15 @@
 form.add-review.container {
+    grid-area: add-review;
 
-    width: min-content;
+    padding: .3em;
 
-    padding: 1em;
-
-    border: 2px var(--clr-black) solid;
-    border-radius: 1vh;
-    background-color: var(--clr-accent--1);
+    text-align: center;
 }
 
-.inputs{
+.inputs {
     display: grid;
 }
 
-.full-name{
+.full-name {
     width: 150px;
-}
-
-form.add-review .actions {
-    background-color: var(--clr-accent--1);
 }

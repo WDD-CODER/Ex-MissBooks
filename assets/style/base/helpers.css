@@ -1,62 +1,15 @@
 /* flex helpers */
 
 .grid {
-  display: grid;
+    display: grid;
 }
 
-.grid .grid-flow-cul{
-   grid-auto-flow: column;
-}
 
-.grid.place-center{
+.grid.place-content {
     place-content: center;
 }
 
-.grid.space-between{
-    justify-content: space-between;
+.grid.place-items {
+    place-items: center;
 }
 
-.grid.space-around{
-    justify-content: space-around;
-}
-
-
-.grid.align-center{
-    align-items: center;
-}
-
-/* text helpers */
-
-.colored-text {
-    color: var(--clr1);
-}
-
-/* list helpers */
-
-.clean-list {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
-
-/* font awsome */
-
-.fa {
-    font-family: fa;
-}
-
-.fa.fa-facebook::before {
-    content: "\f39e";
-}
-
-.fa.fa-twitter::before {
-    content: "\f099";
-}
-
-.fa.fa-dribbble::before {
-    content: "\f17d";
-}
-
-.fa.fa-behance::before {
-    content: "\f1b4";
-}

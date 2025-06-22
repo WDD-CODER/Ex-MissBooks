@@ -8,15 +8,14 @@
 
 /* Components */
 @import './cmps/AppHeader.css';
-@import './cmps/HomePage.css';
 @import './cmps/Footer.css';
 @import './cmps/BookList.css';
 @import './cmps/BookPreview.css';
 @import './cmps/BookDetails.css';
-@import './cmps/LongTxt.css';
 @import './cmps/BookFilter.css';
 @import './cmps/user-msg.css';
 @import './cmps/AddReview.css';
+@import './cmps/review-list.css';
 
 /* Setup */
 @import './setup/vars.css';

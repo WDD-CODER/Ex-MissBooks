@@ -6,6 +6,9 @@
         "   price "
         " description "
     ;
+
+    max-width: 400px;
+
     text-align: justify;
 }
 
@@ -21,28 +24,13 @@ header {
 .book-preview img {
     grid-area: img;
     border-radius: 1vh;
+    max-width: 300px;
 }
 
 .description {
     grid-area: description;
-
 }
 
 .sale.img {
     width: 50px;
-}
-
-
-.book-preview-container {
-    display: grid;
-    grid:
-        "book-preview" 1fr "actions" auto;
-
-    width: 100%;
-
-    border: 2px var(--clr-black) solid;
-    border-radius: 1vh;
-
-    background-color: var(--clr-accent--1);
-
 }

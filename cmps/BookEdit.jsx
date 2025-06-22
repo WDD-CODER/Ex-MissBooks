@@ -11,6 +11,8 @@ export function BookEdit() {
     const [book, setBook] = useState(appService.getEmptyBook())
     const navigate = useNavigate()
 
+    const addOrEditCmp = (!bookId) ? '' : bookId
+
     useEffect(() => {
         if (bookId) return loadBook()
         else createEmptyBook()
@@ -21,7 +23,6 @@ export function BookEdit() {
             .then(book => {
                 setBook(book)
             })
-
             .catch(err => {
                 console.log(err)
                 showErrorMsg('Problem loading book')
@@ -55,7 +56,6 @@ export function BookEdit() {
                 if (!title || !price) return swal.showValidationMessage('Please fill out all fields')
                 return { title, price, isOnSale }
             }
-
         }).then(result => {
             if (result.isConfirmed) {
                 const { title, price, isOnSale } = result.value
@@ -63,18 +63,18 @@ export function BookEdit() {
                 onSaveBook(newBook)
             }
             else {
-                navigate('/books')
+                navigate(`/books/${addOrEditCmp}`)
                 showErrorMsg('User canceled request',)
             }
         }).catch(err => {
-            navigate('/books')
+            navigate(`/books/${addOrEditCmp}`)
             showErrorMsg('Book was not saved! Problem saving in swal modal')
             console.log(err)
         })
     }
 
     function createEmptyBook() {
-        const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+        const categories = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
 
         const emptyBook = {
             title: '',
@@ -83,26 +83,26 @@ export function BookEdit() {
             publishedDate: utilService.getRandomIntInclusive(1950, 2024),
             description: utilService.makeLorem(20),
             pageCount: utilService.getRandomIntInclusive(20, 600),
-            categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+            categories: [categories[utilService.getRandomIntInclusive(0, categories.length - 1)]],
             thumbnail: `./assets/BooksImages/noImg.png`,
             language: "en",
-            listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false}
+            listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
         }
         return setBook(emptyBook)
     }
 
     function onSaveBook(book) {
-        console.log("🚀 ~ onSaveBook ~ !bookId):", !bookId)
-        const addOrEdit = (!bookId) ? 'Wonderful. Add a new book!': 'Wonderful. Book was edit!' 
+        const addOrEditStr = (!bookId) ? 'Wonderful. Add a new book!' : 'Wonderful. Book was edit!'
         appService.save(book)
-            .then(() => {
-                showSuccessMsg(addOrEdit)
-                navigate('/books')
+            .then(book => {
+                showSuccessMsg(addOrEditStr)
+                navigate(`/books/${book.id}`)
             })
             .catch(err => {
-                navigate('/books')
+                navigate(`/books/${addOrEditCmp}`)
                 showErrorMsg('Problem Saving books in storage')
-                console.log(err)})
+                console.log(err)
+            })
     }
 
     if (!book.title) return <div className='loading'>Loading...</div>

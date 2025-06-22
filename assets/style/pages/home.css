@@ -1,15 +1,15 @@
 section.home {
   grid-area: main-content;
-  display: grid;
 
   margin-block-start: 5em;
 
   padding: 1em;
 
-  gap: 2rem;
 
 }
 
 .home img {
-  max-width: 500px;
+  max-width: 30vw;
+  margin-top: 3em;
 }
+

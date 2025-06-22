@@ -13,12 +13,12 @@ button:hover {
     transition: .3s;
 }
 
-input{
-  border-radius: .5vh;
+input {
+    border-radius: .5vh;
 }
 
 input:focus {
-    
+
     background-color: var(--clr-primary-1);
     transition: background-color 1s;
 }
@@ -26,13 +26,8 @@ input:focus {
 form.container {
     display: flex;
     flex-direction: column;
-    
+
     width: max-content;
 
     padding: 3em;
-
-    border: 2px var(--clr-black) solid;
-    border-radius: 1vh;
-    background-color: var(--clr-accent--1);
 }
-

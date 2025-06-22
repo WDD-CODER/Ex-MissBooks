@@ -1,0 +1,33 @@
+.reviews {
+    grid-area: reviews;
+}
+
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    place-content: center;
+    gap: .5em;
+}
+
+.review-list.actions {
+    grid-area: actions;
+    display: flex;
+
+    place-self: center;
+}
+
+.review-preview {
+    font-size: .9rem;
+    display: flex;
+    flex-direction: column;
+
+    width: 110px;
+
+    padding: 0;
+    gap: 0;
+}
+
+.review-preview button {
+    padding: 0;
+}

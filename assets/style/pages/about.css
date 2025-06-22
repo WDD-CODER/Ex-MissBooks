@@ -1,6 +1,6 @@
 .about {
-  display: grid;
-
+  grid-area: main-content;
+  
   margin-block-start: 5em;
 
   padding: 2em;

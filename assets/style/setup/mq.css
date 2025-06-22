@@ -1,19 +1,15 @@
-@media (max-width: 620px) {
+@media (min-width: 670px) {
 
-}
-
-@media (min-width: 620px) {
-
-  .book-preview-container {
+  .books-index .book-preview {
     width: 475px;
-    min-height: 700px;
+
+    height: 640px;
 
   }
 
   .books-list {
     grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
     width: 90%;
-
   }
 
   .book-filter {
@@ -22,11 +18,26 @@
 
   .book-details {
     display: grid;
-    grid-template-columns: minmax(150px ,300px) minmax(50px ,auto);
     grid-template-areas:
-      "book-preview main";
+      "book-preview   add-info"
+      "book-preview   add-info"
+      "   reviews     reviews"
+      "   actions     actions"
+    ;
+    gap: 2rem;
 
-    max-width: 800px;
+    max-width: 1000px;
 
   }
+
+  .book-details .actions {
+    grid-area: actions;
+  }
+
+  .add-info {
+    grid-area: add-info;
+    flex-direction: column;
+  }
+
+
 }

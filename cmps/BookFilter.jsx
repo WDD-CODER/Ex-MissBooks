@@ -9,8 +9,6 @@ export function BookFilter({ defaultFilter, setFilterBy }) {
         setFilterBy(filterByToEdit)
     }, [filterByToEdit])
 
-
-
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
@@ -26,7 +24,6 @@ export function BookFilter({ defaultFilter, setFilterBy }) {
         }
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
-
 
     return (
         <section className="book-filter container">
