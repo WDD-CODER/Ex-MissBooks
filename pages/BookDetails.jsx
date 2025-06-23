@@ -67,7 +67,6 @@ export function BookDetails() {
           </ul>
         </section>
         {/* //למצוא פתרון טוב יותר זה לא הדרך!! */}
-        
         <Outlet context={{ setBook }} />
       </div>
 

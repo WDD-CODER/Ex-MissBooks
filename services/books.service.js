@@ -14,6 +14,7 @@ export const appService = {
     getNextBookId,
     getDefaultFilter,
     addReview,
+    getEmptyReview,
 }
 
 function query(filterBy = {}) {
@@ -63,9 +64,17 @@ function getEmptyBook(title = '', category = []) {
         category
     }
 }
+function getEmptyReview(fullname = '', rate = '', date = '') {
+    return {
+        fullname: '',
+        rate: '',
+        readAt: '',
+        id: utilService.makeId()
+    }
+} const emptyReview = { reviewId: utilService.makeId(), fullname: '', date: '' }
+
 
 function addReview(bookId, review) {
-    const bookReview = review
     return get(bookId)
         .then(book => {
             if (book.reviews) {

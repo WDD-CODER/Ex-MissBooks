@@ -12,9 +12,6 @@
 
 .review-list.actions {
     grid-area: actions;
-    display: flex;
-
-    place-self: center;
 }
 
 .review-preview {
@@ -31,3 +28,4 @@
 .review-preview button {
     padding: 0;
 }
+

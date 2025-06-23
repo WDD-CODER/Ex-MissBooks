@@ -17,7 +17,7 @@
   flex-direction: column;
 
   width: 100%;
-  
+
   padding: .3em;
   gap: 0;
 
@@ -53,11 +53,6 @@
 
 .books-details .actions {
   grid-area: actions;
-  display: flex;
-
-  gap: 1rem;
-  justify-self: center;
-  justify-content: space-evenly;
 }
 
 .review-preview {
@@ -68,11 +63,15 @@
   display: flex;
   flex-wrap: wrap;
 
+
   gap: 1em;
 }
 
 .add-info>* {
-  place-content: center;
-  width: 200px;
-  height: 250px;
+  max-width: 250px;
+  width: 100%;
+}
+
+.inputs>* {
+  justify-self: center;
 }

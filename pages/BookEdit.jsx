@@ -7,19 +7,19 @@ const { useState, useEffect } = React
 
 export function BookEdit() {
 
-    const { bookId } = useParams()
     const [book, setBook] = useState(appService.getEmptyBook())
+    const { bookId } = useParams()
     const navigate = useNavigate()
 
     const addOrEditCmp = (!bookId) ? '' : bookId
 
     useEffect(() => {
-        if (bookId) return loadBook()
-        else createEmptyBook()
+        loadBook()
     }, [])
 
     function loadBook() {
-        appService.get(bookId)
+        if (!bookId) loadBook(createEmptyBook())
+        else appService.get(bookId)
             .then(book => {
                 setBook(book)
             })

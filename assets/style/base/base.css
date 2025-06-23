@@ -38,3 +38,9 @@ input {
 .read-more:hover {
   text-decoration: underline;
 }
+.actions{
+  
+    flex-wrap: wrap;
+    place-content: center;
+    display: flex;
+}

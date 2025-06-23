@@ -6,10 +6,4 @@
 
 .books-list .actions {
     grid-area: actions;
-    display: flex;
-
-    justify-self: center;
-    justify-content: space-evenly;
-
-    gap: 1rem;
 }

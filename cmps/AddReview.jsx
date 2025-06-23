@@ -3,24 +3,22 @@ import { appService } from "../services/books.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { utilService } from "../services/util.service.js"
 
-const { useRef, useState, useEffect } = React
+const { useState, useEffect } = React
 const { useParams, useOutletContext } = ReactRouterDOM
 
 
 export function AddReview() {
 
-    const curDate = new Date().toLocaleDateString('en-GB')
-    const emptyReview = { reviewId: utilService.makeId(), fullname: '', rate: '', date: curDate }
 
     const { setBook } = useOutletContext()
     const { bookId } = useParams()
-    const rateRef = useRef()
-    const fullNameRef = useRef()
 
-    const [review, setReview] = useState(emptyReview)
+    const [review, setReview] = useState(appService.getEmptyReview())
     const [bookToEdit, setBookToEdit] = useState()
 
     useEffect(() => {
+        console.log('useEffect')
+        
         appService.get(bookId)
             .then(setBookToEdit)
     }, [])
@@ -41,15 +39,19 @@ export function AddReview() {
             case 'checkbox':
                 value = target.checked
                 break
+
+            case 'datetime-local':
+                value = target.value.split('T')[0]
+                break
         }
         setReview(prevReview => ({ ...prevReview, [field]: value }))
     }
 
     function onSaveReview(ev) {
         ev.preventDefault()
-        if (!review.rate) return showErrorMsg('Review not saved! No rating entered')
-        appService.addReview(bookId, review).then(savedBooks => setBook(savedBooks))
-        setReview(emptyReview)
+        if (!review.rate || !review.fullname || !review.date) return showErrorMsg('Review not saved! Missing some info')
+        // appService.addReview(bookId, review).then(savedBooks => setBook(savedBooks))
+        setReview(appService.getEmptyReview())
     }
 
     function onDelateReview(ev) {
@@ -60,16 +62,18 @@ export function AddReview() {
 
     const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
+    const reviewDate = (!review.date) ? '' : review.rate
 
     return (
         <form onSubmit={onSaveReview} className="add-review container">
             <h1> Add a review </h1>
-            <time dateTime="rate-time"> Current date : {curDate}</time>
             <section className="inputs">
                 <label htmlFor="fullname"></label>
-                <input onChange={handleChange} ref={fullNameRef} className="full-name" type="text" id="fullname" name="fullname" value={reviewValue} placeholder="What's your name?" />
+                <input onChange={handleChange} className="full-name" type="text" id="fullname" name="fullname" value={reviewValue} placeholder="What's your name?" />
                 <label htmlFor="rate">{utilService.getStars(review.rate)}</label>
-                <input onChange={handleChange} ref={rateRef} type="range" id="rate" name="rate" min={1} max={5} value={reviewRate} placeholder="So how do you rate this book from 1-5? " />
+                <input onChange={handleChange} type="range" id="rate" name="rate" min={1} max={5} value={reviewRate} placeholder="So how do you rate this book from 1-5? " />
+                <label htmlFor="readAt">read At?</label>
+                <input onChange={handleChange} type="datetime-local" id="readAt" name="readAt" />
             </section>
             <section className="actions">
                 <button className="add-review">Save</button>
