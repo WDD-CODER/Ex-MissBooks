@@ -1,3 +1,6 @@
+/* Setup */
+@import './setup/vars.css';
+@import './setup/typography.css';
 
 /* Base */
 @import './base/reset.css';
@@ -6,24 +9,21 @@
 @import './base/helpers.css';
 @import './base/layout.css';
 
+/* Pages */
+@import './pages/Home.css';
+@import './pages/BookDetails.css';
+@import './pages/BookIndex.css';
+@import './pages/About.css';
+
 /* Components */
 @import './cmps/AppHeader.css';
 @import './cmps/Footer.css';
 @import './cmps/BookList.css';
 @import './cmps/BookPreview.css';
-@import './cmps/BookDetails.css';
 @import './cmps/BookFilter.css';
 @import './cmps/user-msg.css';
 @import './cmps/AddReview.css';
 @import './cmps/review-list.css';
 
-/* Setup */
-@import './setup/vars.css';
-@import './setup/typography.css';
+/* MQ */
 @import './setup/mq.css';
-
-/* Pages */
-@import './pages/home.css';
-@import './pages/books-index.css';
-@import './pages/about.css';
-

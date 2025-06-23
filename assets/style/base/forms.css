@@ -27,7 +27,14 @@ form.container {
     display: flex;
     flex-direction: column;
 
-    width: max-content;
-
     padding: 3em;
+}
+
+.custom-swal-class {
+    max-width: 90%;
+    place-items: center;
+}
+
+.custom-swal-class.swal2-input {
+    width: 80%;
 }

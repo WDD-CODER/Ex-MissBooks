@@ -47,6 +47,7 @@ export function BookEdit() {
             confirmButtonText: 'Save Book',
             cancelButtonText: 'Discard',
             showCancelButton: true,
+            customClass: { popup: 'custom-swal-class' },
 
             preConfirm: () => {
                 const title = document.getElementById('title').value

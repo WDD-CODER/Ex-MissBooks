@@ -1,7 +1,7 @@
 
-import { BookPreview } from "./BookPreview.jsx"
+import { BookPreview } from "../cmps/BookPreview.jsx" 
 import { appService } from "../services/books.service.js"
-import { ReviewList } from "./ReviewList.jsx"
+import { ReviewList } from "../cmps/ReviewList.jsx"
 
 const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -19,6 +19,19 @@ export function BookDetails() {
       .then(setBook)
   }, []
   )
+
+  function onRemoveReview(reviewId) {
+    appService.remove(reviewId)
+      .then(() => {
+        showSuccessMsg('Book removed with success')
+        setBooks(books.filter(books => books.id !== bookId))
+      })
+      .catch(err => {
+        showErrorMsg('Failed removing book')
+        console.log(err)
+      })
+  }
+
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading '
@@ -54,6 +67,7 @@ export function BookDetails() {
           </ul>
         </section>
         {/* //למצוא פתרון טוב יותר זה לא הדרך!! */}
+        
         <Outlet context={{ setBook }} />
       </div>
 

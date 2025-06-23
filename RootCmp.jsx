@@ -3,8 +3,8 @@ import { AppHeader } from './cmps/AppHeader.jsx'
 import { Home } from './pages/Home.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
-import { BookDetails } from './cmps/BookDetails.jsx'
-import { BookEdit } from './cmps/BookEdit.jsx'
+import { BookDetails } from './pages/BookDetails.jsx'
+import { BookEdit } from './pages/BookEdit.jsx'
 import { Footer } from './cmps/Footer.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddReview } from './cmps/AddReview.jsx'
@@ -28,7 +28,7 @@ export function RootCmp() {
                         <Route path="/books/edit/:bookId" element={<BookEdit />} />
                         <Route path="/books/:bookId" element={<BookDetails />}>
                             <Route path="/books/:bookId" element={<AddReview />} />
-                            <Route path="/books/:bookId" element={<ReviewList />} />
+                            {/* <Route path="/books/:bookId" element={<ReviewList />} /> */}
                         </Route>
                     </Routes>
                 </main >

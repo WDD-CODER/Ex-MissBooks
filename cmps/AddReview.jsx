@@ -10,7 +10,7 @@ const { useParams, useOutletContext } = ReactRouterDOM
 export function AddReview() {
 
     const curDate = new Date().toLocaleDateString('en-GB')
-    const emptyReview = { reviewId: utilService.makeId(), fullname: '', rate: '', date: new Date().toLocaleDateString('en-GB') }
+    const emptyReview = { reviewId: utilService.makeId(), fullname: '', rate: '', date: curDate }
 
     const { setBook } = useOutletContext()
     const { bookId } = useParams()
@@ -52,7 +52,7 @@ export function AddReview() {
         setReview(emptyReview)
     }
 
-    function onRemoveReview(ev) {
+    function onDelateReview(ev) {
         ev.preventDefault()
         showSuccessMsg('Book review discarded')
         setReview(emptyReview)
@@ -60,20 +60,20 @@ export function AddReview() {
 
     const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
-    
+
     return (
         <form onSubmit={onSaveReview} className="add-review container">
             <h1> Add a review </h1>
             <time dateTime="rate-time"> Current date : {curDate}</time>
             <section className="inputs">
                 <label htmlFor="fullname"></label>
-                <input onChange={handleChange} ref={fullNameRef} className="full-name" type="text" id="fullname" name="fullName" value={reviewValue} placeholder="What's your name?" />
+                <input onChange={handleChange} ref={fullNameRef} className="full-name" type="text" id="fullname" name="fullname" value={reviewValue} placeholder="What's your name?" />
                 <label htmlFor="rate">{utilService.getStars(review.rate)}</label>
                 <input onChange={handleChange} ref={rateRef} type="range" id="rate" name="rate" min={1} max={5} value={reviewRate} placeholder="So how do you rate this book from 1-5? " />
             </section>
             <section className="actions">
                 <button className="add-review">Save</button>
-                <button onClick={onRemoveReview} className="remove-review">Discard</button>
+                <button onClick={onDelateReview} className="Delate-review">Discard</button>
             </section>
         </form>
     )
