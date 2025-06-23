@@ -10,7 +10,7 @@ const { useParams, useOutletContext } = ReactRouterDOM
 export function AddReview() {
 
     const curDate = new Date().toLocaleDateString('en-GB')
-    const emptyReview = { reviewId: utilService.makeId(), fullName: '', rate: '', date: new Date().toLocaleDateString('en-GB') }
+    const emptyReview = { reviewId: utilService.makeId(), fullname: '', rate: '', date: new Date().toLocaleDateString('en-GB') }
 
     const { setBook } = useOutletContext()
     const { bookId } = useParams()
@@ -58,7 +58,7 @@ export function AddReview() {
         setReview(emptyReview)
     }
 
-    const reviewValue = (!review.fullName) ? '' : review.fullName
+    const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
     
     return (
@@ -66,8 +66,8 @@ export function AddReview() {
             <h1> Add a review </h1>
             <time dateTime="rate-time"> Current date : {curDate}</time>
             <section className="inputs">
-                <label htmlFor="fullName"></label>
-                <input onChange={handleChange} ref={fullNameRef} className="full-name" type="text" id="fullName" name="fullName" value={reviewValue} placeholder="What's your name?" />
+                <label htmlFor="fullname"></label>
+                <input onChange={handleChange} ref={fullNameRef} className="full-name" type="text" id="fullname" name="fullName" value={reviewValue} placeholder="What's your name?" />
                 <label htmlFor="rate">{utilService.getStars(review.rate)}</label>
                 <input onChange={handleChange} ref={rateRef} type="range" id="rate" name="rate" min={1} max={5} value={reviewRate} placeholder="So how do you rate this book from 1-5? " />
             </section>

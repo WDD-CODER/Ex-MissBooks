@@ -32,7 +32,7 @@ export function RootCmp() {
                         </Route>
                     </Routes>
                 </main >
-                <Footer fullName='Dan Weibren' />
+                <Footer fullname='Dan Weibren' />
                 <UserMsg />
             </section>
         </Router>
