@@ -2,7 +2,7 @@
 import { BookPreview } from "../cmps/BookPreview.jsx"
 import { appService } from "../services/books.service.js"
 import { ReviewList } from "../cmps/ReviewList.jsx"
-import { showSuccessMsg } from "../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -13,34 +13,27 @@ export function BookDetails() {
   const navigate = useNavigate()
 
   const [book, setBook] = useState(appService.getEmptyBook())
+  console.log("🚀 ~ BookDetails ~ book:", book)
   const { language, publishedDate, categories, authors, pageCount } = book
 
   useEffect(() => {
     // if (!book.title) {
-      appService.get(bookId)
-        .then(setBook)
+    appService.get(bookId)
+      .then(setBook)
     // }
+
+
   }, []
   )
 
   function onRemoveReview(reviewId) {
-    const reviews = book.reviews.filter(review => review.id !== reviewId)
-    console.log("🚀 ~ onRemoveReview ~ reviews:", reviews)
-    setBook(prevBook => (
-      { ...prevBook, reviews: [...prevBook.reviews,] }
-      
-    ))
-
-    // appService.remove(reviewId)
-    //   .then(book => {
-    //     console.log("🚀 ~ onRemoveReview ~ book:", book)
-    //     showSuccessMsg('Review removed with success')
-    //     setBook(book)
-    //   })
-    //   .catch(err => {
-    //     showErrorMsg('Failed removing book')
-    //     console.log(err)
-    //   })
+    const newBook = { ...book, reviews: book.reviews.filter(review => review.id !== reviewId) }
+    appService.save(newBook)
+      .then(() => {
+        setBook(newBook)
+        showSuccessMsg('Review removed with success')
+      })
+      .catch(showErrorMsg('Failed removing book'))
   }
 
 

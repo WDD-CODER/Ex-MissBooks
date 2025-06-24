@@ -3,7 +3,7 @@ import { appService } from "../services/books.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { utilService } from "../services/util.service.js"
 
-const { useState, useEffect } = React
+const { useState, } = React
 const { useParams, useOutletContext } = ReactRouterDOM
 
 
@@ -36,7 +36,7 @@ export function AddReview() {
     }
 
     function onSaveReview(ev) {
-        const {rate, fullname , readAt} = review 
+        const { rate, fullname, readAt } = review
         if (!rate || !fullname || !readAt) return showErrorMsg('Review not saved! Missing some info')
         appService.addReview(bookId, review)
             .then(savedBooks => {
