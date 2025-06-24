@@ -14,15 +14,6 @@ export function AddReview() {
     const { bookId } = useParams()
 
     const [review, setReview] = useState(appService.getEmptyReview())
-    const [bookToEdit, setBookToEdit] = useState()
-
-    // useEffect(() => {
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log("🚀 ~ useEffect ~ review:", review)
-    //     setBookToEdit(bookToEdit => ({ ...bookToEdit, reviews: [{ ...review, review }] }))
-    // }, [review])
 
     function handleChange({ target }) {
         const field = target.name
@@ -45,28 +36,28 @@ export function AddReview() {
     }
 
     function onSaveReview(ev) {
-        ev.preventDefault()
-        if (!review.rate || !review.fullname || !review.readAt) return showErrorMsg('Review not saved! Missing some info')
+        const {rate, fullname , readAt} = review 
+        if (!rate || !fullname || !readAt) return showErrorMsg('Review not saved! Missing some info')
         appService.addReview(bookId, review)
             .then(savedBooks => {
-                console.log('savedBooks', savedBooks)
-
                 setBook(savedBooks)
                 setReview(appService.getEmptyReview())
             })
     }
 
     function onDelateReview(ev) {
-        ev.preventDefault()
         showSuccessMsg('Book review discarded')
         setReview(appService.getEmptyReview())
     }
 
     const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
-    const readAt = (!review.readAt) ? '' : review.readAt
+
     return (
-        <form onSubmit={onSaveReview} className="add-review container">
+        <form onSubmit={ev => {
+            ev.preventDefault()
+            onSaveReview()
+        }} className="add-review container">
             <h1> Add a review </h1>
             <section className="inputs">
                 <label htmlFor="fullname"></label>
@@ -78,7 +69,10 @@ export function AddReview() {
             </section>
             <section className="actions">
                 <button className="add-review">Save</button>
-                <button onClick={onDelateReview} className="Delate-review">Discard</button>
+                <button onClick={ev => {
+                    ev.preventDefault()
+                    onDelateReview()
+                }} className="Delate-review">Discard</button>
             </section>
         </form>
     )
