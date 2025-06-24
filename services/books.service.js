@@ -54,7 +54,7 @@ function remove(bookId) {
 
 // Read
 function get(bookId) {
-    return storageService.get(APP_KEY, bookId)
+    return storageService.get(APP_KEY, bookId).then(_setNextPrevBookId)
 }
 function getDefaultFilter() {
     return { text: '', maxPrice: '' }
@@ -70,6 +70,19 @@ function getNextBookId(bookId) {
 }
 
 // Create
+
+function _setNextPrevBookId(book) {
+    return query().then((books) => {
+        const bookIdx = books.findIndex((currBook) => currBook.id === book.id)
+        const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0]
+        const prevBook = books[bookIdx - 1] ? books[bookIdx - 1] : books[books.length - 1]
+        book.nextBookId = nextBook.id
+        book.prevBookId = prevBook.id
+        return book
+    })
+}
+
+
 function save(book) {
     if (book.id) {
         return storageService.put(APP_KEY, book)
@@ -130,7 +143,7 @@ function createEmptyBook() {
         language: "en",
         listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
     }
-    return emptyBook
+    return setBook(emptyBook)
 }
 
 

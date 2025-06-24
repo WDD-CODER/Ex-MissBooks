@@ -4,16 +4,14 @@ import { appService } from "../services/books.service.js"
 import { ReviewList } from "../cmps/ReviewList.jsx"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
-const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
+const { useParams, Link, Outlet, } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BookDetails() {
 
   const { bookId } = useParams()
-  const navigate = useNavigate()
 
   const [book, setBook] = useState(appService.getEmptyBook())
-  console.log("🚀 ~ BookDetails ~ book:", book)
   const { language, publishedDate, categories, authors, pageCount } = book
 
   useEffect(() => {
@@ -32,6 +30,21 @@ export function BookDetails() {
       .catch(showErrorMsg('Failed removing book'))
   }
 
+  function switchToNextOrPrevBook({ target }) {
+    const moveTo = (target.className === 'next-book') ? 'Next Book' : ' Previous Book'
+    const nextOrPrevBook = (moveTo === 'Next Book') ? book.nextBookId : book.prevBookId
+    appService.get(nextOrPrevBook)
+      .then(book => {
+        showSuccessMsg(` Passing to ${moveTo}`)
+        setBook(book)
+
+      })
+      .catch(err => {
+        console.log('err', err)
+        showErrorMsg(`Fail switching to ${moveTo}`)
+      })
+  }
+
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading '
@@ -42,17 +55,16 @@ export function BookDetails() {
   function isNewPublish() {
     return (new Date().getFullYear() - publishedDate < 10) ? 'New' : 'Vintage'
   }
-
-  console.log("🚀 ~ BookDetails ~ book:", book)
   if (!book.title) return <div className='loading'>Loading...</div>
-
   return (
     <article className="book-details container">
       <BookPreview className="book-preview" book={book} />
 
       <section className="actions">
+        <button onClick={switchToNextOrPrevBook} className="prev-book">Previous Page</button>
         <Link to={`/books/edit/${book.id}`}><button className="edit">Edit Book</button></Link>
         <Link to={'/books'}> <button>Back To Gallery</button></Link>
+        <button onClick={switchToNextOrPrevBook} className="next-book">Next Page</button>
       </section>
 
       <div className="add-info">
@@ -68,7 +80,6 @@ export function BookDetails() {
             <li><strong>Written By:</strong> {authors}</li>
           </ul>
         </section>
-        {/* //למצוא פתרון טוב יותר זה לא הדרך!! */}
         <Outlet context={{ setBook }} />
       </div>
 
