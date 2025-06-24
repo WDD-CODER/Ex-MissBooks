@@ -1,35 +1,46 @@
 
-import { BookPreview } from "../cmps/BookPreview.jsx" 
+import { BookPreview } from "../cmps/BookPreview.jsx"
 import { appService } from "../services/books.service.js"
 import { ReviewList } from "../cmps/ReviewList.jsx"
+import { showSuccessMsg } from "../services/event-bus.service.js"
 
 const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BookDetails() {
 
-  const params = useParams()
+  const { bookId } = useParams()
   const navigate = useNavigate()
 
   const [book, setBook] = useState(appService.getEmptyBook())
   const { language, publishedDate, categories, authors, pageCount } = book
 
   useEffect(() => {
-    appService.get(params.bookId)
-      .then(setBook)
+    // if (!book.title) {
+      appService.get(bookId)
+        .then(setBook)
+    // }
   }, []
   )
 
   function onRemoveReview(reviewId) {
-    appService.remove(reviewId)
-      .then(() => {
-        showSuccessMsg('Book removed with success')
-        setBooks(books.filter(books => books.id !== bookId))
-      })
-      .catch(err => {
-        showErrorMsg('Failed removing book')
-        console.log(err)
-      })
+    const reviews = book.reviews.filter(review => review.id !== reviewId)
+    console.log("🚀 ~ onRemoveReview ~ reviews:", reviews)
+    setBook(prevBook => (
+      { ...prevBook, reviews: [...prevBook.reviews,] }
+      
+    ))
+
+    // appService.remove(reviewId)
+    //   .then(book => {
+    //     console.log("🚀 ~ onRemoveReview ~ book:", book)
+    //     showSuccessMsg('Review removed with success')
+    //     setBook(book)
+    //   })
+    //   .catch(err => {
+    //     showErrorMsg('Failed removing book')
+    //     console.log(err)
+    //   })
   }
 
 
@@ -43,7 +54,9 @@ export function BookDetails() {
     return (new Date().getFullYear() - publishedDate < 10) ? 'New' : 'Vintage'
   }
 
+  console.log("🚀 ~ BookDetails ~ book:", book)
   if (!book.title) return <div className='loading'>Loading...</div>
+
   return (
     <article className="book-details container">
       <BookPreview className="book-preview" book={book} />
@@ -72,7 +85,7 @@ export function BookDetails() {
 
 
       <section className="reviews">
-        {book.reviews && <ReviewList book={book} />}
+        {book.reviews && <ReviewList onRemoveReview={onRemoveReview} reviews={book.reviews} />}
       </section>
 
     </article>

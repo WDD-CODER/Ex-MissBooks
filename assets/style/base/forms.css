@@ -32,13 +32,18 @@ form.container {
 
 .custom-swal-class {
     max-width: 90%;
-    place-items: center;
 }
 
-.custom-swal-class.swal2-input {
+#swal2-html-container {
+    display: grid !important;
+    place-items: center;
+
+}
+
+.custom-swal-class .swal2-input {
     width: 80%;
 }
 
-#date{
-    width: 90%;
+#read-at {
+    max-width: 90%;
 }

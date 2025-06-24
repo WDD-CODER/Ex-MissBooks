@@ -16,16 +16,13 @@ export function AddReview() {
     const [review, setReview] = useState(appService.getEmptyReview())
     const [bookToEdit, setBookToEdit] = useState()
 
-    useEffect(() => {
-        console.log('useEffect')
-        
-        appService.get(bookId)
-            .then(setBookToEdit)
-    }, [])
+    // useEffect(() => {
+    // }, [])
 
-    useEffect(() => {
-        setBookToEdit(bookToEdit => ({ ...bookToEdit, reviews: [{ ...review, review }] }))
-    }, [review])
+    // useEffect(() => {
+    //     console.log("🚀 ~ useEffect ~ review:", review)
+    //     setBookToEdit(bookToEdit => ({ ...bookToEdit, reviews: [{ ...review, review }] }))
+    // }, [review])
 
     function handleChange({ target }) {
         const field = target.name
@@ -49,21 +46,25 @@ export function AddReview() {
 
     function onSaveReview(ev) {
         ev.preventDefault()
-        if (!review.rate || !review.fullname || !review.date) return showErrorMsg('Review not saved! Missing some info')
-        // appService.addReview(bookId, review).then(savedBooks => setBook(savedBooks))
-        setReview(appService.getEmptyReview())
+        if (!review.rate || !review.fullname || !review.readAt) return showErrorMsg('Review not saved! Missing some info')
+        appService.addReview(bookId, review)
+            .then(savedBooks => {
+                console.log('savedBooks', savedBooks)
+
+                setBook(savedBooks)
+                setReview(appService.getEmptyReview())
+            })
     }
 
     function onDelateReview(ev) {
         ev.preventDefault()
         showSuccessMsg('Book review discarded')
-        setReview(emptyReview)
+        setReview(appService.getEmptyReview())
     }
 
     const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
-    const reviewDate = (!review.date) ? '' : review.rate
-
+    const readAt = (!review.readAt) ? '' : review.readAt
     return (
         <form onSubmit={onSaveReview} className="add-review container">
             <h1> Add a review </h1>
@@ -72,8 +73,8 @@ export function AddReview() {
                 <input onChange={handleChange} className="full-name" type="text" id="fullname" name="fullname" value={reviewValue} placeholder="What's your name?" />
                 <label htmlFor="rate">{utilService.getStars(review.rate)}</label>
                 <input onChange={handleChange} type="range" id="rate" name="rate" min={1} max={5} value={reviewRate} placeholder="So how do you rate this book from 1-5? " />
-                <label htmlFor="readAt">read At?</label>
-                <input onChange={handleChange} type="datetime-local" id="readAt" name="readAt" />
+                <label htmlFor="readAt">read At</label>
+                <input onChange={handleChange} type="datetime-local" id="read-at" name="readAt" />
             </section>
             <section className="actions">
                 <button className="add-review">Save</button>

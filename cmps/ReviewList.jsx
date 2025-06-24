@@ -9,10 +9,10 @@ if (!reviews) return console.log('!reviews', !reviews)
     return (
         <div className="review-list ">
             {reviews.map(review => {
-                return (<ul className="review-preview container" key={review.reviewId}>
+                return (<ul className="review-preview container" key={review.id}>
                     <ReviewPreview review={review} />
                     <section className="review-list actions">
-                        {/* <Link to={`/books`}><button onClick={()=> onRemoveReview(review.id)} className="delate">☠️</button></Link> */}
+                        <button onClick={()=> onRemoveReview(review.id)} className="delate">☠️</button>
                         {/* <Link to={`/books`}><button onClick={} className="edit">✍️</button></Link> */}
                     </section>
                 </ul>)

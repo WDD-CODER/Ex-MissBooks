@@ -79,7 +79,7 @@ function addReview(bookId, review) {
         .then(book => {
             if (book.reviews) {
                 const bookReviews = book.reviews
-                const bookReviewIdx = bookReviews.findIndex(r => r.reviewId === review.reviewId)
+                const bookReviewIdx = bookReviews.findIndex(r => { r.reviewId === review.reviewId })
                 if (bookReviewIdx < 0) {
                     showSuccessMsg('Book review added')
                     book.reviews.push(review)
@@ -87,7 +87,6 @@ function addReview(bookId, review) {
                     showSuccessMsg('Book review updated')
                     book.reviews[bookReviewIdx] = review
                 }
-
             } else {
                 showSuccessMsg('Book review array added')
                 book.reviews = [review]
