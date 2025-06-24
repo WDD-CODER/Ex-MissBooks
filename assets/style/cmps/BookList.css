@@ -4,6 +4,16 @@
     background-color: var(--clr-accent--1);
 }
 
-.books-list .actions {
-    grid-area: actions;
+.list-container {
+    display: grid;
+    place-items: center;
+
+    margin: auto;
+
+    gap: .5em;
+    padding: 1em;
+
+    border-radius: 1vh;
+    border: 2px var(--clr-black) solid;
+    background-color: var(--clr-accent--1);
 }

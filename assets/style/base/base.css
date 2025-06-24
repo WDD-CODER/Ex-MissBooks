@@ -1,6 +1,6 @@
 .loading {
   justify-self: center;
-  
+
   padding: 1em;
   margin: 1em;
 
@@ -43,8 +43,11 @@ input {
 .read-more:hover {
   text-decoration: underline;
 }
-.actions{
-    flex-wrap: wrap;
-    place-content: center;
-    display: flex;
+
+.actions {
+  grid-area: actions;
+
+  flex-wrap: wrap;
+  place-content: center;
+  display: flex;
 }

@@ -38,7 +38,7 @@ export function AddReview() {
     function onSaveReview(ev) {
         const { rate, fullname, readAt } = review
         if (!rate || !fullname || !readAt) return showErrorMsg('Review not saved! Missing some info')
-        appService.addReview(bookId, review)
+        appService.onAddReview(bookId, review)
             .then(savedBooks => {
                 setBook(savedBooks)
                 setReview(appService.getEmptyReview())

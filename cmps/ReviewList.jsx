@@ -11,7 +11,7 @@ if (!reviews) return console.log('!reviews', !reviews)
             {reviews.map(review => {
                 return (<ul className="review-preview container" key={review.id}>
                     <ReviewPreview review={review} />
-                    <section className="review-list actions">
+                    <section className="actions">
                         <button onClick={()=> onRemoveReview(review.id)} className="delate">☠️</button>
                     </section>
                 </ul>)

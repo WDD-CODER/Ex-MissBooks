@@ -10,10 +10,6 @@
     gap: .5em;
 }
 
-.review-list.actions {
-    grid-area: actions;
-}
-
 .review-preview {
     font-size: .9rem;
     display: flex;

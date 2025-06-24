@@ -13,7 +13,7 @@ export const appService = {
     getEmptyBook,
     getNextBookId,
     getDefaultFilter,
-    addReview,
+    onAddReview,
     getEmptyReview,
     createEmptyBook,
 }
@@ -107,7 +107,7 @@ function getEmptyReview(fullname = '', rate = '', date = '') {
     }
 } const emptyReview = { reviewId: utilService.makeId(), fullname: '', date: '' }
 
-function addReview(bookId, review) {
+function onAddReview(bookId, review) {
     return get(bookId)
         .then(book => {
             if (book.reviews) {

@@ -51,10 +51,6 @@
   font-weight: bold;
 }
 
-.books-details .actions {
-  grid-area: actions;
-}
-
 .review-preview {
   display: grid;
 }

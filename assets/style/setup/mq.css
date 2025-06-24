@@ -36,9 +36,6 @@
 
   }
 
-  .book-details .actions {
-    grid-area: actions;
-  }
 
   .add-info {
     grid-area: add-info;
