@@ -3,6 +3,8 @@
 
     gap: 1em;
 
+    text-align: center;
+
     border-radius: 1vh;
     border: 2px var(--clr-black) solid;
 }

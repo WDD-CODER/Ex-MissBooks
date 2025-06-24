@@ -1,4 +1,10 @@
-@media (min-width: 670px) {
+@media (max-width: 420px) {
+.book-filter{
+  
+}
+}
+
+  @media (min-width: 670px) {
 
   .books-index .book-preview {
     width: 475px;

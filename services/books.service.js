@@ -15,7 +15,10 @@ export const appService = {
     getDefaultFilter,
     addReview,
     getEmptyReview,
+    createEmptyBook,
 }
+
+// List
 
 function query(filterBy = {}) {
     return storageService.query(APP_KEY)
@@ -42,14 +45,31 @@ function query(filterBy = {}) {
         })
 }
 
-function get(bookId) {
-    return storageService.get(APP_KEY, bookId)
-}
-
+// Delete
 function remove(bookId) {
     return storageService.remove(APP_KEY, bookId)
 }
 
+
+
+// Read
+function get(bookId) {
+    return storageService.get(APP_KEY, bookId)
+}
+function getDefaultFilter() {
+    return { text: '', maxPrice: '' }
+}
+
+function getNextBookId(bookId) {
+    return storageService.query(APP_KEY)
+        .then(books => {
+            var idx = books.findIndex(book => book.id === bookId)
+            if (idx === books.length - 1) idx = -1
+            return books[idx + 1].id
+        })
+}
+
+// Create
 function save(book) {
     if (book.id) {
         return storageService.put(APP_KEY, book)
@@ -64,6 +84,7 @@ function getEmptyBook(title = '', category = []) {
         category
     }
 }
+
 function getEmptyReview(fullname = '', rate = '', date = '') {
     return {
         fullname: '',
@@ -72,7 +93,6 @@ function getEmptyReview(fullname = '', rate = '', date = '') {
         id: utilService.makeId()
     }
 } const emptyReview = { reviewId: utilService.makeId(), fullname: '', date: '' }
-
 
 function addReview(bookId, review) {
     return get(bookId)
@@ -95,19 +115,26 @@ function addReview(bookId, review) {
         })
 }
 
-function getDefaultFilter() {
-    return { text: '', maxPrice: '' }
+function createEmptyBook() {
+    const categories = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+
+    const emptyBook = {
+        title: '',
+        subtitle: utilService.makeLorem(4),
+        authors: [utilService.makeLorem(1)],
+        publishedDate: utilService.getRandomIntInclusive(1950, 2024),
+        description: utilService.makeLorem(20),
+        pageCount: utilService.getRandomIntInclusive(20, 600),
+        categories: [categories[utilService.getRandomIntInclusive(0, categories.length - 1)]],
+        thumbnail: `./assets/BooksImages/noImg.png`,
+        language: "en",
+        listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
+    }
+    return setBook(emptyBook)
 }
 
-function getNextBookId(bookId) {
-    return storageService.query(APP_KEY)
-        .then(books => {
-            var idx = books.findIndex(book => book.id === bookId)
-            if (idx === books.length - 1) idx = -1
-            return books[idx + 1].id
-        })
-}
 
+// Helpers / Init
 function _createBooks() {
     let books = utilService.loadFromStorage(APP_KEY)
     if (!books || !books.length) _createDemoBooks()
@@ -136,3 +163,4 @@ function _createDemoBooks() {
     }
     utilService.saveToStorage(APP_KEY, books)
 }
+

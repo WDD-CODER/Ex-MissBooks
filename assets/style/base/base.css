@@ -1,19 +1,23 @@
 .loading {
   justify-self: center;
+  
   padding: 1em;
   margin: 1em;
+
   border-radius: 1vh;
   border: 2px var(--clr-black) solid;
+  background-color: var(--clr-primary-1);
 }
 
 .container {
   display: grid;
   place-items: center;
 
+  margin: auto;
+
   gap: 1em;
   padding: 1em;
 
-  margin: auto;
   border-radius: 1vh;
   border: 2px var(--clr-black) solid;
   background-color: var(--clr-accent-base);
@@ -23,6 +27,7 @@ main {
   grid-area: main-content;
   padding: 1em;
   place-content: center;
+  background-color: var(--clr-accent-base);
 }
 
 input {
@@ -39,7 +44,6 @@ input {
   text-decoration: underline;
 }
 .actions{
-  
     flex-wrap: wrap;
     place-content: center;
     display: flex;

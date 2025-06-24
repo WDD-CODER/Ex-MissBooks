@@ -18,7 +18,7 @@ export function BookEdit() {
     }, [])
 
     function loadBook() {
-        if (!bookId) loadBook(createEmptyBook())
+        if (!bookId) loadBook(appService.createEmptyBook())
         else appService.get(bookId)
             .then(book => {
                 setBook(book)
@@ -74,23 +74,6 @@ export function BookEdit() {
         })
     }
 
-    function createEmptyBook() {
-        const categories = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-
-        const emptyBook = {
-            title: '',
-            subtitle: utilService.makeLorem(4),
-            authors: [utilService.makeLorem(1)],
-            publishedDate: utilService.getRandomIntInclusive(1950, 2024),
-            description: utilService.makeLorem(20),
-            pageCount: utilService.getRandomIntInclusive(20, 600),
-            categories: [categories[utilService.getRandomIntInclusive(0, categories.length - 1)]],
-            thumbnail: `./assets/BooksImages/noImg.png`,
-            language: "en",
-            listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
-        }
-        return setBook(emptyBook)
-    }
 
     function onSaveBook(book) {
         const addOrEditStr = (!bookId) ? 'Wonderful. Add a new book!' : 'Wonderful. Book was edit!'

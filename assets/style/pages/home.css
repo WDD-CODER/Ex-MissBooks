@@ -3,13 +3,13 @@ section.home {
 
   margin-block-start: 5em;
 
-  padding: 1em;
+  padding: 2em;
+  gap: 5em;
 
 
 }
 
 .home img {
-  max-width: 30vw;
-  margin-top: 3em;
+  max-width:500px;
 }
 
