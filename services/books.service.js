@@ -69,6 +69,7 @@ function getNextBookId(bookId) {
         })
 }
 
+
 // Create
 
 function _setNextPrevBookId(book) {
@@ -108,6 +109,38 @@ function getEmptyReview(fullname = '', rate = '', date = '') {
 } const emptyReview = { reviewId: utilService.makeId(), fullname: '', date: '' }
 
 function onAddReview(bookId, review) {
+    return get(bookId)
+        .then(book => {
+            if (book.reviews) {
+                const bookReviews = book.reviews
+                const bookReviewIdx = bookReviews.findIndex(r => { r.reviewId === review.reviewId })
+                if (bookReviewIdx < 0) {
+                    showSuccessMsg('Book review added')
+                    book.reviews.push(review)
+                } else {
+                    showSuccessMsg('Book review updated')
+                    book.reviews[bookReviewIdx] = review
+                }
+            } else {
+                showSuccessMsg('Book review array added')
+                book.reviews = [review]
+            }
+            return save(book)
+        })
+}
+
+function getGoogleBook(txt) {
+    const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
+    fatch(googleBookApi)
+    .then(res => {
+        console.log('res', res.json())
+        
+    })
+}
+
+
+function addGoogleBook(book) {
+
     return get(bookId)
         .then(book => {
             if (book.reviews) {
