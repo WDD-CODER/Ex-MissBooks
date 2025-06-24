@@ -17,12 +17,8 @@ export function BookDetails() {
   const { language, publishedDate, categories, authors, pageCount } = book
 
   useEffect(() => {
-    // if (!book.title) {
     appService.get(bookId)
       .then(setBook)
-    // }
-
-
   }, []
   )
 

@@ -130,7 +130,7 @@ function createEmptyBook() {
         language: "en",
         listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
     }
-    return setBook(emptyBook)
+    return emptyBook
 }
 
 

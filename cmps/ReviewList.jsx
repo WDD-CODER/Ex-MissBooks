@@ -13,7 +13,6 @@ if (!reviews) return console.log('!reviews', !reviews)
                     <ReviewPreview review={review} />
                     <section className="review-list actions">
                         <button onClick={()=> onRemoveReview(review.id)} className="delate">☠️</button>
-                        {/* <Link to={`/books`}><button onClick={} className="edit">✍️</button></Link> */}
                     </section>
                 </ul>)
             })}
