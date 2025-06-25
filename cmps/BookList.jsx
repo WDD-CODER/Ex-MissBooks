@@ -2,7 +2,6 @@ import { BookPreview } from '../cmps/BookPreview.jsx'
 
 const {Link} = ReactRouterDOM
 export function BookList({ books, onRemoveBook }) {
-    console.log("🚀 ~ BookList ~ books:", books)
     return (
         <ul className="books-list container">
             {books.map(book =>
