@@ -1,6 +1,8 @@
 import { utilService } from "./util.service.js"
+import { appService } from "./books.service.js"
+import { storageService } from "./async-storage.service.js"
 import { hardCode } from "../data/gBooks.js"
-
+import { showErrorMsg } from "./event-bus.service.js"
 const APP_KEY = 'googleBooksDB'
 export const googleBooksService = {
     getGBooks,
@@ -10,8 +12,16 @@ export const googleBooksService = {
 
 
 function getGBooks(txt) {
-    console.log('fetch from local')
-    return Promise.resolve(hardCode.items)
+    // Operating Without API //
+    // console.log('fetch from local')
+    // return Promise.resolve(hardCode.items)
+
+    console.log('fetch from api')
+    const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
+    return fetch(googleBookApi)
+        .then(res => res.json())
+        .then(res => res.items)
+        .catch(err => showErrorMsg(' Something went wrong herein the getBooks '))
 }
 
 function getGBooksModified(txt) {

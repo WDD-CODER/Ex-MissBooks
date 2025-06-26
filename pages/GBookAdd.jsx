@@ -28,10 +28,9 @@ export function GBookAdd() {
             }
             )
     }
-
+    // לא הסתדרתי עם הדיבאונס
     function onSearchGoogleBook() {
         if (!searchTerm) return showErrorMsg(' No search term ')
-
         return googleBooksService.getGBooks(searchTerm)
             .then(SetGoogleBooks)
             .catch(err => {
@@ -59,9 +58,9 @@ export function GBookAdd() {
         <section className='books-index container'>
             <h1>Search For</h1>
             <input onChange={ev => SetSearchTerm(ev.target.value)}
-            name='searchTerm'
-             type='text'
-              placeholder='Search for books' />
+                name='searchTerm'
+                type='text'
+                placeholder='Search for books' />
 
             <button onClick={() => onSearchGoogleBook()}>Search</button>
             <button onClick={onShowBooks}>Show Books To Choose From</button>
