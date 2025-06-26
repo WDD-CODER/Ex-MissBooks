@@ -30,7 +30,7 @@ main {
   background-color: var(--clr-accent-base);
 }
 
-input {
+input ,select {
   padding: .5em;
   border-radius: .5vh;
 }
