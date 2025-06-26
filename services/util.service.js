@@ -8,6 +8,7 @@ export const utilService = {
     getDayName,
     getMonthName,
     getStars,
+    debounce,
 
 }
 
@@ -65,4 +66,14 @@ function getMonthName(date) {
 
 function getStars(num) {
     return '⭐'.repeat(num);
+}
+
+export function debounce(func, delay) {
+    let timeoutId
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
 }
