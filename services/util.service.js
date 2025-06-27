@@ -77,3 +77,21 @@ export function debounce(func, delay) {
         }, delay)
     }
 }
+
+export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
+    console.log('animation')
+    
+    const prefix = 'animate__'
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+
+        function handleAnimationEnd(ev) {
+            ev.stopPropagation()
+            if (isRemoveClass) el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
+}
