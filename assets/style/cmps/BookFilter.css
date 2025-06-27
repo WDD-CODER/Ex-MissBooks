@@ -5,9 +5,6 @@
 
     text-align: center;
 
-    border-radius: 1vh;
-    border: none;
-    background-color: var(--clr-assent-1);
 }
 
 .book-filter label {
