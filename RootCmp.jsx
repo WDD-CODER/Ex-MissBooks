@@ -17,20 +17,6 @@ const { Routes, Route, Navigate } = ReactRouterDOM
 export function RootCmp() {
 
 
-
-// ccccccccc2222
-    
-    // <Route path="/" element={<Home />} />
-    // <Route path="/about" element={<About />}>
-    //     <Route path="team" element={<Team />} >
-    //         <Route path="goal" element={<MemberPage />} />
-    //     </Route>
-    //     <Route path="vision" element={<Vision />} />
-    // </Route>
-    // <Route path="/book" element={<BookIndex />} />
-
-// cccccccc new 
-
     return (
         <Router>
             <section className='main-layout grid'>
