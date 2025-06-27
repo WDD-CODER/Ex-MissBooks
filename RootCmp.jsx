@@ -18,8 +18,7 @@ export function RootCmp() {
 
 
 
-    // דדדדד
-
+// ccccccccc2222
     
     // <Route path="/" element={<Home />} />
     // <Route path="/about" element={<About />}>
