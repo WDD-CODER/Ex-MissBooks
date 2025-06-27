@@ -4,20 +4,20 @@ import { appService } from "../services/books.service.js"
 import { ReviewList } from "../cmps/ReviewList.jsx"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
-const { useParams, Link, Outlet, } = ReactRouterDOM
+const { useParams, Link, Outlet, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BookDetails() {
 
   const { bookId } = useParams()
-
+  const navigate = useNavigate()
   const [book, setBook] = useState(appService.getEmptyBook())
   const { language, publishedDate, categories, authors, pageCount } = book
 
   useEffect(() => {
     appService.get(bookId)
       .then(setBook)
-  }, []
+  }, [bookId]
   )
 
   function onRemoveReview(reviewId) {
@@ -27,7 +27,9 @@ export function BookDetails() {
         setBook(newBook)
         showSuccessMsg('Review removed with success')
       })
-      .catch(showErrorMsg('Failed removing book'))
+      .catch(err =>{
+        console.log('err', err)
+        showErrorMsg('Failed removing book')})
   }
 
   function switchToNextOrPrevBook({ target }) {
@@ -35,9 +37,8 @@ export function BookDetails() {
     const nextOrPrevBook = (moveTo === 'Next Book') ? book.nextBookId : book.prevBookId
     appService.get(nextOrPrevBook)
       .then(book => {
+        navigate(`/books/${book.id}`)
         showSuccessMsg(` Passing to ${moveTo}`)
-        setBook(book)
-
       })
       .catch(err => {
         console.log('err', err)

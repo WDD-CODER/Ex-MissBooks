@@ -13,15 +13,15 @@ export const googleBooksService = {
 
 function getGBooks(txt) {
     // Operating Without API //
-    // console.log('fetch from local')
-    // return Promise.resolve(hardCode.items)
+    console.log('fetch from local')
+    return Promise.resolve(hardCode.items)
 
-    console.log('fetch from api')
-    const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
-    return fetch(googleBookApi)
-        .then(res => res.json())
-        .then(res => res.items)
-        .catch(err => showErrorMsg(' Something went wrong herein the getBooks '))
+    // console.log('fetch from api')
+    // const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
+    // return fetch(googleBookApi)
+    //     .then(res => res.json())
+    //     .then(res => res.items)
+    //     .catch(err => showErrorMsg(' Something went wrong herein the getBooks '))
 }
 
 function getGBooksModified(txt) {

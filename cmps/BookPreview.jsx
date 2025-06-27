@@ -14,6 +14,7 @@ export function BookPreview({ book }) {
 
             <figure className="img"><img src={img} alt={`Cover of ${book.title}`} /></figure>
             <LongTxt className="description" txt={book.description} />
+            
         </article>
     )
 

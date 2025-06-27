@@ -4,7 +4,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { BookList } from '../cmps/BookList.jsx'
 
 const { useState } = React
-const { useNavigate } = ReactRouterDOM
+const { useNavigate, Link } = ReactRouterDOM
 
 export function GBookAdd() {
 
@@ -55,26 +55,35 @@ export function GBookAdd() {
     }
 
     return (
-        <section className='books-index container'>
-            <h1>Search For</h1>
-            <input onChange={ev => SetSearchTerm(ev.target.value)}
-                name='searchTerm'
-                type='text'
-                placeholder='Search for books' />
+        <section className='google-books-index container'>
+            <h1>Google Books</h1>
+            <div className="main-actions-container">
+                <h1>Search Control </h1>
+                <input onChange={ev => SetSearchTerm(ev.target.value)}
+                    name='searchTerm'
+                    type='text'
+                    placeholder='Search for books' />
+                <div className="actions">
+                    <button onClick={() => onSearchGoogleBook()}>Search</button>
+                    <Link to={'/books'}> <button>Back To Gallery</button></Link>
+                    {googleBooks && <button onClick={onShowBooks}>Show Books To Choose From</button>}
+                </div>
 
-            <button onClick={() => onSearchGoogleBook()}>Search</button>
-            <button onClick={onShowBooks}>Show Books To Choose From</button>
-
-            {googleBooks &&
-                <React.Fragment>
-                    <label htmlFor="book-select">Choose a Book:</label>
+                {googleBooks && <React.Fragment>
+                    <label htmlFor="book-select"></label>
                     <select onChange={ev => onSelectBook(ev.target.value)} id='book-select' name="book-select">
-                        <option value="">Please choose an option</option>
+                        <option value="">Please Choose A Book </option>
                         {googleBooks.map(book => <option key={book.id} value={book.id}>{book.volumeInfo.title}</option>)}
                     </select>
+                </React.Fragment>
+                }
 
-                    {modBooks && <BookList books={modBooks} onSelect={onSelectBook} />}
+            </div>
+            {googleBooks &&
+                <React.Fragment>
+                    {modBooks && <BookList books={modBooks} onSelect={onSelectBook} selector='google' />}
                 </React.Fragment>}
+
 
         </section>
     )

@@ -16,7 +16,7 @@ export const appService = {
     onAddReview,
     getEmptyReview,
     createEmptyBook,
-    addGoogleBooks,
+    // addGoogleBooks,
 }
 
 // List
@@ -57,7 +57,10 @@ function remove(bookId) {
 function get(bookId) {
     return storageService.get(APP_KEY, bookId)
         .then(_setNextPrevBookId)
-        .catch(showErrorMsg(" Couldn't find book "))
+        .catch(err => {
+            console.log('err', err)
+            showErrorMsg(" Couldn't find book ")
+        })
 }
 function getDefaultFilter() {
     return { text: '', maxPrice: '' }
@@ -109,6 +112,7 @@ function getEmptyReview(fullname = '', rate = '', date = '') {
         fullname: '',
         rate: '',
         readAt: '',
+        value: '',
         id: utilService.makeId()
     }
 } 
@@ -134,10 +138,10 @@ function onAddReview(bookId, review) {
         })
 }
 
-function addGoogleBooks(book) {
-    return Promise.resolve((book) => resolve(book))
-        .then(book => saveGoogleBook(book))
-}
+// function addGoogleBooks(book) {
+//     return Promise.resolve((book) =>{ resolve(book)})
+//         .then(book => saveGoogleBook(book))
+// }
 
 
 function createEmptyBook() {

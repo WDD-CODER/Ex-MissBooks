@@ -14,6 +14,7 @@ export function AddReview() {
     const { bookId } = useParams()
 
     const [review, setReview] = useState(appService.getEmptyReview())
+    console.log("🚀 ~ AddReview ~ review:", review)
 
     function handleChange({ target }) {
         const field = target.name
@@ -45,13 +46,15 @@ export function AddReview() {
             })
     }
 
-    function onDelateReview(ev) {
+    function onDiscardReview(ev) {
         showSuccessMsg('Book review discarded')
+
         setReview(appService.getEmptyReview())
     }
 
     const reviewValue = (!review.fullname) ? '' : review.fullname
     const reviewRate = (!review.rate) ? 1 : review.rate
+    const reviewReadAt = (!review.readAt) ? 'yy/mm/dd' : review.readAt
 
     return (
         <form onSubmit={ev => {
@@ -71,7 +74,7 @@ export function AddReview() {
                 <button className="add-review">Save</button>
                 <button onClick={ev => {
                     ev.preventDefault()
-                    onDelateReview()
+                    onDiscardReview()
                 }} className="Delate-review">Discard</button>
             </section>
         </form>

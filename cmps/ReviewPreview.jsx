@@ -2,6 +2,7 @@ import { utilService } from "../services/util.service.js"
 
 export function ReviewPreview({ review}) {
     const { fullname, rate, readAt } = review
+    
     return (
         <React.Fragment>
                 <li>{fullname}</li>

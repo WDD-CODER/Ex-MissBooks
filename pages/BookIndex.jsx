@@ -42,11 +42,10 @@ export function BookIndex() {
     if (!books) return <div className='loading'>Loading...</div>
 
     const curList = (books) ? 'Books ' : 'Google Books '
-
+    const selector = (GoogleBooks)? 'google' : ''
     return (
         <section className="books-index container">
-
-            <div className="main-actions">
+            <div className="main-actions-container">
                 <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
                 <div className="actions">
                     <Link to={'/books/edit'}><button className="add">Add Book</button></Link>
@@ -55,7 +54,7 @@ export function BookIndex() {
             </div>
             {GoogleBooks && <button onClick={() => setGoogleBooks('')} className="add">Back To Gallery</button>}
             <h1>{curList} Gallery </h1>
-            <BookList books={books} onSelect={onRemoveBook} />
+            <BookList books={books} onSelect={onRemoveBook} selector={selector} />
         </section>
     )
 }

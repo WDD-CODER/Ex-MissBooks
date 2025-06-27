@@ -1,16 +1,19 @@
 import { BookPreview } from '../cmps/BookPreview.jsx'
 
-const {Link} = ReactRouterDOM
-export function BookList({ books, onSelect }) {
+const { Link } = ReactRouterDOM
+export function BookList({ books, onSelect, selector = '' }) {
+    const buttonContext = (selector === "google") ? 'Add' : 'Remove'
     return (
-        <ul className="books-list container">
+        <ul className={`books-list ${selector} container`}>
             {books.map(book =>
-                <li className='book-preview-container' key={book.id}>
-                    <BookPreview book={book} />
-                    <section className='actions'>
-                        <button className="remove" onClick={() => onSelect(book.id)}>Delate</button>
-                        <Link to={`/books/${book.id}`}><button className="select">Details</button></Link>
-                    </section>
+                <li  key={book.id}>
+                    <div className={`book-preview-container ${selector}`}>
+                        <BookPreview book={book} />
+                        <section className='actions'>
+                            <button className={buttonContext} onClick={() => onSelect(book.id)}>{buttonContext}</button>
+                            {!selector && <Link to={`/books/${book.id}`}><button className="details">Details</button></Link>}
+                        </section>
+                    </div>
                 </li>
             )}
         </ul>

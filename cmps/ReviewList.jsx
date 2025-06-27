@@ -2,9 +2,8 @@
 
 import { ReviewPreview } from "./ReviewPreview.jsx"
 
-const { Link } = ReactRouterDOM
 export function ReviewList({ reviews, onRemoveReview }) {
-if (!reviews) return console.log('!reviews', !reviews)
+if (!reviews) return console.log('!no reviews', reviews)
     else
     return (
         <div className="review-list ">
