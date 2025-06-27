@@ -6,3 +6,58 @@
   gap: 1rem;
   background-color: var(--clr-accent-1);
 }
+
+.google-books-index {
+  gap: 1em;
+}
+
+.main-actions-container {
+  display: grid;
+  grid:
+    "header"
+    "search"
+    "select"
+    "actions"
+    / auto;
+  ;
+
+  place-items: center;
+  /* gap: .5em; */
+  padding: 1em;
+
+  max-width: 440px;
+
+
+  border-radius: 1vh;
+  border: 2px var(--clr-black) solid;
+  background-color: var(--clr-accent--1);
+}
+
+.main-actions-container h1 {
+  grid-area: header;
+}
+
+.main-actions-container select,
+input {
+  width: 100%;
+}
+
+.main-actions-container select {
+  grid-area: select;
+}
+
+.main-actions-container input {
+  grid-area: search;
+}
+
+
+
+.book-selection {
+  display: grid;
+  gap: .5em;
+
+
+  text-align: center;
+  text-decoration: underline var(--clr-black) dashed;
+  text-underline-offset: 5px;
+}

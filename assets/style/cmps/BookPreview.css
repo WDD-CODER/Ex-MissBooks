@@ -1,3 +1,7 @@
+.book-preview-container {
+    height: 90%;
+}
+
 .book-preview {
     grid-area: book-preview;
     grid-template-areas:
@@ -5,10 +9,14 @@
         "    img  "
         "   price "
         " description "
+        " actions "
     ;
 
-    max-width: 400px;
-
+    gap: 0;
+    align-items: stretch;
+    overflow: auto;
+    
+    width: 100%;
     text-align: justify;
 }
 
@@ -17,7 +25,11 @@ header {
     grid-area: header;
 }
 
-.book-preview .price {
+.book-preview.actions {
+    grid-area: actions;
+}
+
+.book-preview.price {
     grid-area: price;
 }
 

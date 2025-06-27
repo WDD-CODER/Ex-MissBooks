@@ -1,22 +1,20 @@
 @media (max-width: 420px) {
-.book-filter{
-  
-}
+  .book-filter {}
 }
 
-  @media (min-width: 670px) {
+@media (min-width: 670px) {
 
   .books-index .book-preview {
-    width: 475px;
-
-    height: 640px;
-
+    height: 100%;
+    max-height: 400px;
   }
 
-  .books-list {
-    grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
-    width: 90%;
-  }
+.books-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  align-items: stretch; 
+  width: 90%;
+}
 
   .book-filter {
     padding: 2em;
@@ -33,9 +31,11 @@
     gap: 2rem;
 
     max-width: 1000px;
-
   }
 
+  .main-actions-container {
+    min-width: 535px;
+  }
 
   .add-info {
     grid-area: add-info;

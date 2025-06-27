@@ -23,6 +23,7 @@
   background-color: var(--clr-accent-base);
 }
 
+
 main {
   grid-area: main-content;
   padding: 1em;
@@ -30,7 +31,8 @@ main {
   background-color: var(--clr-accent-base);
 }
 
-input ,select {
+input,
+select {
   padding: .5em;
   border-radius: .5vh;
 }

@@ -69,5 +69,6 @@
 }
 
 .inputs>* {
+  width: auto;
   justify-self: center;
 }
