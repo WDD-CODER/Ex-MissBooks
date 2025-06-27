@@ -25,7 +25,7 @@ export function BookFilter({ defaultFilter, setFilterBy }) {
     }
 
     return (
-        <section className="book-filter container">
+        <section className="book-filter box container">
             <label htmlFor="text">Search By Text
                 <input name="text" onChange={handleChange} type="text" placeholder="search for Whatever !" />
             </label>

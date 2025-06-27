@@ -60,7 +60,7 @@ export function AddReview() {
         <form onSubmit={ev => {
             ev.preventDefault()
             onSaveReview()
-        }} className="add-review container">
+        }} className="add-review box container">
             <h1> Add a review </h1>
             <section className="inputs">
                 <label htmlFor="fullname"></label>

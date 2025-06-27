@@ -4,7 +4,7 @@
   padding: 1em;
 
   gap: 1rem;
-  background-color: var(--clr-accent-1);
+  background-color: var(--clr-accent-base);
 }
 
 .google-books-index {

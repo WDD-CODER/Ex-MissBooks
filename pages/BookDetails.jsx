@@ -58,7 +58,7 @@ export function BookDetails() {
   }
   if (!book.title) return <div className='loading'>Loading...</div>
   return (
-    <article className="book-details container">
+    <article className="book-details box container">
       <BookPreview className="book-preview" book={book} />
 
       <section className="actions">
@@ -69,7 +69,7 @@ export function BookDetails() {
       </section>
 
       <div className="add-info">
-        <section className="main-info container">
+        <section className="main-info box container">
           <h4>Book Info</h4>
           <ul className="meta">
             <li><strong>Language:</strong> {language}</li>

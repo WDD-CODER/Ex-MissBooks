@@ -4,7 +4,7 @@ export function BookPreview({ book }) {
 
     var img = (book.thumbnail) ? book.thumbnail : "./assets/BooksImages/noImg.png"
     return (
-        <article className="book-preview container">
+        <article className="book-preview box container">
             <header><h1>BookTitle <br /> {book.title}</h1></header>
 
             <p className={(book.listPrice.amount > 150) ? 'price red' : 'price green'}>

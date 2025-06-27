@@ -44,7 +44,7 @@ export function BookIndex() {
     const curList = (books) ? 'Books ' : 'Google Books '
     const selector = (GoogleBooks)? 'google' : ''
     return (
-        <section className="books-index container">
+        <section className="books-index box container">
             <div className="main-actions-container">
                 <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
                 <div className="actions">
