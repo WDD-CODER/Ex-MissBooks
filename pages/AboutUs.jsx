@@ -8,14 +8,16 @@ console.log("🚀 ~ Outlet:", Outlet)
 export function AboutUs() {
     const [activeSection, setActiveSection] = useState()
 
-    
+
     return (
-        <section className="about grid place-items">
+        <section className="about container">
             <h1>AboutUS</h1>
             <LongTxt txt={utilService.makeLorem(200)} />
             <Outlet />
-            <Link to="team"> <button>Show About The Team</button></Link>
-            <Link to="goal"> <button>Show Us The Golden Goal!</button></Link>
-        </section>
+            <div className="actions">
+                <Link to="team"> <button>Show About The Team</button></Link>
+                <Link to="goal"> <button>Show Us The Golden Goal!</button></Link>
+            </div>
+        </section >
     )
 }

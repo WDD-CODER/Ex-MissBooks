@@ -1,8 +1,27 @@
 .about {
-  grid-area: main-content;
-  
-  margin-block-start: 5em;
+  display: flex;
+  flex-direction: column;
+
 
   padding: 2em;
   gap: 5em;
+}
+
+.about h1 {
+  grid-area: header;
+}
+
+.about p {
+  grid-area: p;
+
+}
+
+.action {
+  grid-area: action;
+
+}
+
+.about-team,
+.about-goal {
+  padding: 1em;
 }
