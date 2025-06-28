@@ -9,8 +9,6 @@ export const utilService = {
     getMonthName,
     getStars,
     debounce,
-    playAnimation
-
 }
 
 function makeId(length = 6) {
