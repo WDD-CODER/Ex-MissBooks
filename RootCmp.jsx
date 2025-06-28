@@ -11,6 +11,7 @@ import { AddReview } from './cmps/AddReview.jsx'
 import { GBookAdd } from './pages/GBookAdd.jsx'
 import { AboutTeam } from './cmps/AboutTeam.jsx'
 import { AboutGoal } from './cmps/AboutGoal.jsx'
+import { NotFound } from './pages/NotFound.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Routes, Route, Navigate } = ReactRouterDOM
@@ -23,7 +24,7 @@ export function RootCmp() {
                 <AppHeader />
                 <main>
                     <Routes>
-                        <Route path="/" element={<Navigate to="/about" />} />
+                        <Route path="/" element={<Navigate to="/NotFound" />} />
                         <Route path="/home" element={<Home />} />
 
                         <Route path="/about" element={<AboutUs />}>
@@ -39,6 +40,7 @@ export function RootCmp() {
                         <Route path="/books/:bookId" element={<BookDetails />}>
                             <Route path="/books/:bookId" element={<AddReview />} />
                         </Route>
+                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main >
                 <Footer fullname='Dan Weibren' />
