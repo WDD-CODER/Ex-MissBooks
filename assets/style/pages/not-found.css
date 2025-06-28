@@ -1,0 +1,28 @@
+.not-found {
+    /* color: var(--clr-white); */
+    height: 100%;
+}
+
+.not-found {
+    background-image: url("../../utilImages/404img.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center calc(50% + 35%);
+}
+
+.not-found h1 {
+    letter-spacing: .2em;
+    color: red;
+}
+
+.not-found .container {
+    width: fit-content;
+    
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    
+    background-color: var(--clr-accent--1);
+    
+    opacity: 0.8;
+}

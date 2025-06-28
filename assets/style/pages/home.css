@@ -1,15 +1,12 @@
 section.home {
   grid-area: main-content;
-
-  margin-block-start: 5em;
-
-  padding: 2em;
-  gap: 5em;
-
+  
+  gap: 1em;
+  
+  text-align: center;
 
 }
 
 .home img {
-  max-width:500px;
+  max-width: 400px;
 }
-

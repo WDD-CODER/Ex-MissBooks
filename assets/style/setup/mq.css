@@ -1,23 +1,21 @@
-@media (max-width: 420px) {
-  .book-filter {}
-}
 
 @media (min-width: 670px) {
+
+  .app-header {
+    font-size: 1.5em;
+  }
 
   .books-index .book-preview {
     height: 100%;
     max-height: 400px;
   }
 
-.books-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  align-items: stretch; 
-  width: 90%;
-}
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    align-items: stretch;
+    width: 90%;
 
-  .book-filter {
-    padding: 2em;
   }
 
   .book-details {

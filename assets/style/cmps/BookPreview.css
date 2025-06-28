@@ -6,17 +6,15 @@
     grid-area: book-preview;
     grid-template-areas:
         "   header"
-        "    img  "
         "   price "
+        "    img  "
         " description "
         " actions "
     ;
 
     gap: 0;
     align-items: stretch;
-    overflow: auto;
-    
-    width: 100%;
+    overflow:auto;
     text-align: justify;
 }
 
@@ -29,14 +27,19 @@ header {
     grid-area: actions;
 }
 
-.book-preview.price {
+.price {
     grid-area: price;
+    display: flex;
+
+    height: 50px;
+
+    align-items: center;
 }
 
 .book-preview img {
     grid-area: img;
     border-radius: 1vh;
-    max-width: 300px;
+    max-width: 200px;
 }
 
 .description {

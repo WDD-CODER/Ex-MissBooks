@@ -4,14 +4,10 @@
     gap: 1em;
 
     text-align: center;
-
-}
-
-.book-filter label {
-    justify-self: flex-end;
+background-color: var(--clr-accent--1);
 }
 
 .book-filter input {
-    margin-inline-start: 1em;
+    text-align: center;
     max-width: 180px;
 }

@@ -29,8 +29,8 @@
 
 
   border-radius: 1vh;
-  border: 2px var(--clr-black) solid;
-  background-color: var(--clr-accent--1);
+  /* border: 2px var(--clr-black) solid;
+  background-color: var(--clr-accent--1); */
 }
 
 .main-actions-container h1 {
