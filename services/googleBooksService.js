@@ -2,7 +2,7 @@ import { utilService } from "./util.service.js"
 import { appService } from "./books.service.js"
 import { storageService } from "./async-storage.service.js"
 import { hardCode } from "../data/gBooks.js"
-import { showErrorMsg } from "./event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "./event-bus.service.js"
 const APP_KEY = 'googleBooksDB'
 export const googleBooksService = {
     getGBooks,
@@ -13,15 +13,24 @@ export const googleBooksService = {
 
 function getGBooks(txt) {
     // Operating Without API //
-    console.log('fetch from local')
-    return Promise.resolve(hardCode.items)
+    // console.log('fetch from local')
+    // return Promise.resolve(hardCode.items)
 
-    // console.log('fetch from api')
-    // const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
-    // return fetch(googleBookApi)
-    //     .then(res => res.json())
-    //     .then(res => res.items)
-    //     .catch(err => showErrorMsg(' Something went wrong herein the getBooks '))
+    console.log('fetch from api')
+    const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
+    return fetch(googleBookApi)
+        .then(res => res.json())
+        .then(res => {
+            if (!res.items) return showErrorMsg('sorry no book of this search have been found Try again')
+            else {
+                showSuccessMsg("Yes, it's done! Books are waiting for you")
+                return res.items
+            }
+        })
+        .catch(err => {
+            console.log('err', err)
+            showErrorMsg(' Something went wrong herein the getBooks ')
+        })
 }
 
 function getGBooksModified(txt) {

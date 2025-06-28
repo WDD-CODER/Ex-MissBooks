@@ -43,15 +43,8 @@ export function GBookAdd() {
     function onShowBooks() {
         if (!googleBooks) return showErrorMsg(' Nothing searched for yet')
         googleBooksService.getGBooksModified(searchTerm)
-            .then(res => {
-                console.log('res', res)
-
-                SetModBook(res)
-            })
-            .catch(err => {
-                console.log('err', err)
-                showErrorMsg(' Problem showing loaded books ')
-            })
+            .then(res => SetModBook(res))
+            .catch(err => showErrorMsg(' Problem showing loaded books '))
     }
 
     return (
