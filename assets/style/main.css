@@ -1,6 +1,8 @@
 /* Setup */
 @import './setup/vars.css';
 @import './setup/typography.css';
+@import './setup/typography.css';
+@import './setup/fonts/brands.css';
 
 /* Base */
 @import './base/reset.css';
@@ -14,6 +16,7 @@
 @import './pages/BookDetails.css';
 @import './pages/BookIndex.css';
 @import './pages/About.css';
+@import './pages/not-found.css';
 
 /* Components */
 @import './cmps/AppHeader.css';

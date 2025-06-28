@@ -3,6 +3,9 @@
 .grid {
     display: grid;
 }
+.flex {
+    display: flex;
+}
 
 
 .grid.place-content {

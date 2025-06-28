@@ -1,3 +1,7 @@
+html {
+  font-family: 'Chewy';
+}
+
 .loading {
   justify-self: center;
 
@@ -54,4 +58,23 @@ select {
   flex-wrap: wrap;
   place-content: center;
   display: flex;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Bitcount';
+  font-size: 1.1em;
+  color: var(--clr-secondary--1);
+}
+
+p{
+  text-align:center;
 }
