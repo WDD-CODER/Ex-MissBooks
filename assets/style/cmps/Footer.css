@@ -1,14 +1,22 @@
 footer {
     grid-area: footer;
-    display: grid;
+    display: flex;
 
+place-items: center;
+
+    justify-content: space-evenly;
     height: fit-content;
 
-    padding: 1em;
+    padding: .5em;
 
     border-top-right-radius: .5vh;
     border-top-left-radius: .5vh;
 
     text-align: center;
     background-color: var(--clr-primary-base);
+}
+
+footer img{
+    max-width: 50px;
+    border-radius: 2vh;
 }

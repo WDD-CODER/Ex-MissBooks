@@ -29,3 +29,9 @@
         cursor: pointer;
     }
 }
+
+.app-header img{
+    margin: .5em;
+    max-width: 40px;
+    border-radius: 2vh;
+}

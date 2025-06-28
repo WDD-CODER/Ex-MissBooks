@@ -87,3 +87,12 @@ h4:hover {
   transition: color 1s;
   animation: pulse 1s infinite;
 }
+
+.social-icons{
+  display: flex;
+  gap: 5px;
+}
+
+.social-icons a{
+  cursor: pointer;
+}
