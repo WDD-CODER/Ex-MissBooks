@@ -12,10 +12,6 @@ export const googleBooksService = {
 
 
 function getGBooks(txt) {
-    // Operating Without API //
-    // console.log('fetch from local')
-    // return Promise.resolve(hardCode.items)
-
     console.log('fetch from api')
     const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
     return fetch(googleBookApi)
@@ -29,7 +25,7 @@ function getGBooks(txt) {
         })
         .catch(err => {
             console.log('err', err)
-            showErrorMsg(' Something went wrong herein the getBooks ')
+            showErrorMsg('Something went wrong while fetching Google Books')
         })
 }
 

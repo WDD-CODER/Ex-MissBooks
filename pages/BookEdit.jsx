@@ -6,7 +6,7 @@ const { useState, useEffect } = React
 
 export function BookEdit() {
 
-    const [book, setBook] = useState(appService.getEmptyBook())
+    const [book, setBook] = useState()
     const { bookId } = useParams()
     const navigate = useNavigate()
 
@@ -16,8 +16,12 @@ export function BookEdit() {
         loadBook()
     }, [])
 
+    useEffect(() => {
+    if (book) onFireModal()
+    }, [book])
+    
     function loadBook() {
-        if (!bookId) loadBook(appService.createEmptyBook())
+        if (!bookId) return setBook(appService.createEmptyBook())
         else appService.get(bookId)
             .then(book => {
                 setBook(book)
@@ -29,7 +33,6 @@ export function BookEdit() {
     }
 
 
-    if (book.listPrice) onFireModal()
     function onFireModal() {
         var title = (!book.title) ? '' : book.title
         var price = (!book.listPrice.amount) ? "What's the price?" : book.listPrice.amount
@@ -38,10 +41,10 @@ export function BookEdit() {
         Swal.fire({
             title: ` ${(!book.title) ? 'Create' : 'Add'} Book`,
             html: `
-                  <input id="title" name="title" type="text" value="${title}" class="swal2-input" placeholder="what's the title?" />
+            <input id="title" name="title" type="text" value="${title}" class="swal2-input" placeholder="what's the title?" />
                   <input id="price" name="listPrice" type="number" value="${price}" min={0} class="swal2-input" placeholder="what's the price?" />
                   <input id="sale" name="on-sale" type="checkbox" ${onSale} class="swal2-input"  />
-            `,
+                  `,
             focusConfirm: true,
             confirmButtonText: 'Save Book',
             cancelButtonText: 'Discard',
@@ -75,7 +78,7 @@ export function BookEdit() {
 
 
     function onSaveBook(book) {
-        const addOrEditStr = (!bookId) ? 'Wonderful. Add a new book!' : 'Wonderful. Book was edit!'
+        const addOrEditStr = (!bookId) ? 'Wonderful. Add a new book!' : 'Wonderful. Book was edited!'
         appService.save(book)
             .then(book => {
                 showSuccessMsg(addOrEditStr)
@@ -88,7 +91,7 @@ export function BookEdit() {
             })
     }
 
-    if (!book.title) return <div className='loading'>Loading...</div>
+    if (!book) return <div className='loading'>Loading...</div>
 
     return (<div className="swal-modal"></div>)
 

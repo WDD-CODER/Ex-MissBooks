@@ -27,7 +27,7 @@ header {
     grid-area: header;
 }
 
-.book-preview.actions {
+.book-preview .actions {
     grid-area: actions;
 }
 

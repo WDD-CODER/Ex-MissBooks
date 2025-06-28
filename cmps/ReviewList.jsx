@@ -11,7 +11,7 @@ if (!reviews) return console.log('!no reviews', reviews)
                 return (<ul className="review-preview box container" key={review.id}>
                     <ReviewPreview review={review} />
                     <section className="actions">
-                        <button onClick={()=> onRemoveReview(review.id)} className="delate">☠️</button>
+                        <button onClick={()=> onRemoveReview(review.id)} className="delete">☠️</button>
                     </section>
                 </ul>)
             })}

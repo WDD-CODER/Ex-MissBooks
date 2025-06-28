@@ -14,8 +14,6 @@ export function AddReview() {
     const { bookId } = useParams()
 
     const [review, setReview] = useState(appService.getEmptyReview())
-    console.log("🚀 ~ AddReview ~ review:", review)
-
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
@@ -75,7 +73,7 @@ export function AddReview() {
                 <button onClick={ev => {
                     ev.preventDefault()
                     onDiscardReview()
-                }} className="Delate-review">Discard</button>
+                }} className="delete-review">Discard</button>
             </section>
         </form>
     )

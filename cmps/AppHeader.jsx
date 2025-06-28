@@ -10,7 +10,7 @@ export function AppHeader() {
     const booksRef = useRef()
 
 
-    const [playAnimate, setPlayAnimate] = useState()
+    const [playAnimate, setPlayAnimate] = useState(null)
 
     useEffect(() => {
         if (playAnimate) onPlayAnimation(playAnimate)
@@ -23,7 +23,6 @@ export function AppHeader() {
 
 
     function onPlayAnimation(animation) {
-        console.log("🚀 ~ onPlayAnimation ~ animation:", animation.target.innerText)
         switch (animation.target.innerText) {
             case 'HOME':
                 animateCSS(homeRef.current, 'wobble', false)

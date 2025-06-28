@@ -12,11 +12,9 @@ export function Home() {
     return (
         <section className="home grid place-items">
             <h1 ref={ref} >WELCOME</h1>
-            <p> Welcome to missed books.
-                The application is going to be your best friend to help you manage your
-                books and find them easy You're welcome to enjoy Go to the books page to
-                find some books`</p>
-            <img ref={imgRef} src="./assets/utilImages/homePage.png" alt="welcome image"/>
+            <p>Welcome to Missed Books. This application will be your best friend to help you manage
+                and find books easily. You're welcome to enjoy it—go to the books page to discover more.</p>
+            <img ref={imgRef} src="./assets/utilImages/homePage.png" alt="welcome image" />
         </section>
     )
 }

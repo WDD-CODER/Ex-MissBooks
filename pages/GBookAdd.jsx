@@ -8,9 +8,9 @@ const { useNavigate, Link } = ReactRouterDOM
 
 export function GBookAdd() {
 
-    const [modBooks, SetModBook] = useState(null)
-    const [googleBooks, SetGoogleBooks] = useState(null)
-    const [searchTerm, SetSearchTerm] = useState(null)
+    const [modBooks, setModBook] = useState(null)
+    const [googleBooks, setGoogleBooks] = useState(null)
+    const [searchTerm, setSearchTerm] = useState(null)
 
     const navigate = useNavigate()
 
@@ -32,7 +32,7 @@ export function GBookAdd() {
     function onSearchGoogleBook() {
         if (!searchTerm) return showErrorMsg(' No search term ')
         return googleBooksService.getGBooks(searchTerm)
-            .then(SetGoogleBooks)
+            .then(setGoogleBooks)
             .catch(err => {
                 console.log("Error:", err)
                 showErrorMsg('Failed getting formatted books')
@@ -43,7 +43,7 @@ export function GBookAdd() {
     function onShowBooks() {
         if (!googleBooks) return showErrorMsg(' Nothing searched for yet')
         googleBooksService.getGBooksModified(searchTerm)
-            .then(res => SetModBook(res))
+            .then(res => setModBook(res))
             .catch(err => showErrorMsg(' Problem showing loaded books '))
     }
 
@@ -52,7 +52,7 @@ export function GBookAdd() {
             <h1>Google Books</h1>
             <div className="main-actions-container">
                 <h1>Search Control </h1>
-                <input onChange={ev => SetSearchTerm(ev.target.value)}
+                <input onChange={ev => setSearchTerm(ev.target.value)}
                     name='searchTerm'
                     type='text'
                     placeholder='Search for books' />

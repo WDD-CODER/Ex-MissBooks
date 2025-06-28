@@ -10,13 +10,11 @@ export const appService = {
     get,
     remove,
     save,
-    getEmptyBook,
     getNextBookId,
     getDefaultFilter,
     onAddReview,
     getEmptyReview,
     createEmptyBook,
-    // addGoogleBooks,
 }
 
 // List
@@ -100,13 +98,6 @@ function save(book) {
 }
 
 
-function getEmptyBook(title = '', category = []) {
-    return {
-        title,
-        category
-    }
-}
-
 function getEmptyReview(fullname = '', rate = '', date = '') {
     return {
         fullname: '',
@@ -122,7 +113,7 @@ function onAddReview(bookId, review) {
         .then(book => {
             if (book.reviews) {
                 const bookReviews = book.reviews
-                const bookReviewIdx = bookReviews.findIndex(r => { r.reviewId === review.reviewId })
+                const bookReviewIdx = bookReviews.findIndex(r => r.reviewId === review.reviewId)
                 if (bookReviewIdx < 0) {
                     showSuccessMsg('Book review added')
                     book.reviews.push(review)
@@ -137,11 +128,6 @@ function onAddReview(bookId, review) {
             return save(book)
         })
 }
-
-// function addGoogleBooks(book) {
-//     return Promise.resolve((book) =>{ resolve(book)})
-//         .then(book => saveGoogleBook(book))
-// }
 
 
 function createEmptyBook() {
@@ -159,7 +145,8 @@ function createEmptyBook() {
         language: "en",
         listPrice: { amount: 0, currencyCode: "EUR", isOnSale: false }
     }
-    return setBook(emptyBook)
+
+    return emptyBook
 }
 
 // Helpers / Init

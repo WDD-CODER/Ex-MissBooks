@@ -96,8 +96,3 @@ export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
         el.addEventListener('animationend', handleAnimationEnd, { once: true })
     })
 }
-
-function playAnimation(ref, animation, isRemoveClass) {
-    animateCSS(ref, animation)
-    animateCSS(imgRef.current, 'fadeOut', false)
-}

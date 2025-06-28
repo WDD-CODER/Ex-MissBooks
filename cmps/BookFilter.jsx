@@ -30,7 +30,7 @@ export function BookFilter({ defaultFilter, setFilterBy }) {
                 <input name="text" onChange={handleChange} type="text" placeholder="search for Whatever !" />
             </label>
             <label htmlFor="maxPrice">Max Price
-                <input name="maxPrice" onChange={handleChange} type="number" placeholder=" You have a budget?" />
+                <input name="maxPrice" onChange={handleChange} type="number" placeholder="You have a budget?" />
             </label>
         </section>
     )

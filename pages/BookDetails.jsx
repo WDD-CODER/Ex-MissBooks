@@ -27,7 +27,7 @@ export function BookDetails() {
         setBook(newBook)
         showSuccessMsg('Review removed with success')
       })
-      .catch(err =>{
+      .catch(err => {
         console.log('err', err)
         showErrorMsg('Failed removing book')})
   }
@@ -49,7 +49,7 @@ export function BookDetails() {
 
   function ReadingRate() {
     if (pageCount > 500) return 'Serious Reading '
-    if (pageCount > 200) return 'Descent Reading '
+    if (pageCount > 200) return 'Decent Reading  '
     if (pageCount < 100) return 'Light Reading '
   }
 

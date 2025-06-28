@@ -1,7 +1,7 @@
 const { useState } = React
 
 export function LongTxt({ txt, length = 50 }) {
-if (!txt) return
+if (!txt) return null
 
     const [isExtended, setIsExtended] = useState(true)
     return (

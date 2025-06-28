@@ -22,15 +22,12 @@
   ;
 
   place-items: center;
-  /* gap: .5em; */
   padding: 1em;
 
   max-width: 440px;
 
 
   border-radius: 1vh;
-  /* border: 2px var(--clr-black) solid;
-  background-color: var(--clr-accent--1); */
 }
 
 .main-actions-container h1 {

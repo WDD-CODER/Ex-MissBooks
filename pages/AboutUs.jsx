@@ -16,7 +16,7 @@ export function AboutUs() {
     const [active, setActive] = useState()
     return (
         <section className="about container">
-            <h1 ref={refH1} >AboutUS</h1>
+            <h1 ref={refH1} >About Us</h1>
             <LongTxt txt={aboutTxt} />
             <Outlet />
             <div className="actions">

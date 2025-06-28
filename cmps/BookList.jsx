@@ -6,7 +6,7 @@ export function BookList({ books, onSelect, selector = '' }) {
     return (
         <ul className={`books-list ${selector} box container`}>
             {books.map(book =>
-                <li className={`book-preview-container ${selector}` }  key={book.id}>
+                <li className={`book-preview-container ${selector}`} key={book.id}>
                     {/* <div > */}
                         <BookPreview book={book} />
                         <section className='actions'>

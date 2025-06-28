@@ -31,7 +31,7 @@ export function BookIndex() {
         appService.remove(bookId)
             .then(() => {
                 showSuccessMsg('Book removed with success')
-                setBooks(books.filter(books => books.id !== bookId))
+                setBooks(books.filter(book => book.id !== bookId))
             })
             .catch(err => {
                 showErrorMsg('Failed removing book')
@@ -42,7 +42,7 @@ export function BookIndex() {
     if (!books) return <div className='loading'>Loading...</div>
 
     const curList = (books) ? 'Books ' : 'Google Books '
-    const selector = (GoogleBooks)? 'google' : ''
+    const selector = (GoogleBooks) ? 'google' : ''
     return (
         <section className="books-index box container">
             <div className="main-actions-container">
