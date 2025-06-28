@@ -1,5 +1,6 @@
 html {
   font-family: 'Chewy';
+  
 }
 
 .loading {
@@ -77,4 +78,11 @@ h5 {
 
 p{
   text-align:center;
+}
+
+h1:hover,a:hover{
+  
+  color: var(--clr-secondary-1);
+  transition: color 1s;
+    animation: pulse 1s infinite;
 }

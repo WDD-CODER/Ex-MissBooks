@@ -16,9 +16,16 @@
     justify-content: space-around;
 }
 
-.app-header h1{
+.app-header h1 {
     letter-spacing: 2px;
-    color:var(--clr-accent-base)
+    color: var(--clr-accent-base)
+}
+
+.app-header h1:hover,a:hover {
+    /* letter-spacing: 2px; */
+    /* color: var(--clr-accent-base); */
+    color: var(--clr-secondary-1);
+    animation: pulse 1s infinite;
 }
 
 .app-header .app-nav {

@@ -69,6 +69,7 @@ export function BookDetails() {
       </section>
 
       <div className="add-info">
+        <Outlet context={{ setBook }} />
         <section className="main-info box container">
           <h4>Book Info</h4>
           <ul className="meta">
@@ -81,7 +82,6 @@ export function BookDetails() {
             <li><strong>Written By:</strong> {authors}</li>
           </ul>
         </section>
-        <Outlet context={{ setBook }} />
       </div>
 
 

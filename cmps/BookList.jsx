@@ -6,14 +6,14 @@ export function BookList({ books, onSelect, selector = '' }) {
     return (
         <ul className={`books-list ${selector} box container`}>
             {books.map(book =>
-                <li  key={book.id}>
-                    <div className={`book-preview-container ${selector}`}>
+                <li className={`book-preview-container ${selector}` }  key={book.id}>
+                    {/* <div > */}
                         <BookPreview book={book} />
                         <section className='actions'>
                             <button className={buttonContext} onClick={() => onSelect(book.id)}>{buttonContext}</button>
                             {!selector && <Link to={`/books/${book.id}`}><button className="details">Details</button></Link>}
                         </section>
-                    </div>
+                    {/* </div> */}
                 </li>
             )}
         </ul>
