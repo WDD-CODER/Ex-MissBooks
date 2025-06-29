@@ -1,4 +1,4 @@
-footer {
+.footer-container {
     grid-area: footer;
     display: flex;
 
@@ -17,7 +17,7 @@ footer {
     background-color: var(--clr-primary--1);
 }
 
-footer .logo{
+.footer-container .logo{
     max-width: 40px;
     border-radius: 2vh;
 }

@@ -2,8 +2,8 @@
 export function Footer({ fullname }) {
     const str = 'This App Was Made With Love & Respect For People Who Still Read Books 🧐 By'
     return (
-        <footer className='footer'>
-            <img className="logo" src="./assets/utilImages/logo_small.png" alt="logoImg" />
+        <footer className='footer-container'>
+            <img className="logo" src="../assets/utilImages/logo_small.png" alt="logoImg" />
             <p>{str} {fullname} </p>
             <ul className="social-icons">
                 <a href="http://www.facebook.com" className="icon-facebook"></a>
