@@ -48,7 +48,7 @@ export function GBookAdd() {
     }
 
     return (
-        <section className='google-books-index box container'>
+        <section className='books-index box container'>
             <h1>Google Books</h1>
             <div className="main-actions-container">
                 <h1>Search Control </h1>

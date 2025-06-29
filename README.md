@@ -33,6 +33,10 @@ This project demonstrates best practices in React component structure, state man
 - Added an "Add Book" button to `BookList.jsx` for quick access to the creation form.
 - Improved logging in `BookPreview.jsx` for easier debugging.
 - Enhanced styles in `BookDetails.css`, `BookList.css`, `BookPreview.css`, and `forms.css` for a modern look.
+- Updated `BookPreview.css` for improved layout, image handling, and responsive design:
+  - Uses CSS Grid areas for header, price, image, description, and actions.
+  - Ensures images have a maximum width and rounded corners.
+  - Improved `.price` and `.actions` layout for better alignment.
 - Added a fallback image (`noImg.png`) for books without cover images.
 - Updated VS Code settings for a custom color theme.
 - Changed the default route to `/books/edit` for a streamlined workflow.

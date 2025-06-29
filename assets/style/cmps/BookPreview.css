@@ -1,8 +1,6 @@
 .book-preview-container {
     display: flex;
     flex-direction: column;
-
-    height: 100%;
 }
 
 .book-preview {
@@ -14,14 +12,25 @@
         " description "
         " actions "
     ;
-
+    place-content: baseline;
     gap: 0;
-    align-items: stretch;
+
     overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    
     text-align: justify;
-width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
+.book-preview p,
+h1 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+}
 
 header {
     grid-area: header;
@@ -48,8 +57,15 @@ header {
 
 .description {
     grid-area: description;
+
+
 }
 
 .sale.img {
     width: 50px;
+}
+
+.book-preview::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
 }

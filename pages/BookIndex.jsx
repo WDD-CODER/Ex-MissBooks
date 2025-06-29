@@ -3,8 +3,9 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { appService } from '../services/books.service.js'
 import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookList } from '../cmps/BookList.jsx'
+import { utilService } from "../services/util.service.js"
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { Link } = ReactRouterDOM
 
 export function BookIndex() {
@@ -12,13 +13,14 @@ export function BookIndex() {
     const [GoogleBooks, setGoogleBooks] = useState()
     const [books, setBooks] = useState()
     const [filterBy, setFilterBy] = useState(appService.getDefaultFilter())
-
+    const onSetFilterBy = useRef(utilService.debounce(loadBooks,500)).current
 
     useEffect(() => {
-        loadBooks()
+        onSetFilterBy(filterBy)
     }, [filterBy])
 
     function loadBooks() {
+        console.log("🚀 ~ loadBooks ~ filterBy:", filterBy)
         appService.query(filterBy)
             .then(setBooks)
             .catch(err => {

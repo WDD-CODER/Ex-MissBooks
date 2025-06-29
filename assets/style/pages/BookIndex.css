@@ -7,9 +7,6 @@
   background-color: var(--clr-accent-base);
 }
 
-.google-books-index {
-  gap: 1em;
-}
 
 .main-actions-container {
   display: grid;
