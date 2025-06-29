@@ -1,6 +1,5 @@
 .app-header {
     grid-area: main-header;
-    padding-block: .75em;
 
     gap: .5em;
 
