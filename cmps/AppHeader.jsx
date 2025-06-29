@@ -44,7 +44,7 @@ export function AppHeader() {
         <header className='app-header'>
             <section>
                 <h1>MissBooks App </h1>
-                <img src="./assets/utilImages/logo_small.png" alt="logoImg" />
+                <img className="logo" src="./assets/utilImages/logo_small.png" alt="logoImg" />
                 <nav className='app-nav'>
                     <NavLink ref={homeRef} onClick={onsetAnimation} to="/home"> HOME </NavLink>
                     <NavLink ref={aboutRef} onClick={onsetAnimation} to="/about"> ABOUT </NavLink>
