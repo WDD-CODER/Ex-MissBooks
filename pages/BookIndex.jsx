@@ -13,14 +13,14 @@ export function BookIndex() {
     const [GoogleBooks, setGoogleBooks] = useState()
     const [books, setBooks] = useState()
     const [filterBy, setFilterBy] = useState(appService.getDefaultFilter())
-    const onSetFilterBy = useRef(utilService.debounce(loadBooks,500)).current
+    console.log("🚀 ~ BookIndex ~ filterBy:", filterBy)
+    const onSetFilterBy = useRef(utilService.debounce(setFilterBy,500)).current
 
     useEffect(() => {
-        onSetFilterBy(filterBy)
+       loadBooks()
     }, [filterBy])
 
     function loadBooks() {
-        console.log("🚀 ~ loadBooks ~ filterBy:", filterBy)
         appService.query(filterBy)
             .then(setBooks)
             .catch(err => {
@@ -48,7 +48,7 @@ export function BookIndex() {
     return (
         <section className="books-index box container">
             <div className="main-actions-container">
-                <BookFilter setFilterBy={setFilterBy} defaultFilter={filterBy} />
+                <BookFilter setFilterBy={onSetFilterBy} defaultFilter={filterBy} />
                 <div className="actions">
                     <Link to={'/books/edit'}><button className="add">Add Book</button></Link>
                     <Link to={'/books/add/google'}><button className="add">Add Book From Google</button></Link>

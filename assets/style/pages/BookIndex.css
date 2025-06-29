@@ -8,6 +8,7 @@
 }
 
 
+
 .main-actions-container {
   display: grid;
   grid:
@@ -40,7 +41,9 @@ input {
 .main-actions-container input {
   grid-area: search;
 }
-
+.main-actions-container.google{
+  background-color: var(--clr-accent--1);
+}
 
 
 .book-selection {

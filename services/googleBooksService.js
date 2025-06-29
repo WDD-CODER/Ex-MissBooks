@@ -12,12 +12,16 @@ export const googleBooksService = {
 
 
 function getGBooks(txt) {
+    // Operating Without API //
+    // console.log('fetch from local')
+    // return Promise.resolve(hardCode.items)
+
     console.log('fetch from api')
     const googleBookApi = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${txt}`
     return fetch(googleBookApi)
         .then(res => res.json())
         .then(res => {
-            if (!res.items) return showErrorMsg('sorry no book of this search have been found Try again')
+            if (!res.items) return showErrorMsg('Sorry no book of this search have been found Try again')
             else {
                 showSuccessMsg("Yes, it's done! Books are waiting for you")
                 return res.items

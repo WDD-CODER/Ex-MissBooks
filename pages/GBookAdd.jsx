@@ -2,23 +2,28 @@ import { googleBooksService } from '../services/googleBooksService.js'
 import { appService } from '../services/books.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { BookList } from '../cmps/BookList.jsx'
+import { utilService } from '../services/util.service.js'
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { useNavigate, Link } = ReactRouterDOM
 
 
 
 export function GBookAdd() {
-    
+
     const [modBooks, setModBook] = useState(null)
     const [googleBooks, setGoogleBooks] = useState(null)
     const [searchTerm, setSearchTerm] = useState(null)
-    
+    console.log("🚀 ~ GBookAdd ~ searchTerm:", searchTerm)
     const navigate = useNavigate()
-    
+
+    const onSearchTerm = useRef(utilService.debounce(setSearchTerm, 600)).current
+
+
     useEffect(() => {
-         if (googleBooks) onShowBooks()
-    }, [googleBooks])
+        if (searchTerm) onSearchGoogleBook()
+        if (googleBooks) onShowBooks()
+    }, [searchTerm])
 
     function onSelectBook(bookId) {
         const bookToMod = googleBooks.find(book => book.id === bookId)
@@ -36,16 +41,22 @@ export function GBookAdd() {
     }
     // לא הסתדרתי עם הדיבאונס
     function onSearchGoogleBook() {
+        console.log("🚀 ~ searchGoogleBook ~ searchTerm:", searchTerm)
         if (!searchTerm) return showErrorMsg(' No search term ')
         return googleBooksService.getGBooks(searchTerm)
             .then(setGoogleBooks)
-            .then(() =>{ onShowBooks()})
+            .then(() => onShowBooks())
             .catch(err => {
                 console.log("Error:", err)
                 showErrorMsg('Failed getting formatted books')
             })
 
     }
+
+    // function onSetSearchTerm(res) {
+    //     setSearchTerm(res)
+    //     onSearchGoogleBook()
+    // }
 
     function onShowBooks() {
         // if (!googleBooks) return showErrorMsg(' Nothing searched for yet')
@@ -55,16 +66,16 @@ export function GBookAdd() {
     }
 
     return (
-        <section className='books-index box container'>
-            <h1>Google Books</h1>
-            <div className="main-actions-container">
+        <section className='books-index container'>
+            <div className="main-actions-container google box container">
                 <h1>Search Control </h1>
-                <input onChange={ev => setSearchTerm(ev.target.value)}
+                <input
+                    onChange={ev => onSearchTerm(ev.target.value)}
                     name='searchTerm'
                     type='text'
                     placeholder='Search for books' />
                 <div className="actions">
-                    <button onClick={() => onSearchGoogleBook()}>Search</button>
+                    {/* <button onClick={() => onSearchGoogleBook()}>Search</button> */}
                     <Link to={'/books'}> <button>Back To Gallery</button></Link>
                     {/* {googleBooks && !modBooks && <button onClick={onShowBooks}>Show Books To Choose From</button>} */}
                 </div>
@@ -79,6 +90,7 @@ export function GBookAdd() {
                 }
 
             </div>
+                <h1>Google Books</h1>
             {googleBooks &&
                 <React.Fragment>
                     {modBooks && <BookList books={modBooks} onSelect={onSelectBook} selector='google' />}
