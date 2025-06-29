@@ -12,10 +12,11 @@ export function BookIndex() {
 
     const [GoogleBooks, setGoogleBooks] = useState()
     const [books, setBooks] = useState()
+
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(appService.getFilterBySearchParams(searchParams))
-    const onSetFilterBy = useRef(utilService.debounce(setFilterBy, 500)).current
 
+    const onSetFilterBy = useRef(utilService.debounce(setFilterBy, 500)).current
 
 
     useEffect(() => {
