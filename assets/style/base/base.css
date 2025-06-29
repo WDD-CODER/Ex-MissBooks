@@ -88,11 +88,17 @@ h4:hover {
   animation: pulse 1s infinite;
 }
 
-.social-icons{
+.social-icons {
   display: flex;
   gap: 5px;
 }
 
-.social-icons a{
+.social-icons a:hover {
   cursor: pointer;
+  scale: 1.5;
+  transition: .5s;
+}
+
+.logo:hover {
+  animation: tada 1s ;
 }

@@ -4,7 +4,7 @@ footer {
 
     place-items: center;
     justify-content: space-evenly;
-    
+
     gap: .5em;
     height: fit-content;
 
@@ -14,7 +14,7 @@ footer {
     border-top-left-radius: .5vh;
 
     text-align: center;
-    background-color: var(--clr-primary-base);
+    background-color: var(--clr-primary--1);
 }
 
 footer img {

@@ -4,7 +4,7 @@
     gap: 1em;
 
     text-align: center;
-background-color: var(--clr-accent--1);
+    background-color: var(--clr-accent--1);
 }
 
 .book-filter input {

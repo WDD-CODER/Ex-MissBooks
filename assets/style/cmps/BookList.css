@@ -1,19 +1,8 @@
 .books-list {
+    position: relative;
     gap: .5em;
 
-    background-color: var(--clr-accent--1);
-}
+    min-height: 65px;
 
-.list-container {
-    display: grid;
-    place-items: center;
-
-    margin: auto;
-
-    gap: .5em;
-    padding: 1em;
-
-    border-radius: 1vh;
-    border: 2px var(--clr-black) solid;
     background-color: var(--clr-accent--1);
 }
