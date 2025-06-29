@@ -27,9 +27,7 @@ export function BookDetails() {
         setBook(newBook)
         showSuccessMsg('Review removed with success')
       })
-      .catch(err => {
-        console.log('err', err)
-        showErrorMsg('Failed removing book')})
+      .catch(() => showErrorMsg('Failed removing book'))
   }
 
   function switchToNextOrPrevBook({ target }) {
@@ -40,10 +38,7 @@ export function BookDetails() {
         navigate(`/books/${book.id}`)
         showSuccessMsg(` Passing to ${moveTo}`)
       })
-      .catch(err => {
-        console.log('err', err)
-        showErrorMsg(`Fail switching to ${moveTo}`)
-      })
+      .catch(() => showErrorMsg(`Fail switching to ${moveTo}`))
   }
 
 

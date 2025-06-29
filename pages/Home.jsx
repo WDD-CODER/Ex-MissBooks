@@ -7,6 +7,7 @@ export function Home() {
 
     useEffect(() => {
         animateCSS(ref.current, 'jackInTheBox', false)
+        .then(()=> animateCSS(imgRef.current, 'flash', false))
     }, [])
 
     return (

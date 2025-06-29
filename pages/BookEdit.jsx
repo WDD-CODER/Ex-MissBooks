@@ -17,19 +17,16 @@ export function BookEdit() {
     }, [])
 
     useEffect(() => {
-    if (book) onFireModal()
+        if (book) onFireModal()
     }, [book])
-    
+
     function loadBook() {
         if (!bookId) return setBook(appService.createEmptyBook())
         else appService.get(bookId)
             .then(book => {
                 setBook(book)
             })
-            .catch(err => {
-                console.log(err)
-                showErrorMsg('Problem loading book')
-            })
+            .catch(() => showErrorMsg('Problem loading book'))
     }
 
 
@@ -69,10 +66,9 @@ export function BookEdit() {
                 navigate(`/books/${addOrEditCmp}`)
                 showErrorMsg('User canceled request',)
             }
-        }).catch(err => {
+        }).catch(() => {
             navigate(`/books/${addOrEditCmp}`)
             showErrorMsg('Book was not saved! Problem saving in swal modal')
-            console.log(err)
         })
     }
 
@@ -84,10 +80,9 @@ export function BookEdit() {
                 showSuccessMsg(addOrEditStr)
                 navigate(`/books/${book.id}`)
             })
-            .catch(err => {
+            .catch(() => {
                 navigate(`/books/${addOrEditCmp}`)
                 showErrorMsg('Problem Saving books in storage')
-                console.log(err)
             })
     }
 

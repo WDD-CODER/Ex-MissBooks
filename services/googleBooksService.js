@@ -27,10 +27,7 @@ function getGBooks(txt) {
                 return res.items
             }
         })
-        .catch(err => {
-            console.log('err', err)
-            showErrorMsg('Something went wrong while fetching Google Books')
-        })
+        .catch(() => showErrorMsg('Something went wrong while fetching Google Books'))
 }
 
 function getGBooksModified(txt) {

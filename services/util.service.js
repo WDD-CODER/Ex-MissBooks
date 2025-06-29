@@ -9,6 +9,7 @@ export const utilService = {
     getMonthName,
     getStars,
     debounce,
+    getTruthyValues,
 }
 
 function makeId(length = 6) {
@@ -78,8 +79,6 @@ export function debounce(func, delay) {
 }
 
 export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
-    // console.log('animation')
-
     const prefix = 'animate__'
     return new Promise((resolve, reject) => {
         const animationName = `${prefix}${animation}`
@@ -93,4 +92,15 @@ export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
 
         el.addEventListener('animationend', handleAnimationEnd, { once: true })
     })
+}
+
+export function getTruthyValues(obj) {
+    const newObj = {}
+    for (const key in obj) {
+        const value = obj[key]
+        if (value) {
+            newObj[key] = value
+        }
+    }
+    return newObj
 }

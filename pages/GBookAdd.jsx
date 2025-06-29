@@ -14,7 +14,6 @@ export function GBookAdd() {
     const [modBooks, setModBook] = useState(null)
     const [googleBooks, setGoogleBooks] = useState(null)
     const [searchTerm, setSearchTerm] = useState(null)
-    console.log("🚀 ~ GBookAdd ~ searchTerm:", searchTerm)
     const navigate = useNavigate()
 
     const onSearchTerm = useRef(utilService.debounce(setSearchTerm, 600)).current
@@ -33,36 +32,20 @@ export function GBookAdd() {
                 showSuccessMsg('Book Saved With Success')
                 navigate('/books')
             })
-            .catch(err => {
-                console.log("Error:", err)
-                showErrorMsg('Failed getting formatted books')
-            }
-            )
+            .catch(() => showErrorMsg('Failed getting formatted books'))
     }
-    // לא הסתדרתי עם הדיבאונס
     function onSearchGoogleBook() {
-        console.log("🚀 ~ searchGoogleBook ~ searchTerm:", searchTerm)
-        if (!searchTerm) return showErrorMsg(' No search term ')
+        if (!searchTerm) showErrorMsg(' No search term ')
         return googleBooksService.getGBooks(searchTerm)
             .then(setGoogleBooks)
             .then(() => onShowBooks())
-            .catch(err => {
-                console.log("Error:", err)
-                showErrorMsg('Failed getting formatted books')
-            })
+            .catch(() => showErrorMsg('Failed getting formatted books'))
 
     }
 
-    // function onSetSearchTerm(res) {
-    //     setSearchTerm(res)
-    //     onSearchGoogleBook()
-    // }
-
     function onShowBooks() {
-        // if (!googleBooks) return showErrorMsg(' Nothing searched for yet')
         googleBooksService.getGBooksModified(searchTerm)
             .then(res => setModBook(res))
-            .catch(err => showErrorMsg(' Problem showing loaded books '))
     }
 
     return (
@@ -75,9 +58,7 @@ export function GBookAdd() {
                     type='text'
                     placeholder='Search for books' />
                 <div className="actions">
-                    {/* <button onClick={() => onSearchGoogleBook()}>Search</button> */}
                     <Link to={'/books'}> <button>Back To Gallery</button></Link>
-                    {/* {googleBooks && !modBooks && <button onClick={onShowBooks}>Show Books To Choose From</button>} */}
                 </div>
 
                 {googleBooks && <React.Fragment>
@@ -90,7 +71,7 @@ export function GBookAdd() {
                 }
 
             </div>
-                <h1>Google Books</h1>
+            <h1>Google Books</h1>
             {googleBooks &&
                 <React.Fragment>
                     {modBooks && <BookList books={modBooks} onSelect={onSelectBook} selector='google' />}

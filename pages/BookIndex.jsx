@@ -6,27 +6,27 @@ import { BookList } from '../cmps/BookList.jsx'
 import { utilService } from "../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
-const { Link } = ReactRouterDOM
+const { Link, useSearchParams } = ReactRouterDOM
 
 export function BookIndex() {
 
     const [GoogleBooks, setGoogleBooks] = useState()
     const [books, setBooks] = useState()
-    const [filterBy, setFilterBy] = useState(appService.getDefaultFilter())
-    console.log("🚀 ~ BookIndex ~ filterBy:", filterBy)
-    const onSetFilterBy = useRef(utilService.debounce(setFilterBy,500)).current
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(appService.getFilterBySearchParams(searchParams))
+    const onSetFilterBy = useRef(utilService.debounce(setFilterBy, 500)).current
+
+
 
     useEffect(() => {
-       loadBooks()
+        loadBooks()
+        setSearchParams(utilService.getTruthyValues(filterBy))
     }, [filterBy])
 
     function loadBooks() {
         appService.query(filterBy)
             .then(setBooks)
-            .catch(err => {
-                showErrorMsg('Failed loading books')
-                console.log(err)
-            })
+            .catch(() => showErrorMsg('Failed loading books'))
     }
 
     function onRemoveBook(bookId) {
@@ -35,10 +35,7 @@ export function BookIndex() {
                 showSuccessMsg('Book removed with success')
                 setBooks(books.filter(book => book.id !== bookId))
             })
-            .catch(err => {
-                showErrorMsg('Failed removing book')
-                console.log(err)
-            })
+            .catch(() => showErrorMsg('Failed removing book'))
     }
 
     if (!books) return <div className='loading'>Loading...</div>

@@ -1,5 +1,5 @@
 
-export function NotFound(){
+export function NotFound() {
 
   return (
     <section className="not-found">

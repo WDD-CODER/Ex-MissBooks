@@ -15,6 +15,7 @@ export const appService = {
     onAddReview,
     getEmptyReview,
     createEmptyBook,
+    getFilterBySearchParams,
 }
 
 // List
@@ -38,10 +39,7 @@ function query(filterBy = {}) {
 
             return books
         })
-        .catch(err => {
-            showErrorMsg('Failed loading books')
-            console.log(err)
-        })
+        .catch(() => showErrorMsg('Failed loading books'))
 }
 
 // Delete
@@ -55,10 +53,7 @@ function remove(bookId) {
 function get(bookId) {
     return storageService.get(APP_KEY, bookId)
         .then(_setNextPrevBookId)
-        .catch(err => {
-            console.log('err', err)
-            showErrorMsg(" Couldn't find book ")
-        })
+        .catch(()=> showErrorMsg(" Couldn't find book "))
 }
 function getDefaultFilter() {
     return { text: '', maxPrice: '' }
@@ -90,7 +85,6 @@ function _setNextPrevBookId(book) {
 
 function save(book) {
     if (book.id) {
-        console.log("🚀 ~ save ~ book.id:", book.id)
         return storageService.put(APP_KEY, book)
     } else {
         return storageService.post(APP_KEY, book)
@@ -106,7 +100,7 @@ function getEmptyReview(fullname = '', rate = '', date = '') {
         value: '',
         id: utilService.makeId()
     }
-} 
+}
 
 function onAddReview(bookId, review) {
     return get(bookId)
@@ -177,4 +171,11 @@ function _createDemoBooks() {
         books.push(book)
     }
     utilService.saveToStorage(APP_KEY, books)
+}
+
+function getFilterBySearchParams(searchParams) {
+    const text = searchParams.get('text') || ''
+    const maxPrice = searchParams.get('maxPrice') || ''
+    return { text, maxPrice }
+
 }
