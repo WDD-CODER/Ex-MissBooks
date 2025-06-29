@@ -2,6 +2,8 @@
     grid-area: main-header;
     padding-block: .75em;
 
+    gap: .5em;
+    
     border-bottom-right-radius: .5vh;
     border-bottom-left-radius: .5vh;
 
@@ -16,7 +18,7 @@
     justify-content: space-around;
 }
 
-.app-header h1{
+.app-header h1 {
     letter-spacing: 2px;
     color: var(--clr-accent-base);
 }
@@ -30,7 +32,7 @@
     }
 }
 
-.app-header img{
+.app-header img {
     margin: .5em;
     max-width: 40px;
     border-radius: 2vh;

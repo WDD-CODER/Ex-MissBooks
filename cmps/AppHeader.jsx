@@ -43,15 +43,13 @@ export function AppHeader() {
     return (
         <header className='app-header'>
             <section>
-
                 <h1>MissBooks App </h1>
-                            <img src="./assets/utilImages/logo_small.png" alt="logoImg" />
+                <img src="./assets/utilImages/logo_small.png" alt="logoImg" />
                 <nav className='app-nav'>
                     <NavLink ref={homeRef} onClick={onsetAnimation} to="/home"> HOME </NavLink>
                     <NavLink ref={aboutRef} onClick={onsetAnimation} to="/about"> ABOUT </NavLink>
                     <NavLink ref={booksRef} onClick={onsetAnimation} to="/books"> BOOKS </NavLink>
                 </nav>
-                            {/* <img src="./assets/utilImages/logo_small.png" alt="logoImg" /> */}
 
             </section>
         </header>

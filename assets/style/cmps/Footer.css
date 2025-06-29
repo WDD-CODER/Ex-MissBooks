@@ -2,9 +2,10 @@ footer {
     grid-area: footer;
     display: flex;
 
-place-items: center;
-
+    place-items: center;
     justify-content: space-evenly;
+    
+    gap: .5em;
     height: fit-content;
 
     padding: .5em;
@@ -16,7 +17,7 @@ place-items: center;
     background-color: var(--clr-primary-base);
 }
 
-footer img{
+footer img {
     max-width: 50px;
     border-radius: 2vh;
 }
