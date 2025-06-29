@@ -59,7 +59,7 @@ export function GBookAdd() {
                 <div className="actions">
                     <button onClick={() => onSearchGoogleBook()}>Search</button>
                     <Link to={'/books'}> <button>Back To Gallery</button></Link>
-                    {googleBooks && <button onClick={onShowBooks}>Show Books To Choose From</button>}
+                    {googleBooks && !modBooks && <button onClick={onShowBooks}>Show Books To Choose From</button>}
                 </div>
 
                 {googleBooks && <React.Fragment>
