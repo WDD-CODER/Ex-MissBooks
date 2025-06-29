@@ -2,7 +2,7 @@
 export function Footer({ fullname }) {
     const str = 'This App Was Made With Love & Respect For People Who Still Read Books 🧐 By'
     return (
-        <footer className='Footer'>
+        <footer className='footer'>
             <img className="logo" src="./assets/utilImages/logo_small.png" alt="logoImg" />
             <p>{str} {fullname} </p>
             <ul className="social-icons">
